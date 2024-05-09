@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex - 4</title>
+<style>
+    h2{ text-align: center; }
+    #container1 div{
+        width: 100px;
+        border:3px solid greenyellow;
+        background-color: darkblue;
+        color:white;
+    }
+    #container1{
+        width: 500px;height: 150px;
+        margin: 0 auto;
+        border: 3px solid brown;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+    #box1{
+        align-self: flex-start;
+        order:2;
+        flex-grow:1;
+    }
+    #box2{
+        align-self: flex-end;
+        order:4;
+        flex-grow:2;
+    }
+    #box3{
+        order:0;
+    }
+
+    #container2{
+        width: 80%;
+        border:3px solid brown;
+        display: flex;
+        margin: 30px auto;
+    }
+    #container2 div{
+        width: 400px;
+        border:3px solid greenyellow;
+        background-color: darkblue;
+        color:white;
+    }
+    #box4{
+        flex-shrink: 1;
+    }
+    #box5{
+        flex-shrink: 1;
+    }
+    #box6{
+        flex-shrink: 2;
+    }
+</style>
+</head>
+<body>
+    <h2>flex - 4</h2>
+    <div id="container1">
+        <div id="box1"><p>1</p></div>
+        <div id="box2"><p>2</p></div>
+        <div id="box3"><p>3</p></div>
+    </div>
+    <div id="container2">
+        <div id="box4"><p>4</p></div>
+        <div id="box5"><p>5</p></div>
+        <div id="box6"><p>6</p></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문서객체모델 - 2</title>
+<script>
+    window.onload = function(){
+        const gnb = document.getElementById('gnb');
+        console.log(gnb);
+        console.log(gnb.parentNode);
+        // childNodes   : 비요소 노드들도 포함
+        // console.log(gnb.childNodes); //[ text노드, ul노드, text노드 ]
+        // children     : 요소 노드들만 담겨있음
+        console.log(gnb.children);  //[ ul노드 ]
+        console.log(gnb.children[0]);//ul 요소
+        
+        // console.log(gnb.children[0].nextSibling);    //text노드
+        console.log(gnb.children[0].nextElementSibling);//null
+
+        console.log(gnb.children[0].children[1]);//<li>내용 2</li>
+        console.log(gnb.children[0].children[1].nextElementSibling);//<li>내용 3</li>
+
+        console.log(gnb.children[0].firstChild);    //text노드
+        console.log(gnb.children[0].firstElementChild); // li.first
+    }
+</script>
+</head>
+<body>
+    <h2>문서객체모델 - 2</h2>
+    <div>
+        <nav id="gnb">
+            <ul>
+                <li class="first">내용 1</li>
+                <li>내용 2</li>
+                <li>내용 3</li>
+            </ul>
+        </nav>
+    </div>
+</body>
+</html>

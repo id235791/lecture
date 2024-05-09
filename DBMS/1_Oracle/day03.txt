@@ -1,0 +1,119 @@
+학생 테이블
+	학번(PK) VARCHAR2(15)
+	학생명 VARCHAR2(20)
+	핸드폰 번호 VARCHAR2(15)
+	주소 VARCHAR2(100)
+
+수업 테이블			교수 테이블
+	강의코드(PK) VARCHAR2(10)	교수번호(PK) VARCHAR2(20)
+	강의명 VARCHAR2(30)	교수명 VARCHAR2(20)
+	강의실 VARCHAR2(20)	직급 VARCHAR2(20)
+	시작시간 VARCHAR2(5)	급여 NUMBER(10)
+	교수번호(FK) VARCHAR2(20)
+
+사실은 "수강신청 테이블"이 따로 하나 더 필요하다
+
+수강신청 테이블
+	시퀀스(PK) 
+	강의코드(FK)
+	학번(FK)
+------------------------------------------------------------
+DML(Data Manipulation Language) 
+	데이터 조작어
+
+	INSERT : 추가
+		INSERT INTO 테이블명 (컬럼명1, 컬럼명2,..)
+		VALUES(값1, 값2, ..);
+
+	SELECT : 검색
+		SELECT (컬럼명1, 컬럼명2,..) FROM 테이블명
+		WHERE 조건식;
+
+	UPDATE : 수정
+		UPDATE 테이블명
+		SET 기존컬럼명 = 바꿀값
+		WHERE 조건식;
+
+	DELETE : 삭제
+		DELETE FROM 테이블명
+		WHERE 조건식;
+	
+조건절
+	조건식 : 결과가 참 또는 거짓 두가지로 나오는 식
+	ex)나이가 10살 이상? --> AGE>=10
+	= : 같다
+	!= : 다르다
+	조건식 AND 조건식 : 두 조건식이 모두 참일때 참
+	조건식 OR 조건식 : 두 조건식 중 하나라도 참이면 참
+	IN (값1, 값2,..) : 뒤에 오는 값들중에 있으면 참
+
+	WHERE 조건식;
+	
+TCL(Transaction Control Language)
+	트랜잭션 제어 언어(DML을 위한 명령)
+
+Transaction(트랜잭션)
+	하나의 작업 단위
+	
+Commit
+	모든 작업을 확정하는 명령어(저장하기)
+	변경된 내용 모두 영구저장
+
+Rollback
+	이전의 상태로 되돌림(불러오기)
+	이전 Commit했던 곳까지만 복구
+
+TRUNCATE
+	테이블의 내용을 전부 삭제할때 사용(오토커밋)
+	복구 불가능하기 때문에 대용량의 데이터를
+	확실하게 삭제하는 경우에 사용하면 편리하다
+
+계정 생성하기
+	CREATE USER 유저명 IDENTIFIED BY 비밀번호;
+
+잠긴 계정 풀기
+	ALTER USER 유저명 ACCOUNT UNLOCK;
+
+계정에 권한주기(SYSTEM계정으로만 부여가능)
+	GRANT CONNECT, RESOURCE TO 계정명;
+
+시퀀스
+	TABLE에 값이 추가될 때마다 변하는 값을 미리 설계할 수 있다
+	시작값, 증감값, 최소값, 최대값 등등을 미리 설정할 수 있다.
+
+	CREATE SEQUENCE 시퀀스명
+	START WITH 시작값
+	INCREMENT BY 증감값
+	MINVALUE 최소값
+	MAXVALUE 최대값
+
+	시퀀스명.NEXTVAL : 값을 하나 증가시켜서 사용
+------------------------------------------------------------
+쿼리 결과 배포하기
+	RESULT 탭에서 드래그로 영역 잡기 > 우클릭
+	> EXPORT RESULTSET > 파일 형식 선택 >
+	저장할 경로 선택 > FINISH
+
+배포파일 적용 방법
+	CMD창에서 추가할 계정으로 접속 > @ 뒤에 파일경로
+	(@ 뒤에 배포파일 드래그 앤 드롭)
+
+IS 조건식
+	A IS B : A 가 B이다(참 또는 거짓)
+	IS는 NULL인지 아닌지 판별할 때 사용한다
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

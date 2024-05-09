@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테이블 - 3</title>
+<style>
+    table{
+        margin: 0 auto;
+    }
+    th, td{
+        width: 100px;
+        padding: 5px;
+        text-align: center;
+    }
+    thead{
+        background-color: pink;
+    }
+    tbody{
+        background-color: blanchedalmond;
+    }
+    tfoot{
+        background-color: skyblue;
+    }
+</style>
+</head>
+<body>
+    <h2>테이블 - 3</h2>
+    <table border="1">
+        <caption>행들을 묶어서 한번에 스타일 지정하기</caption>
+        <thead>
+            <tr>
+                <th>태그명</th>
+                <th>영역</th>
+                <th>화면판독기</th>
+                <th>기타</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>thead</td>
+                <td>제목</td>
+                <td rowspan="3">가능(O)</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>tbody</td>
+                <td>본문</td>
+                
+                <td></td>
+            </tr>
+            <tr>
+                <td>tfoot</td>
+                <td>요약</td>
+
+                <td></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4">tfoot 영역(요약)</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>

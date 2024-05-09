@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex - 3</title>
+<style>
+    h2, h3{ text-align: center; }
+    .wrapper{
+        border : 3px solid magenta;
+        width: 500px; height: 150px;
+        margin: 0 auto;
+        display: flex;
+    }
+    .wrapper div{
+        border: 2px solid cornflowerblue;
+        width: 100px;
+        background-color: powderblue;
+    }
+    #container1{
+        align-items: stretch;
+    }
+    #container2{
+        align-items: flex-start;
+    }
+    #container3{
+        align-items: flex-end;
+    }
+    #container4{
+        align-items: center;
+    }
+    #container5{
+        align-items: baseline;
+    }
+</style>
+</head>
+<body>
+    <h2>flex - 3</h2>
+    <h3>align-item : stretch</h3>
+    <div class="wrapper" id="container1">
+        <div><p>1</p></div>
+        <div><p>2</p></div>
+        <div><p>3</p></div>
+    </div>
+    <h3>align-item : flex-start</h3>
+    <div class="wrapper" id="container2">
+        <div><p>1</p></div>
+        <div><p style="font-size: 40px;">2</p></div>
+        <div><p style="font-size: 30px;">3</p></div>
+    </div>
+    <h3>align-item : flex-end</h3>
+    <div class="wrapper" id="container3">
+        <div><p>1</p></div>
+        <div><p>2</p></div>
+        <div><p>3</p></div>
+    </div>
+    <h3>align-item : center</h3>
+    <div class="wrapper" id="container4">
+        <div><p>1</p></div>
+        <div><p>2</p></div>
+        <div><p>3</p></div>
+    </div>
+    <h3>align-item : baseline</h3>
+    <div class="wrapper" id="container5">
+        <div><p>1</p></div>
+        <div><p style="font-size: 40px;">2</p></div>
+        <div><p style="font-size: 30px;">3</p></div>
+    </div>
+</body>
+</html>

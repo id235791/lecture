@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노드 제거</title>
+</head>
+<body>
+    <h2>노드 제거</h2>
+    <div id="list">
+        <p id="item1">HTML</p>
+        <p id="item2" style="background-color: gold;">CSS</p>
+        <p>Spring</p>
+        <p>Java</p>
+    </div>
+    <input type="button" value="요소 노드 제거" onclick="removeNode()">
+    <input type="button" value="속성 노드 제거" onclick="removeAttr()">
+</body>
+<script>
+    function removeNode(){
+        const list = document.getElementById("list");
+        const item1 = document.getElementById("item1");
+        const result = list.removeChild(item1);
+        console.log(result);
+        // list.appendChild(result);
+    }
+    function removeAttr(){
+        const item2 = document.getElementById("item2");
+        item2.removeAttribute("style");
+    }
+</script>
+</html>

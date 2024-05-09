@@ -1,0 +1,16 @@
+REST(Representational State Transfer)
+	"하나의 URI는 하나의 고유한 리소스를 대표한다"
+	하나의 주소에 하나의 리소스를 매칭시키며 설계한다.
+
+	/board/regist?boardnum=3
+	/board/get?boardnum=3
+	/board/modify?boardnum=3
+	/board/remove?boardnum=3
+	-----------------------------
+	요청 방식의 차이로 어떤 비즈니스 로직을 수행해야 하는지 알 수 있다.
+	/board/3
+
+	POST		Create
+	GET		Read
+	PUT,PATCH	Update
+	DELETE		Delete

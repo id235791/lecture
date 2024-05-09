@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="NewWizardAction">
+		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.jdt.ui.wizards.NewClassCreationWizard"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.jdt.ui.java"/>
+			<item value="org.eclipse.jpt.jaxb"/>
+		</list>
+	</section>
+	<section name="ImportExportAction">
+		<item key="ImportExportPage.STORE_SELECTED_EXPORT_WIZARD_ID" value="org.eclipse.ui.wizards.export.ZipFile"/>
+		<item key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID" value="org.eclipse.ui.wizards.import.ExternalProject"/>
+		<list key="ImportExportPage.STORE_EXPANDED_EXPORT_CATEGORIES">
+			<item value="org.eclipse.ui.Basic"/>
+		</list>
+		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
+			<item value="org.eclipse.ui.Basic"/>
+		</list>
+	</section>
+	<section name="ZipFileExportWizard">
+		<item key="WizardZipFileResourceExportPage1.STORE_CREATE_STRUCTURE_ID" value="true"/>
+		<item key="WizardZipFileResourceExportPage1.STORE_COMPRESS_CONTENTS_ID" value="true"/>
+		<list key="WizardZipFileResourceExportPage1.STORE_DESTINATION_NAMES_ID">
+			<item value="C:\Users\user1\Desktop\crawling.zip"/>
+			<item value="C:\Users\user1\Desktop\jdbc_ums.zip"/>
+			<item value="C:\Users\user1\Desktop\jdbc_day02.zip"/>
+			<item value="C:\Users\user1\Desktop\jdbc_day01.zip"/>
+			<item value="C:\Users\user1\Desktop\ums.zip"/>
+			<item value="C:\Users\user1\Desktop\day11.zip"/>
+			<item value="C:\Users\user1\Desktop\day10.zip"/>
+			<item value="C:\Users\user1\Desktop\day09.zip"/>
+			<item value="C:\Users\user1\Desktop\day08.zip"/>
+			<item value="C:\Users\user1\Desktop\day07.zip"/>
+			<item value="C:\Users\user1\Desktop\day06.zip"/>
+			<item value="C:\Users\user1\Desktop\day05.zip"/>
+			<item value="C:\Users\user1\Desktop\day04.zip"/>
+			<item value="C:\Users\user1\Desktop\day03.zip"/>
+			<item value="C:\Users\user1\Desktop\day02.zip"/>
+			<item value="C:\Users\user1\Desktop\day01.zip"/>
+		</list>
+	</section>
+	<section name="WorkbenchPreferenceDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="651"/>
+		<item key="DIALOG_Y_ORIGIN" value="158"/>
+	</section>
+</section>

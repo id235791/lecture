@@ -1,0 +1,59 @@
+노드 추가
+	appendChild()
+		다른 노드를 해당 노드의 자식 노드 리스트 맨 마지막에 추가
+	insertBefore()
+		다른 노드를 특정 자식 노드 바로 앞에 추가
+	insertData()
+		새로운 텍스트 데이터를 텍스트 노드에 추가
+
+노드 생성
+	노드를 생성했다고 바로 문서에 변화가 일어나는 것이 아니라
+	노드트리에 생성한 노드를 추가해주어야 변화가 생긴다.
+
+	createElement()
+		새로운 요소 노드 만들기
+	createAttribute()
+		새로운 속성 노드 만들기
+	createTextNode()
+		새로운 텍스트 노드 만들기
+
+노드 제거
+	removeChild()
+		자식 노드 리스트에서 특정 자식 노드를 제거
+		성공적으로 노드를 제거하면 제거되는 노드가 리턴(반환)
+		노드가 제거될 때에는 제거되는 노드의 모든 자식들도 같이 제거됨
+
+노드 복제
+	cloneNode()
+		기존에 존재하는 노드와 동일한 새로운 노드를 생성하고 반환
+
+		cloneNode(true)		복제되는 노드의 모든 속성과 자식 노드도 같이 복제
+		cloneNode(false)	속성 노드만 복제하고 자식 노드를 복제하지 않음(기본값)
+
+폼 객체
+	document.폼name
+
+내부의 input태그 접근
+	폼객체.input태그name
+	폼객체.elements[n]
+	폼객체.elements[input태그name]
+
+정규 표현식
+	문자열이 어떤 형태로, 어떤 특정한 문자가 들어가 있는지 등을 검사하고
+	문자 조합과 대응하기 위해 사용되는 패턴
+
+정규식 설명 페이지
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Regular_Expressions
+
+정규식 검사 페이지
+https://regex101.com/
+
+
+
+
+
+
+
+
+
+

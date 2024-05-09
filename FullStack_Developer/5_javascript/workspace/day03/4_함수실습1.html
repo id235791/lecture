@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수 실습 - 1</title>
+</head>
+<body>
+    <h2>함수 실습 - 1</h2>
+    <input type="button" value="주사위 게임하기" onclick="dice()">
+    <input type="button" value="가위바위보 게임하기" onclick="rsp()">
+    <p id="result"></p>
+</body>
+<script>
+    // 1. 주사위 게임
+    // 랜덤한 주사위 숫자를 하나 정해놓고
+    // 프롬프트로 그 숫자를 맞추면 성공
+
+    // *입력
+    // 프롬프트 메세지
+    // ----------------------
+    // 숫자를 입력하세요
+    // ----------------------
+
+    // *출력
+    // 알럿창 메세지
+    // ----------------------
+    // 3이 아닙니다.
+    // ----------------------
+
+    // ----------------------
+    // 정답입니다! 게임을 종료합니다!
+    // ----------------------
+    function dice(){
+        while(true){
+            let num = Math.floor(Math.random()*6+1);
+            let user = prompt("숫자를 입력하세요");
+            if(num == user){
+                alert("정답입니다! 게임을 종료합니다!");
+                break;
+            }
+            alert(user+"이(가) 아닙니다.");
+        }
+    }
+    // 2. 가위바위보 게임
+    // 매번 컴퓨터는 가위, 바위, 보 중 하나를 선택
+    // 프롬프트로 입력을 해서 이기면 성공
+
+    // *입력
+    // ----------------------------------
+    // 가위, 바위, 보 중 하나를 선택하세요
+    // ----------------------------------
+
+    // *출력
+    // ----------------------------------
+    // 컴퓨터 : 보 / 나 : 바위
+    // 졌습니다!
+    // ----------------------------------
+    // 컴퓨터 : 보 / 나 : 보
+    // 비겼습니다!
+    // ----------------------------------
+    // 컴퓨터 : 보 / 나 : 가위
+    // 이겼습니다! 게임을 종료합니다!
+    // ----------------------------------
+    function rsp(){
+        //0 : 가위 / 1 : 바위 / 2 : 보
+        const index = ["가위","바위","보"];
+        let str = "";
+        while(true){
+            let com = Math.floor(Math.random()*3);
+            let user = prompt("가위, 바위, 보 중 하나를 선택하세요");
+            
+            for(let i=0;i<index.length;i++){
+                if(index[i] == user){
+                    user = i;
+                }
+            }
+            
+            if(user == com){
+                //비김
+                str += `컴퓨터 : ${index[com]} / 나 : ${index[user]}<br>비겼습니다!<br>`
+            }
+            else if(user == com-1 || user == com+2){
+                //짐
+                str += `컴퓨터 : ${index[com]} / 나 : ${index[user]}<br>졌습니다!<br>`
+            }
+            else if(user == com+1 || user == com-2){
+                //이김
+                str += `컴퓨터 : ${index[com]} / 나 : ${index[user]}<br>이겼습니다! 게임을 종료합니다!<br>`
+                break;
+            }
+        }
+        const result = document.getElementById("result");
+        result.innerHTML = str;
+    }
+
+</script>
+</html>

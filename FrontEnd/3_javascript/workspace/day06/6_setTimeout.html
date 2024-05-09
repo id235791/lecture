@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeout</title>
+</head>
+<body>
+    <h2>setTimeout</h2>
+    <script>
+        'use strict';
+        function hi(){
+            alert('안녕하세요! 여러분!');
+        }
+
+        // hi();
+        const st = window.setTimeout(hi, 2000); // 2초가 지난 후 hi 함수를 실행
+
+        //clearTimeout(st);   // setTimeout()을 취소
+    </script>
+</body>
+</html>

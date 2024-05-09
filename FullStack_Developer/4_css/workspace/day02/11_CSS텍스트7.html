@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 텍스트 - 7</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
+<style>
+    @font-face {
+        font-family: 'GangwonEduHyeonokT_OTFMediumA';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduHyeonokT_OTFMediumA.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+    h2{
+        font-family: 'GangwonEduHyeonokT_OTFMediumA';
+    }
+    p{
+        /* font-size: 20px; */
+        /* 32px */
+        font-size: 200%;
+        font-family: 'Single Day', cursive;
+    }
+    .normal{ font-weight: normal; font-weight: 400; }
+    .bold{ font-weight: bold; font-weight: 700; }
+    .extrabold{ font-weight: bolder; font-weight: 900; }
+
+    .em {
+        /* 48px - 부모의 글자크기가 32px이기 때문에 */
+        font-size: 1.5em;
+    }
+    .rem{
+        /* 24px - html 요소의 글자크기가 16px이기 때문에 */
+        font-size: 1.5rem;
+    }
+</style>
+</head>
+<body>
+    <h2>CSS 텍스트 - 7</h2>
+    <p class="normal">
+        <span class="em">Dearest, Darling, My universe</span> 날 데려가 줄래? 나의 이 가난한 상상력으론 떠올릴 수 없는 곳으로 저기 멀리 from Earth to Mars 꼭 같이 가줄래? 그곳이 어디든, 오랜 외로움 그 반대말을 찾아서 어떤 실수로 이토록 우리는
+        함께일까 세상에게서 도망쳐 Run on 나와 저 끝까지 가줘 My lover 나쁜 결말일까 길 잃은 우리 둘 um
+    </p>
+    <p class="bold">
+        <span class="rem">Dearest, Darling, My universe</span> 날 데려가 줄래? 나의 이 가난한 상상력으론 떠올릴 수 없는 곳으로 저기 멀리 from Earth to Mars 꼭 같이 가줄래? 그곳이 어디든, 오랜 외로움 그 반대말을 찾아서 어떤 실수로 이토록 우리는
+        함께일까 세상에게서 도망쳐 Run on 나와 저 끝까지 가줘 My lover 나쁜 결말일까 길 잃은 우리 둘 um
+    </p>
+    <p class="extrabold">
+        Dearest, Darling, My universe 날 데려가 줄래? 나의 이 가난한 상상력으론 떠올릴 수 없는 곳으로 저기 멀리 from Earth to Mars 꼭 같이 가줄래? 그곳이 어디든, 오랜 외로움 그 반대말을 찾아서 어떤 실수로 이토록 우리는
+        함께일까 세상에게서 도망쳐 Run on 나와 저 끝까지 가줘 My lover 나쁜 결말일까 길 잃은 우리 둘 um
+    </p>
+</body>
+</html>

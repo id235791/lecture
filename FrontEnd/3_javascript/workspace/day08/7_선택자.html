@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            $('p').on('click', function(){
+                $('span').css('fontSize', '50px');
+            });
+
+            $('button').on('click', function(){
+                $("img[alt='아이스크림']").attr('src', './icecream2.png');
+            })
+        });
+    </script>
+</head>
+<body>
+    <h2>선택자</h2>
+    <p><span>오픈소스</span> 기반의 자바스크립트 라이브러리. <span>문서객체모델(DOM)</span>과 <span>이벤트(Event)</span>에 관한 처리를 쉽게 구현할 수 있음. <span>Ajax</span> 응용 프로그램도 빠르게 개발이 가능</p>
+    <p><img src="./icecream1.png" alt="아이스크림"></p>
+    <p><button>아이스크림 변경</button></p>
+</body>
+</html>

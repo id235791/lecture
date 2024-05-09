@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체 실습</title>
+    <link rel="stylesheet" href="./css/object_task.css">
+</head>
+<body>
+    <fieldset>
+		<legend>자동차 주행</legend>
+		<textarea id="status">현재 상태 표시</textarea>
+		<img src="./images/출발전.png" id="img"> <input placeholder="비밀번호 입력" id="pw">
+		<button id="on" onclick="mycar.engineStart()">시동 켜기</button>
+		<button id="off" onclick="mycar.engineStop();">시동 끄기</button>
+		<button id="reset" onclick="history.go(0);">초기화</button>
+	</fieldset>
+</body>
+<script>
+	let on = document.getElementById("on");
+	let off = document.getElementById("off");
+	let img = document.getElementById("img");
+	let status = document.getElementById("status");
+	let reset = document.getElementById("reset");
+	let pwTag = document.getElementById("pw");
+	pwTag.style.visibility = "hidden";
+	let cnt = 0;
+
+	let pw_input = prompt("자동차 초기 비밀번호 입력");
+	const mycar = {
+		pw:pw_input,
+		engine:false,
+		engineStart:function(){
+			//시동이 꺼져있고
+			if(!this.engine){
+				let visibility = pwTag.style.visibility;
+				//패스워드 입력칸이 보이지 않을 때
+				if(visibility == 'hidden'){
+					pwTag.style.visibility = 'visible';
+				}
+				//패스워드 입력칸이 보일 때
+				else{
+					pw = pwTag.value;
+					//입력받은 패스워드와 설정한 패스워드가 같을 때
+					if(this.pw == pw){
+						img.src = "./images/시동켜기.gif";
+						status.innerHTML = "시동 켜짐"
+						pwTag.value="";
+						cnt = 0;
+						pwTag.style.visibility = 'hidden';
+						this.engine = true;
+					}
+					//입력받은 패스워드와 설정한 패스워드가 다를 때
+					else{
+						cnt++;
+						status.innerHTML = `비밀번호 오류 : ${cnt}회`;
+						//틀린 횟수가 세번이 됐을 때
+						if(cnt == 3){
+							img.src = "./images/경찰.png";
+							status.innerHTML = "경찰 출동";
+							pwTag.style.visibility = "hidden";
+							on.style.display = "none";
+							off.style.display = "none";
+						}
+					}
+				}
+			}
+			//시동이 켜져있을 때
+			else{
+				status.innerHTML = "시동이 이미 켜져있습니다."
+			}
+		},
+		//engineStart와 조건식을 반대로 진행
+		engineStop:function(){
+			if(this.engine){
+				let visibility = pwTag.style.visibility;
+				if(visibility == 'hidden'){
+					pwTag.style.visibility = 'visible';
+				}
+				else{
+					pw = pwTag.value;
+					if(this.pw == pw){
+						img.src = "./images/시동끄기.gif";
+						status.innerHTML = "시동 꺼짐"
+						pwTag.value="";
+						cnt = 0;
+						pwTag.style.visibility = 'hidden';
+						this.engine = false;
+					}
+					else{
+						cnt++;
+						status.innerHTML = `비밀번호 오류 : ${cnt}회`;
+						if(cnt == 3){
+							img.src = "./images/경찰.png";
+							status.innerHTML = "경찰 출동";
+							pwTag.style.visibility = "hidden";
+							on.style.display = "none";
+							off.style.display = "none";
+						}
+					}
+				}
+			}
+			else{
+				status.innerHTML = "시동이 이미 꺼져있습니다."
+			}
+		}
+	}
+
+</script>
+</html>

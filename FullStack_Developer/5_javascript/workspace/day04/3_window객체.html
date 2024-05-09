@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window 객체</title>
+</head>
+<body>
+    <h2>window 객체</h2>
+    <input type="button" value="폭탄해제" onclick="clearTimeout(timeout)">
+    <input type="button" value="시간낭비 멈추기" onclick="clearInterval(interval)">
+</body>
+<script>
+    //timeout : 일정 시간 뒤에 수행해야 하는 이벤트가 있을 때 사용
+    //setTimeout(콜백함수,n) : n밀리초 이후에 넘겨준 콜백함수를 호출
+    const timeout = setTimeout(
+        ()=>{
+            alert("🧨💥☢💣");
+        },5000
+    );
+    
+    //interval : 일정 시간 마다 수행해야 하는 이벤트가 있을 때 사용
+    //setInterval(콜백함수,n) : n 밀리초 마다 넘겨준 콜백함수를 호출
+    const interval = setInterval(
+        function(){
+            console.log("이렇게 1초를 날리다니.......");
+        },1000
+    );
+
+    
+</script>
+</html>

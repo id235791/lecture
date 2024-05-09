@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체</title>
+</head>
+<body>
+    <h2>객체</h2>
+</body>
+<script>
+    const mycar = {
+        model:"Ferrari", color:"Red", price:70000,
+        engineStart:function(){
+            console.log(this.model+" 시동 켜기");
+        },
+        engineStop:function(){
+            console.log(this.model+" 시동 끄기");
+        }
+    }
+
+    function Car(model,color,price){
+        this.model = model;
+        this.color = color;
+        this.price = price;
+
+        this.engineStart = function(){
+            console.log(this.model + " 시동 켜기");
+        }
+        this.engineStop = function(){
+            console.log(this.model + " 시동 끄기");
+        }
+    }
+
+
+    mycar.engineStart();
+    mycar.engineStop();
+    mycar.pw = "abcd";
+    console.log(mycar.pw);
+    console.dir(mycar);
+
+    const momcar = new Car("K7","White",4000);
+    const dadcar = new Car("Benz","Black",20000);
+    const babycar = Car("Genesis","Black",10000);
+
+    console.dir(typeof momcar);
+    console.dir(dadcar);
+    console.dir(babycar);
+
+    // momcar.wheel = 4;
+    // dadcar.wheel = 4;
+
+    Car.prototype.wheel = 4;
+
+    console.log(momcar.wheel);
+    console.log(dadcar.wheel);
+</script>
+</html>

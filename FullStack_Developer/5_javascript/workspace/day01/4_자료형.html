@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자료형</title>
+</head>
+<body>
+    <h2>자료형</h2>
+</body>
+<script>
+    let num1 = 10;
+    let num2 = 5;
+    let num3 = 3e3; //3*(10의 3제곱)
+
+    console.log(num3);
+    //10 + 5 = 15
+    // let str = `${10}+${5}=${10+5}`;
+    // console.log(str);
+    console.log(`${num1} + ${num2} = ${num1+num2}`)
+
+    let str1 = "5";
+    let str2 = "Hello";
+    // 문자열에 특정 값을 +면 문자열 연결이 가능하기 때문에
+    // 자동 형변환이 일어나지 않는다
+    console.log(num1+str1);
+    // 문자열에 특정 값을 *면 특정 연산이 없기 때문에
+    // 자동 형변환을 한 후 숫자끼리의 연산으로 해결한다.
+    console.log(num1*str1);
+    console.log(str1*str2);
+
+    // 상수 선언
+    const pi = 3.14;
+    // 실행 불가
+    // pi = 3.24;
+
+    // 자바스크립트의 리터럴 표기법으로 만든 객체
+    const mycar = {model:"Ferrari", color:"Red", price:70000};
+    console.log(mycar.model);
+    mycar.color = "Yellow";
+    console.log(mycar.color);
+    // mycar = "Hello";
+
+    let b1 = true;
+    b1 = 10<3;
+    console.log(b1);
+
+    let ud;
+    console.log(ud);
+    console.log(typeof ud);
+
+    let nu = null;
+    console.log(typeof nu);
+</script>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습 - 1</title>
+</head>
+<body>
+    <h2>실습 - 1</h2>
+    <p id="result"></p>
+</body>
+<script>
+    // isNaN(값) : 값이 숫자가 아니라면 true / 숫자이면 false
+    // 1. 프롬프트 창으로 사용자에게 입력받기
+    // 2. 숫자를 입력했다면 '숫자' 라고 쓰여진 버튼을 문서에 만들기
+    // 3. 문자열을 입력했다면 '문자' 라고 파란색 텍스트를 문서에 작성하기
+    let data = prompt("입력");
+    const result = document.getElementById("result");
+    if(isNaN(data)){
+        result.innerHTML = "문자";
+        result.style.color = "blue";
+    }
+    else{
+        result.innerHTML = '<input type="button" value="숫자">';
+    }
+</script>
+</html>

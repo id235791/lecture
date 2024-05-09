@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열 - 4</title>
+</head>
+<body>
+    <h2>배열 - 4</h2>
+    <script>
+        'use strict';
+        let arr1 = ['루시', 10, 3.5, true];
+        console.log(arr1);
+
+        arr1.push("여자");
+        console.log(arr1);
+
+        arr1.shift();
+        console.log(arr1);
+
+        let arr2 = ['뽀미', 5, 6, '폼피츠'];
+        
+        let arr = arr1.concat(arr2);
+        console.log(arr);
+
+        let arr2_1 = arr2.join("🐶");
+        console.log(arr2_1);  // 문자열로 출력
+        console.log(arr2);
+
+        // let arr3 = [100, 80, 40, 70, 60];   // 아스키코드 비교
+        let arr3 = ['a','z','c','f','r'];
+        arr3.sort();
+        console.log(arr3);  // 오름차순
+
+        arr3.reverse();
+        console.log(arr3);
+    </script>
+</body>
+</html>

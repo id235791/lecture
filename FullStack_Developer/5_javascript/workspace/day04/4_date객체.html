@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>date 객체</title>
+</head>
+<body>
+    <h2>date 객체</h2>
+    <p id="clock"></p>
+</body>
+<script>
+    console.log(new Date());
+
+    console.log(new Date(24,2,11));//1924-03-11
+    console.log(new Date(2024,2,11));//2024-03-11
+    console.log(new Date(2024,2,11,11,10,30));
+
+    const date = new Date();
+    console.log(`현재 년도 : ${date.getFullYear()}`);
+    console.log(`현재 월 : ${date.getMonth()+1}`);
+    console.log(`현재 일 : ${date.getDate()}`);
+
+    console.log(`시 : ${date.getHours()}`);
+    console.log(`분 : ${date.getMinutes()}`);
+    console.log(`초 : ${date.getSeconds()}`);
+
+    const clock = document.getElementById("clock");
+    setInterval(
+        function(){
+            const date = new Date();
+            clock.innerHTML = `${date.getHours()}시 ${date.getMinutes()}분 ${date.getSeconds()}초`;
+        },1000
+    )
+
+</script>
+</html>

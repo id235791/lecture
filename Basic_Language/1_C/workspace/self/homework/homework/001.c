@@ -1,0 +1,7 @@
+#include<stdio.h>
+void main()
+{
+	int num = 0;
+	printf("æ»≥Á«œººø‰\n");
+	scanf_s("%d", &num);
+}

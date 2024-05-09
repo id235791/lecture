@@ -1,0 +1,11 @@
+C:\Users\Administrator\Desktop\정다솔\C_1400_JDS\workspace\C_sharp\Project01\Project01\bin\Debug\netcoreapp2.1\Project01.deps.json
+C:\Users\Administrator\Desktop\정다솔\C_1400_JDS\workspace\C_sharp\Project01\Project01\bin\Debug\netcoreapp2.1\Project01.runtimeconfig.json
+C:\Users\Administrator\Desktop\정다솔\C_1400_JDS\workspace\C_sharp\Project01\Project01\bin\Debug\netcoreapp2.1\Project01.runtimeconfig.dev.json
+C:\Users\Administrator\Desktop\정다솔\C_1400_JDS\workspace\C_sharp\Project01\Project01\bin\Debug\netcoreapp2.1\Project01.dll
+C:\Users\Administrator\Desktop\정다솔\C_1400_JDS\workspace\C_sharp\Project01\Project01\bin\Debug\netcoreapp2.1\Project01.pdb
+C:\Users\Administrator\Desktop\정다솔\C_1400_JDS\workspace\C_sharp\Project01\Project01\obj\Debug\netcoreapp2.1\Project01.csprojAssemblyReference.cache
+C:\Users\Administrator\Desktop\정다솔\C_1400_JDS\workspace\C_sharp\Project01\Project01\obj\Debug\netcoreapp2.1\Project01.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\정다솔\C_1400_JDS\workspace\C_sharp\Project01\Project01\obj\Debug\netcoreapp2.1\Project01.AssemblyInfoInputs.cache
+C:\Users\Administrator\Desktop\정다솔\C_1400_JDS\workspace\C_sharp\Project01\Project01\obj\Debug\netcoreapp2.1\Project01.AssemblyInfo.cs
+C:\Users\Administrator\Desktop\정다솔\C_1400_JDS\workspace\C_sharp\Project01\Project01\obj\Debug\netcoreapp2.1\Project01.dll
+C:\Users\Administrator\Desktop\정다솔\C_1400_JDS\workspace\C_sharp\Project01\Project01\obj\Debug\netcoreapp2.1\Project01.pdb

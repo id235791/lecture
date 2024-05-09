@@ -1,0 +1,37 @@
+#include<stdio.h>
+#pragma warning(disable:4996)
+int main()
+{
+	FILE *fp;
+	char pw[20];
+	char id[20];
+	int age;
+	double ave_age = 0;
+
+	if ((fp = fopen("C:\\user_info.txt", "w")) == NULL) {
+		printf("파일열기 실패\n");
+	}
+
+	int i;
+	for (i = 0; i < 5; i++) {
+		printf("%d번째 유저정보를 입력 (아이디, 비밀번호, 나이 순): ", i);
+		scanf("%s %s %d", id, pw, &age);
+
+		fprintf(fp, "%s %s %d\n", id, pw, age);
+	}
+	fclose(fp);
+
+	if ((fp = fopen("C:\\user_info.txt", "r")) == NULL) {
+		printf("파일열기 실패\n");
+	}
+
+	for (i = 0; i < 5; i++) {
+		fscanf(fp, "%s %s %d", id, pw, &age);
+		ave_age += (double)age;
+	}
+
+	printf("유저들의 평균나이 : %0.2lf\n", ave_age / 5);
+	fclose(fp);
+
+	return 0;
+}

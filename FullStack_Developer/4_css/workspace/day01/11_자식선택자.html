@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자식 선택자</title>
+<style>
+    ul > a{
+        color:deeppink;
+        text-decoration: none;
+    }
+    .second > li > a {
+        color:gold;
+    }
+    ul > li > a {
+        color:green;
+    }
+    ul > li > p > a {
+        color:deepskyblue;
+    }
+    p > a {
+        color:brown;
+    }
+    
+</style>
+</head>
+<body>
+    <h2>자식 선택자</h2>
+    <ul>
+        <a href="www.naver.com">네이버</a>
+        <li>
+            <a href="www.google.com">구글</a>
+        </li>
+        <li>
+            <p>
+                <a href="www.daum.net">다음</a>
+            </p>
+        </li>
+    </ul>
+    <ul class="second">
+        <li>
+            <a href="www.nate.com">네이트</a>
+        </li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./pizza.ico">
+    <title>폼</title>
+</head>
+<body>
+    <h2>폼</h2>
+    <form action="join_db.jsp" method="post">
+        <p>
+            <input type="text" name="userid" value="apple" disabled>
+        </p>
+        <p>
+            <input type="password" name="userpw" placeholder="비밀번호를 입력하세요" size="30" maxlength="12" required>
+        </p>
+        <p>
+            <fieldset>
+                <legend>성별</legend>
+                <label>
+                    남자 <input type="radio" value="M" name="usergender" checked>
+                </label>
+                <label for="w">여자 </label>
+                <input type="radio" value="W" name="usergender" id="w">
+            </fieldset>
+        </p>
+        <p>
+            A <input type="checkbox" name="blood" id="" value="A">
+            B <input type="checkbox" name="blood" id="" value="B">
+            O <input type="checkbox" name="blood" id="" value="O">
+            AB <input type="checkbox" name="blood" id="" value="AB">
+        </p>
+        <p>
+            <input type="file" name="uploadFile" id="">
+        </p>
+        <!-- 가로줄을 만드는 태그 hr -->
+        <hr>
+        <p>
+            <input type="email" name="" id="" value="apple@juice.com" readonly>
+        </p>
+        <p>
+            <input type="url" name="" id="">
+        </p>
+        <p>
+            <input type="tel" name="" id="">
+        </p>
+        <p>
+            <input type="date" name="" id="">
+        </p>
+        <p>
+            <input type="number" step="5" max="100" min="0">
+        </p>
+        <p>
+            <input type="color" name="" id="">
+        </p>
+        <p>
+            <input type="search" name="" id="">
+        </p>
+        <p>
+            <input type="range" min="0" max="100" step="5">
+        </p>
+        <p>
+            <select name="lang" id="">
+                <option value="backend">Java</option>
+                <option value="dbms">MySQL</option>
+                <option value="frontend" label="HTML"></option>
+            </select>
+        </p>
+        <p>
+            <textarea name="content" id="" cols="30" rows="10"></textarea>
+        </p>
+        <p>
+            <input type="submit" value="회원가입">
+            <input type="reset" value="싹비우기">
+            <input type="button" value="아무 기능없는 버튼">
+        </p>
+    </form>
+</body>
+</html>

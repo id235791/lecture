@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS의 텍스트 - 2</title>
+<style>
+    p{
+        border:3px solid black;
+        padding:10px;
+        margin:20px;
+    }
+    [class^=align]{
+        color:darkgreen;
+    }
+    [class^=indent]{
+        color:blue;
+    }
+    [class$=line]{
+        color:maroon;
+    }
+    .align-left{ text-align: left; }
+    .align-right{ text-align: right; }
+    .align-center{ text-align: center; }
+    .align-justify{ text-align: justify; }
+
+    .indent1{
+        text-indent: 5%;
+    }
+    .indent2{
+        /* text-indent: -5px; */
+        text-indent: -9999px;
+    }
+
+    .small-line{ line-height: 0.7; }
+    .big-line{ line-height: 2; }
+    .px-line{ line-height: 20px; }
+    .per-line{ line-height: 67%; }
+</style>
+</head>
+<body>
+    <h2>CSS의 텍스트 - 2</h2>
+    <p class="align-left">
+        Dearest, Darling, My universe 날 데려가 줄래? 나의 이 가난한 상상력으론 떠올릴 수 없는 곳으로 저기 멀리 from Earth to Mars 꼭 같이 가줄래? 그곳이 어디든, 오랜 외로움 그 반대말을 찾아서 어떤 실수로 이토록 우리는
+        함께일까 세상에게서 도망쳐 Run on 나와 저 끝까지 가줘 My lover 나쁜 결말일까 길 잃은 우리 둘 um
+    </p>
+    <p class="align-right">
+        Dearest, Darling, My universe 날 데려가 줄래? 나의 이 가난한 상상력으론 떠올릴 수 없는 곳으로 저기 멀리 from Earth to Mars 꼭 같이 가줄래? 그곳이 어디든, 오랜 외로움 그 반대말을 찾아서 어떤 실수로 이토록 우리는
+        함께일까 세상에게서 도망쳐 Run on 나와 저 끝까지 가줘 My lover 나쁜 결말일까 길 잃은 우리 둘 um
+    </p>
+    <p class="align-center">
+        Dearest, Darling, My universe 날 데려가 줄래? 나의 이 가난한 상상력으론 떠올릴 수 없는 곳으로 저기 멀리 from Earth to Mars 꼭 같이 가줄래? 그곳이 어디든, 오랜 외로움 그 반대말을 찾아서 어떤 실수로 이토록 우리는
+        함께일까 세상에게서 도망쳐 Run on 나와 저 끝까지 가줘 My lover 나쁜 결말일까 길 잃은 우리 둘 um
+    </p>
+    <p class="align-justify">
+        Dearest, Darling, My universe 날 데려가 줄래? 나의 이 가난한 상상력으론 떠올릴 수 없는 곳으로 저기 멀리 from Earth to Mars 꼭 같이 가줄래? 그곳이 어디든, 오랜 외로움 그 반대말을 찾아서 어떤 실수로 이토록 우리는
+        함께일까 세상에게서 도망쳐 Run on 나와 저 끝까지 가줘 My lover 나쁜 결말일까 길 잃은 우리 둘 um
+    </p>
+    <p class="indent1">
+        Dearest, Darling, My universe 날 데려가 줄래? 나의 이 가난한 상상력으론 떠올릴 수 없는 곳으로 저기 멀리 from Earth to Mars 꼭 같이 가줄래? 그곳이 어디든, 오랜 외로움 그 반대말을 찾아서 어떤 실수로 이토록 우리는
+        함께일까 세상에게서 도망쳐 Run on 나와 저 끝까지 가줘 My lover 나쁜 결말일까 길 잃은 우리 둘 um
+    </p>
+    <p class="indent2">
+        Dearest, Darling, My universe 날 데려가 줄래? 나의 이 가난한 상상력으론 떠올릴 수 없는 곳으로 저기 멀리 from Earth to Mars 꼭 같이 가줄래? 그곳이 어디든, 오랜 외로움 그 반대말을 찾아서 어떤 실수로 이토록 우리는
+        함께일까 세상에게서 도망쳐 Run on 나와 저 끝까지 가줘 My lover 나쁜 결말일까 길 잃은 우리 둘 um
+    </p>
+    <p class="small-line">
+        Dearest, Darling, My universe 날 데려가 줄래? 나의 이 가난한 상상력으론 떠올릴 수 없는 곳으로 저기 멀리 from Earth to Mars 꼭 같이 가줄래? 그곳이 어디든, 오랜 외로움 그 반대말을 찾아서 어떤 실수로 이토록 우리는
+        함께일까 세상에게서 도망쳐 Run on 나와 저 끝까지 가줘 My lover 나쁜 결말일까 길 잃은 우리 둘 um
+    </p>
+    <p class="big-line">
+        Dearest, Darling, My universe 날 데려가 줄래? 나의 이 가난한 상상력으론 떠올릴 수 없는 곳으로 저기 멀리 from Earth to Mars 꼭 같이 가줄래? 그곳이 어디든, 오랜 외로움 그 반대말을 찾아서 어떤 실수로 이토록 우리는
+        함께일까 세상에게서 도망쳐 Run on 나와 저 끝까지 가줘 My lover 나쁜 결말일까 길 잃은 우리 둘 um
+    </p>
+    <p class="px-line">
+        Dearest, Darling, My universe 날 데려가 줄래? 나의 이 가난한 상상력으론 떠올릴 수 없는 곳으로 저기 멀리 from Earth to Mars 꼭 같이 가줄래? 그곳이 어디든, 오랜 외로움 그 반대말을 찾아서 어떤 실수로 이토록 우리는
+        함께일까 세상에게서 도망쳐 Run on 나와 저 끝까지 가줘 My lover 나쁜 결말일까 길 잃은 우리 둘 um
+    </p>
+    <p class="per-line">
+        Dearest, Darling, My universe 날 데려가 줄래? 나의 이 가난한 상상력으론 떠올릴 수 없는 곳으로 저기 멀리 from Earth to Mars 꼭 같이 가줄래? 그곳이 어디든, 오랜 외로움 그 반대말을 찾아서 어떤 실수로 이토록 우리는
+        함께일까 세상에게서 도망쳐 Run on 나와 저 끝까지 가줘 My lover 나쁜 결말일까 길 잃은 우리 둘 um
+    </p>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체형</title>
+</head>
+<body>
+    <h2>객체형</h2>
+    <script>
+        'use strict';
+        const dog = {"name":"루시", "age":10, "weight":3.5};
+        console.log(dog);
+
+        console.log(`이름 : ${dog.name}`);
+        console.log(`나이 : ${dog.age}`);
+        console.log(`몸무게 : ${dog.weight}`);
+        
+        // dog = 10;           // error! 상수의 값을 재설정하려고 했기 때문..
+        // console.log(dog);
+
+        dog.weight = 3.0;
+        console.log(`몸무게 : ${dog.weight}`);
+    </script>
+</body>
+</html>

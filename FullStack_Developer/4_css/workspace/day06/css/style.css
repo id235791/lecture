@@ -1,0 +1,74 @@
+#wrap{
+    width:100%;
+}
+header{
+    width: 100%;
+}
+header > h1{
+    font-size: 48px;
+    text-align: center;
+}
+#menus{
+    width: 100%;
+}
+#menu1, #menu2, #menu3, #menu4, #menu5 {
+    border:1px solid black;
+    margin-bottom: 15px;
+    height: 400px;
+    width: 100%;
+    background:url(../images/dish1.jpg) no-repeat center/cover;
+    position: relative;
+}
+#menus > #menu2{
+    background-image: url(../images/dish2.jpg);
+}
+#menus > #menu3{
+    background-image: url(../images/dish3.jpg);
+}
+#menus > #menu4{
+    background-image: url(../images/dish4.jpg);
+}
+#menus > #menu5{
+    background-image: url(../images/dish5.jpg);
+}
+#menus > div > h2{
+    color:white;
+    text-shadow: 3px 3px 5px black;
+    font-size: 32px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+footer{
+    width: 100%;
+    background-color: black;
+    height: 100px;
+}
+footer > p{
+    color:white;
+    text-align: center;
+    font-size: 24px;
+    line-height: 100px;
+    /* 글자 드래그 안되게 막기 */
+    user-select: none;
+}
+@media screen and (min-width:768px) {
+    #menu1, #menu2, #menu3, #menu4 {
+        width: 49%;
+    }
+    #menus{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+}
+@media screen and (min-width:1024px) {
+    #menu1, #menu2, #menu3, #menu4, #menu5{
+        width: 32%;
+    }
+    #menu5{
+        /* width: 66%; */
+        flex:1 1 0;
+        margin-left: 1.8%;
+    }
+}

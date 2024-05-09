@@ -1,0 +1,17 @@
+mongodb 모듈
+	드라이버 모듈
+	mongodb를 자체 콘솔에서 사용하는 것처럼 명령어를 그대로 사용할 수 있음
+	npm i mongodb
+
+	mongodb://ip주소:port번호/데이터베이스
+	mongodb://127.0.0.1:27017/frontend
+
+데이터베이스 연결
+	연결객체.db("데이터베이스명")
+
+컬렉션 객체
+	db객체.collection("컬렉션명")
+
+데이터 삽입
+	컬렉션객체.insertOne() : 데이터를 1개 삽입
+	컬렉션객체.insertMany() : 데이터를 여러개 삽입

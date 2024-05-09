@@ -1,0 +1,17 @@
+서브쿼리(Sub Query)
+	SQL문 안에 SQL문이 있는 형태
+
+	FROM절	: INLINE VIEW
+	SELECT절	: SCALAR
+	WHERE절	: SUB QUERY
+
+View
+	가상의 테이블
+	뷰를 생성하기 위해서는 CREATE VIEW 권한이
+	필요하다
+	GRANT CREATE VIEW TO 계정명;
+
+뷰 생성
+	CREATE VIEW 뷰이름(컬럼명,..) AS (서브쿼리)
+뷰 삭제	
+	DROP VIEW 뷰이름

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문서객체모델 실습</title>
+</head>
+<body>
+    <h2>문서객체모델 실습</h2>
+    <p>
+        요리명 <input type="text">
+    </p>
+    <div id="contents">
+        <textarea name="" id="" cols="30" rows="10" class="step"></textarea>
+        <input type="button" value="단계추가" onclick="f()">
+    </div>
+    <p>
+        <input type="hidden" name="recipe" id="recipe">
+        <input type="button" value="등록" onclick="regist()">
+    </p>
+</body>
+<script>
+    function f(){
+        let txt = '<hr><textarea name="" id="" cols="30" rows="10" class="step"></textarea><input type="button" value="단계추가" onclick="f()">'
+        const contents = document.getElementById("contents");
+        contents.innerHTML += txt;
+    }
+    function regist(){
+        const step = document.getElementsByClassName("step");
+        console.log(step);
+        //물넣기
+        let value = step[0].value;
+        //\t면넣기\t끓이기
+        for(let i=1;i<step.length;i++){
+            value += "/KH/"+step[i].value;
+        }
+        document.getElementById("recipe").value = value;
+        alert(value);
+    }
+</script>
+</html>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;mycar&apos; in &apos;road.Road3.main(...)&apos; to &apos;mycar1&apos;&#x0D;&#x0A;- Original project: &apos;day06&apos;&#x0D;&#x0A;- Original element: &apos;road.Road3.main(String[]).mycar&apos;&#x0D;&#x0A;- Renamed element: &apos;mycar&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;mycar&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;road{Road3.java[Road3~main~\[QString;@mycar!84!138!93!97!QSuperCar;!0!false" name="mycar1" references="true" stamp="1704697536327" version="1.0"/>
+</session>

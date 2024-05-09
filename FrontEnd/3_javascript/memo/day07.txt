@@ -1,0 +1,96 @@
+document 객체
+	getElementsByTagName() : 해당 태그 이름의 요소를 모두 선택
+	getElementById() : 해당 아이디의 요소를 선택
+	getElementsByClassName() : 해당 클래스에 속한 요소를 모두 선택
+	getElementsByName() : 해당 name 속성값을 가지는 요소를 모두 선택
+	querySelectorAll() : 해당 선택자로 선택되는 요소를 모두 선택
+
+노드(node)
+	HTML DOM은 노드라고 불리는 계층적 단위에 정보를 저장
+	노드트리는 노드들의 집합이며 노드간의 관계를 보여줌
+
+노드 종류
+	문서 노드(document node) : 문서 전체를 나타내는 노드
+
+	요소 노드(element node) : HTML요소는 요소 노드이며
+	속성 노드를 가질 수 있는 유일한 노드
+
+	속성 노드(attribute node) : HTML요소의 속성은 속성 노드이며
+	요소 노드에 관한 정보를 가지고 있음
+
+	텍스트 노드(text node) : HTML문서의 모든 텍스트는 텍스트 노드
+
+	주석 노드(comment node) : 모든 주석은 주석 노드
+
+노드간의 관계
+	parentNode : 부모 노드
+	childNodes : 자식 노드 리스트
+	firstChild : 첫번째 자식 노드
+	lastChild : 마지막 자식 노드
+	nextSibling : 다음 형제 노드
+	previousSibling : 이전 형제 노드
+
+노드 추가
+	appendChild() : 새로운 노드를 해당 노드의 자식 노드 리스트 맨 마지막에 추가
+	insertBefore() : 새로운 노드를 특정 자식 노드 바로 앞에 추가
+	insertData() : 새로운 텍스트 데이터를 텍스트 노드에 추가
+
+노드 생성
+	createElement() : 새로운 요소 노드를 만듬
+	createAttribute() : 새로운 속성 노드를 만듬
+	createTextNode() : 새로운 텍스트 노드를 만듬
+
+노드 제거
+	removeChild()
+		자식 노드 리스트에서 특정 자식 노드를 제거
+		성공적으로 노드가 제거되면 노드를 반환
+		노드가 제거될 때에는 제거되는 노드의 모든 자식들도 다같이 제거됨
+
+노드 복제
+	cloneNode() : 기존의 존재하는 노드와 동일한 새로운 노드를 생성하고 반환
+
+	cloneNode(true)
+	         ------
+		true : 복제되는 노드의 모든 속성과 자식노드도 같이 복제
+		false: 속성 노드만 복제하고 자식 노드를 복제하지 않음
+
+
+폼 객체
+
+    <form name="myform" id="regform">
+        <input type="text" name="userid" id="id">
+    </form>
+
+폼의 접근
+	const frm = document.myform; (name)
+	const frm = document.getElementById('regform'); (id)
+
+아이디 value 접근
+	const id = document.myform.userid.value; (name)
+	const id = frm.userid.value; (name)
+	const id = frm.elements[0].value;
+	const id = frm.elements['userid'].value;
+	const id = document.getElementById('id').value;
+
+정규표현식
+	https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Regular_Expressions
+- 문자열에 특정 문자 조합과 대응시키기 위해 사용되는 패턴
+
+test()
+	정규표현식에 대입한 문자열이 부합하면 true, 아니면 false를 반환
+
+	정규표현식객체.test('비교할 문자열') -> true or false
+
+	^a	'a'로 시작됨
+	\d	숫자
+	a{n}	'a'가 n번 반복
+	a{n,m}	'a'가 n번 이상 m번 이하로 반복됨
+	a$	'a'로 종료됨
+
+	[a-z]	'a' 부터 'z' 까지의 문자
+	a+	'a'가 한번 이상 반복됨
+		
+
+
+
+

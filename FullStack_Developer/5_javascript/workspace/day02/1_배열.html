@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열</title>
+</head>
+<body>
+    <h2>배열</h2>
+</body>
+<script>
+    const mycar = {model:"Ferrari"};
+    console.log(mycar.model);
+    console.log(mycar["model"]);
+
+    mycar.color = "Red";
+    console.log(mycar.color);
+
+    //arr = {0:10, 1:20, 2:30, 3:40, 4:50};
+    const arr = [10,20,30,40,50];
+    console.log(arr[0]);
+    
+    arr[9] = 100;
+    console.log(arr[9]);
+    console.log(arr['9']);
+
+    console.log(mycar)
+    console.log(arr);
+
+    console.log(`배열의 길이 : ${arr.length}`);
+</script>
+</html>

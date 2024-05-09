@@ -1,0 +1,93 @@
+join
+	여러 테이블에 흩어져 있는 정보 중 사용자가 필요한 정보만 가져와서
+	가상의 테이블처럼 만들고 결과를 보여주는 것
+
+	내부 조인(inner join)
+		inner 키워드는 생략 가능
+		조건이 일치하는 값이 두 테이블에 모두 존재할 때 조회
+
+	외부 조인(outer join)
+		두 개의 테이블 중 조건이 거짓이라도 한 쪽 테이블의 정보는
+		모두 검색되어야 할 때 사용한다.
+
+join ~ using
+	내츄럴 조인
+	두 테이블을 join할 때 같은 이름의 컬럼값을 비교하는것이 조건이라면
+	using으로 간단하게 작성할 수 있다
+
+	select
+		f.color,
+		f.name,
+		p.material,
+		p.shape
+	from list l
+		join flower f on l.flowercode = f.flowercode
+		join pot p on l.potcode = p.potcode
+	where phone='01012341234';
+
+		↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+
+	select
+		f.color,
+		f.name,
+		p.material,
+		p.shape
+	from list l
+		join flower f using(flowercode)
+		join pot p using(potcode)
+	where phone='01012341234';
+
+
+limit
+	검색 결과의 갯수를 제한하는 문법
+
+	limit n		: 첫 행부터 n개 검색
+	limit n,m	: n개 행은 건너뛰고 m개 검색
+
+Sub Query
+	SQL문 내부에 SQL문 작성
+
+	select	: Scalar
+	from	: inline view
+	where	: sub query
+
+DBMS의 계정
+	root 계정		: 모든 권한을 가지고 있음
+	사용자 생성 계정	: 생성만 하고 권한을 부여하지 않으면 아무것도 할 수 없음
+		- 접속 또한 권한을 받지 않으면 불가능
+		- 데이터베이스, 테이블, 뷰, 프로시져 등의 생성, 삭제, 수정 불가능
+		- 데이터 추가, 데이터 삭제, 데이터 수정, 데이터 조회 등 불가능
+
+		위의 것들을 가능하게 하려면 root계정으로 권한을 부여해 주어야 한다.
+
+JDBC(Java DataBase Connectivity)
+	자바에서 데이터베이스로 접속할 수 있도록 해주는 자바 API
+
+	Connection
+	PreparedStatement
+	ResultSet
+
+	1. Java에서 문자열 타입으로 SQL문을 작성
+	2. 설치된 Driver를 이용해서 Connection 객체 생성
+	3. Connection 객체를 통해 PreparedStatement 객체 생성
+	4. PreparedStatement 객체를 통해 쿼리문 수행
+	5. SQL문(select) 수행 후 결과를 ResultSet 타입의 객체로 받기
+
+라이브러리 위치
+	C:\Program Files (x86)\MySQL\Connector J 8.0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

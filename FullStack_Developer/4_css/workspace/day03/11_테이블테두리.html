@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테이블 테두리</title>
+<style>
+    table{
+        width: 500px;
+        border:3px solid red;
+        margin:0 auto;
+        border-collapse: collapse;
+    }
+    th, td{
+        height: 40px;
+        border:3px solid red;
+    }
+    td {
+        text-align: center;
+        border-radius: 20px;
+    }
+    tr > th:nth-child(1){
+        width:150px;
+    }
+    caption{
+        font-size: 24px;
+        font-weight: bold;
+        color:darkblue;
+        background-color: yellow;
+        margin-bottom: 20px;
+    }
+</style>
+</head>
+<body>
+    <h2>테이블 테두리</h2>
+    <table>
+        <caption>브라우저 종류</caption>
+        <tr>
+            <th>개발사</th>
+            <th>브라우저 이름</th>
+        </tr>
+        <tr>
+            <th>구글</th>
+            <td>크롬</td>
+        </tr>
+        <tr>
+            <th>마이크로소프트</th>
+            <td>엣지</td>
+        </tr>
+        <tr>
+            <th>애플</th>
+            <td>사파리</td>
+        </tr>
+        <tr>
+            <th>네이버</th>
+            <td>웨일</td>
+        </tr>
+    </table>
+</body>
+</html>

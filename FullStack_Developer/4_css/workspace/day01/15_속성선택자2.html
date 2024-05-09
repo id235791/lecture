@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>속성 선택자 - 2</title>
+<style>
+    /* 전부 다 */
+    [title*="css"]{
+        font-size: 20px;
+    }
+    /* 1, 4, 8 */
+    [title~="css"]{
+        color:red;
+    }
+    /* 1, 2, 3, 4, 5 */
+    [title$="css"]{
+        font-weight: bold;
+    }
+    /* 1, 6 */
+    [title|="css"]{
+        border:1px solid blue;
+    }
+    /* 1, 6, 7, 8, 9 */
+    [title^="css"]{
+        background-color: green;
+    }
+</style>
+</head>
+<body>
+    <h2>속성 선택자 - 2</h2>
+    <p title="css">1 - 독립적인 단어</p>
+    <p title="funny-css">2 - 하이픈이 들어간 합성어(접미사)</p>
+    <p title="funny_css">3 - 언더바가 들어간 합성어(접미사)</p>
+    <p title="funny css">4 - 공백으로 연결된 합성어(접미사)</p>
+    <p title="funnycss">5 - 공백이 없는 합성어(접미사)</p>
+    <p title="css-funny">6 - 하이픈이 들어간 합성어(접두사)</p>
+    <p title="css_funny">7 - 언더바가 들어간 합성어(접두사)</p>
+    <p title="css funny">8 - 공백으로 연결된 합성어(접두사)</p>
+    <p title="cssfunny">9 - 공백이 없는 합성어(접두사)</p>
+</body>
+</html>

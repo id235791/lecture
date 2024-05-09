@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 리스너</title>
+<style>
+    input{ outline: none; }
+</style>
+</head>
+<body>
+    <h2>이벤트 리스너</h2>
+    <p><input type="button" value="이벤트 버튼" id="event"></p>
+    <p><input type="button" value="이벤트 삭제 버튼" id="del"></p>
+    <p id="text"></p>
+    <input type="text">
+    <input type="text">
+</body>
+<script>
+    const text = document.getElementById("text");
+    window.onload = function(){
+        const event = document.getElementById("event");
+        const del = document.getElementById("del");
+
+        event.addEventListener('mouseover',mouseoverBtn);
+        event.addEventListener('click',function(){
+            text.innerHTML = "<b>버튼을 클릭했어요</b>"
+        })
+        event.addEventListener('mouseout',()=>{
+            text.innerHTML = "<b>버튼 밖으로 마우스가 나갔어요</b>"
+        })
+
+        del.addEventListener('click',function(){
+            event.removeEventListener('mouseover',mouseoverBtn);
+            //나머지 이벤트는 익명함수로 전달했기 때문에 이벤트 리스너 삭제 불가능
+            text.innerHTML = "<b>이벤트 리스너가 삭제되었어요</b>"
+        })
+    }
+
+    function mouseoverBtn(){
+        text.innerHTML = "<b>버튼 위에 마우스가 올라갔어요</b>";
+    }
+
+    const inputs = document.querySelectorAll("[type=text]");
+    for(let tag of inputs){
+        tag.addEventListener('blur',()=>{
+            tag.style.border = "1px solid black";
+        })
+        tag.addEventListener('focus',()=>{
+            tag.style.border = "1px solid red";
+        })
+    }
+
+</script>
+</html>

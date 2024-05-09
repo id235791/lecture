@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수 실습 - 2</title>
+</head>
+<body>
+    <h2>함수 실습 - 2</h2>
+    <table border="1">
+        <caption>요금표</caption>
+        <tr>
+            <th>구분</th>
+            <th>요금</th>
+        </tr>
+        <tr id="kid">
+            <td id="kid-txt">아동</td>
+            <td>무료</td>
+        </tr>
+        <tr id="teen">
+            <td id="teen-txt">청소년</td>
+            <td>2000원</td>
+        </tr>
+        <tr id="adult">
+            <td id="adult-txt">성인</td>
+            <td>5000원</td>
+        </tr>
+    </table>
+    <hr>
+    <input type="text" value="" id="input">
+    <input type="button" value="조회" onclick="f();">
+</body>
+<script>
+    // 태그객체.value : 해당 태그의 value 속성
+    const input = document.getElementById("input");
+
+    function f(){
+        let age = input.value;
+        const map = {아동:"kid", 청소년:"teen", 성인:"adult"};
+        //map[아동] --> kid
+        let data = map[age];
+        console.log(data);
+
+        if(data == undefined){
+            alert("다시 시도해주세요!")
+        }
+        else{
+            for(let key in map){//아동, 청소년, 성인
+                //map[key] -> map["아동"] -> kid
+                //document.getElementById("kid") : 각 행
+                document.getElementById(map[key]).style.backgroundColor = "#fff";
+
+                document.getElementById(map[key]+"-txt").innerHTML = key;
+            }
+
+            //document.getElementById("kid")
+            const row = document.getElementById(data);
+            //document.getElementById("kid-txt")
+            const td = document.getElementById(data+"-txt");
+            
+            row.style.backgroundColor="#ef5350";
+            td.innerHTML = "★"+age;
+
+            input.value = "";
+            //태그객체.focus() : 해당 태그객체를 focus 상태로 만들기
+            input.focus();
+
+        }
+    }
+</script>
+</html>

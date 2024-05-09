@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문서객체모델 실습 - 2</title>
+</head>
+<body>
+    <h2>문서객체모델 실습 - 2</h2>
+    <p>
+        요리명 <input type="text">
+    </p>
+    <div id="contents">
+        <textarea name="step" id="" cols="50" rows="10" class="step"></textarea>
+        <input type="button" value="단계추가" onclick="f()">
+    </div>
+    <p>
+        <input type="button" value="등록" onclick="sendit()">
+    </p>
+</body>
+<script>
+    function f(){
+        const contents = document.getElementById("contents");
+        const btn = contents.lastElementChild;
+
+        //hr 생성 및 추가
+        const hr = document.createElement("hr");
+        contents.appendChild(hr);
+
+        //textarea 생성 및 추가
+        const textarea = document.createElement("textarea");
+
+        textarea.setAttribute("name","step");
+
+        const cols = document.createAttribute("cols");
+        cols.value = "50";
+        textarea.setAttributeNode(cols);
+
+        textarea.setAttribute("rows","10");
+
+        textarea.classList.add("step");
+
+        contents.appendChild(textarea);
+
+        //button 생성 및 추가
+        contents.appendChild(btn.cloneNode(true));
+    }
+    function sendit(){
+        const step = document.getElementsByClassName("step");
+        let str = "";
+        for(let tag of step){
+            str += tag.value+"/KH/";
+        }
+        str = str.substring(0,str.length-4)
+        alert(str);
+    }
+</script>
+</html>

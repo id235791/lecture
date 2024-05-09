@@ -1,0 +1,3 @@
+prodnum	prodname	prodprice	prodamount	prodinfo	likecnt	userid
+1	구찌 지우개	1000000	3	잘 안지워져요	0	apple
+2	구찌 연필	500000	10	잘 안써져요	0	apple

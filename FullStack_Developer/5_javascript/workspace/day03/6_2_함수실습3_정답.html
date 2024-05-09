@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수 실습 - 3</title>
+    <link href="./css/function_task.css" rel="stylesheet">
+</head>
+<body>
+	<div id=round>1</div>
+	<fieldset>
+        <legend>숫자를 한글로 변경</legend>
+        <textarea id="result" rows="3" cols="40">결과 표시 부분</textarea><br>
+        <input type="text" placeholder="숫자를 입력해 주세요." id="input"><br>
+        <button onclick="changeToHangle();">변경</button>
+	</fieldset>
+</body>
+<script src = "//code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+	//모든 페이지가 준비 완료되었을 때 실행(window.onload)
+	$(document).ready(function(){
+		//id가 input인 곳에서 키를 누르면
+		$("#input").keydown(function(key){
+			//엔터인지 검사 후
+			if(key.keyCode==13){
+				//기능 실행
+				changeToHangle();				
+			}
+		})
+	})
+	function valueChange(result){
+		$("#result").val(result);
+	}
+	function changeToHangle(){
+		let hangle="공일이삼사오육칠팔구";	
+		let input=$("#input").val();
+		let result="";
+		let dot=-1;
+		let check=0;
+		let flag=true;
+		let round=$("#round");
+		if(isNaN(input)) { check=4; }
+        else{
+			dot=input.indexOf('.');
+			for (let i = 0; i < input.length; i++) {
+				if(i===dot){
+					result+="쩜";
+					check=2;
+					flag=false;
+				}else{
+					result+=hangle[input[i]];
+				}
+			}
+			if(!flag) check=3;
+			else check=2;
+		}
+		if(dot==0)
+			result="영"+result;
+		else if(dot==input.length-1)
+			check=4;
+		if(check!=4){
+			valueChange(result);
+		}else{
+			valueChange("숫자만 입력해주세요.");
+		}
+		round.text(check);
+	}
+</script>
+</html>

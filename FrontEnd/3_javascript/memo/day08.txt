@@ -1,0 +1,88 @@
+이벤트(Event)
+	웹 브라우저가 알려주는 HTML 요소에 대한 사건의 발생을 의미
+	웹 페이지에 사용된 자바스크립트는 발생한 이벤트에 반응하여 특정 동작을 수행
+	자바스크립트는 비동기식 이벤트 중심 프로그래밍 모델이라고 함
+
+이벤트 타입(Event Type)
+	발생한 이벤트의 종류
+	이벤트명이라고도 함
+	가장 많이 사용하는 키보드, 마우스, HTML DOM, window객체등을 처리하는 이벤트가 많이 제공		예 : onClick, onKeypress, onLoad ...
+
+이벤트 타겟(Event Target)
+	이벤트가 일어날 객체
+
+이벤트 리스너(Event Listener)
+	이벤트가 발생했을 때 그 처리를 담당하는 함수
+	이벤트 핸들러라고도 함
+	지정된 타입의 이벤트가 특정 요소에서 발생하면
+	웹 브라우저는 그 요소에 등록된 이벤트 리스너를 실행
+
+        <input type="button" onClick="sendit()" value="가입완료">
+                    -------- -------  --------
+                   이벤트타겟 이벤트명 이벤트리스너
+
+        const btn = document.getElementById('testBtn');
+        btn.addEventListener('click', clickBtn);
+        ----                 -------  --------
+       이벤트타겟             이벤트명 이벤트리스너
+
+
+이벤트 객체(Event Object)
+	특정 타입의 이벤트와 관련이 있는 객체
+	해당 타입의 이벤트에 대한 상세 정보를 저장
+	모든 이벤트 객체는 이벤트의 타입을 나타내는 type 프로퍼티와
+	이벤트 대상을 나타내는 target 프로퍼티를 가짐
+	이벤트 객체는 이벤트 리스너가 호출될 때 인수로 전달
+
+	<input type="button" onclick="sendit()" value="확인">
+
+	const sendit = function(e) {    // e : 이벤트 객체
+		console.log(e.target);  // 이벤트 타겟  객체
+		console.log(e.type);    // 이벤트 타입  click
+	}
+
+이벤트 전파
+	이벤트가 발생했을 때 브라우저가 이벤트 리스너를 실행시킬 대상 요소를 결정하는 과정
+	이벤트의 대상이 window 객체와 같은 단일 객체라면 이벤트의 전파는 일어나지 않음
+	document 객체나 HTML 문서의 요소에서 이벤트가 발생하면
+	대상 요소를 결정하기 위해 이벤트 전파가 일어남
+	이벤트 전파방식은 버블링, 캡쳐링 방식으로 나뉨
+		버블링 : 자식 -> 부모 전파
+		캡쳐링 : 부모 -> 자식 전파
+
+
+jQuery(제이쿼리)
+	오픈소스 기반의 자바스크립트 라이브러리
+	문서객체모델(DOM)과 이벤트(Event)에 관한 처리를 쉽게 구현할 수 있음
+	Ajax 응용 프로그램도 빠르게 개발이 가능
+
+라이브러리 vs 프레임워크
+	라이브러리 : 개발하기 위한 도구를 제공
+	프레임워크 : 개발하기 좋은 풀옵션 오피스텔 제공
+
+공식 사이트
+	http://jquery.com/
+
+다운로드 버전
+	Download the compressed, production jQuery 3.6.0
+		다운받아 그대로 개발에 사용되는 파일
+	Download the uncompressed, development jQuery 3.6.0
+		오픈소스 기반으로 수정하여 사용가능한 파일
+
+jquery cdn
+다운받지 않고 링크를 사용하여 연결
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+$(); = window.onLoad = $(document.ready())
+
+
+기본문법
+
+$(function(){
+    $(선택자).동작함수();
+});
+
+선택자 : 함수가 적용되길 원하는 요소 및 속성
+동작함수 : 선택된 요소에 원하는 동작을 설정
+

@@ -1,0 +1,11 @@
+JDBC
+	Java DataBase Connectivity
+	자바에서 데이터베이스에 접속할 수 있도록 해주는 자바 API
+
+	1. Java 에서 SQL문을 작성
+	2. 설치된 Driver를 이용해서 Connection 객체 생성
+	3. Connection 객체를 통해 PreparedStatement 객체 생성
+	4. SQL문 수행 후 결과(SELECT 문이라면) ResultSet 객체로 받기
+
+라이브러리 위치
+	C:\Program Files (x86)\MySQL\Connector J 8.0

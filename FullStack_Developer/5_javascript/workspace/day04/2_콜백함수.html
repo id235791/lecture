@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>콜백함수</title>
+</head>
+<body>
+    <h2>콜백함수</h2>
+    <input type="button" value="f1" onclick="f(f1)">
+    <input type="button" value="f2" onclick="f(f2)">
+    <input type="button" value="f3" onclick="f(f3)">
+</body>
+<script>
+    function f(callback){
+        /*
+            callback = function(){
+                cosnole.log("f1 함수");
+            }
+        */
+        callback()
+    }
+    /*
+    f1 = function(){
+        cosnole.log("f1 함수");
+    }
+    */
+    function f1(){
+        console.log("f1 함수")
+    }
+    function f2(){
+        alert("f2 함수")
+    }
+    function f3(){
+        document.write("f3 함수");
+    }
+</script>
+</html>

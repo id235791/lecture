@@ -1,0 +1,108 @@
+객체
+	프로퍼티와 메소드들을 하나로 가지고 있는 집합체
+
+객체 선언
+	1. 리터럴 표기법
+		const 객체명 = {
+			프로퍼티1:값1,
+			프로퍼티2:값2,
+			...,
+			메소드명:function(){
+
+			},
+			...
+		}
+
+
+	2. 생성자를 이용해 선언
+		function 생성자명(매개변수1, 매개변수2, ...){
+			this.프로퍼티1 = 값1;
+			this.프로퍼티2 = 값2;
+			...
+			this.메소드명 = function(){
+
+			}
+			...
+		}
+
+프로토타입
+	자바스크립트의 모든 객체는 프로토타입이라는 객체를 상속받는다.
+	자바스크립트의 모든 객체는 최소한 하나 이상의 다른 객체로부터
+	상속을 받으며 그 상속되는 정보를 제공하는 객체를 프로토타입이라고 한다.
+	생성자를 선언하면 자신의 내용으로 인해 만들어지는 초기 모델 객체를
+	프로토타입으로 가지게 된다.
+
+	생성자명.prototype --> 해당 생성자의 프로토타입
+
+콜백함수(Callback Function)
+	파라미터로 함수를 전달받아서 내부에서 해당 함수를 호출하는 방식
+
+window 객체
+	현재 웹 브라우저의 창이나 탭을 표현하기 위한 객체
+	비표준 객체
+
+date 객체
+	시간에 대한 정보들을 가지고 있는 객체
+
+문서 객체 모델(Document Object Model)
+	XML이나 HTML 문서에 접근하기 위한 일종의 인터페이스
+	문서내의 모든 요소를 정의하고 요소에 접근하여 컨트롤 하는 방법을 제공
+
+	<html>
+	<head>
+		<title>초간단 문서</title>
+	</head>
+	<body>
+		<h2>초간단 문서</h2>
+		<p>문서의 내용</p>
+	</body>
+	</html>
+
+			document 객체
+
+			<html>
+
+		<head>			<body>
+		<title>		<h2>		<p>
+		초간단 문서		초간단 문서		문서의 내용
+
+document 객체
+	웹 페이지 문서 자체를 의미
+	웹 페이지에 존재하는 HTML 요소에 접근할 때에는 반드시 document 객체로부터 시작
+
+요소 찾기
+	getElementById()		해당 값을 id 속성으로 가지고 있는 요소 선택
+	getElementsByClassName()	해당 값을 class 속성으로 가지고 있는 요소들을 선택
+	getElementsByTagName()		해당 값을 name 속성으로 가지고 있는 요소들을 선택
+	getElementsByName()		해당 태그들로 만들어진 요소들을 선택
+
+	querySelector()			css 선택자에 해당하는 요소 선택
+	querySelectorAll()		css 선택자에 해당하는 요소들을 선택
+
+노드(Node)
+	HTML DOM은 노드라고 불리는 계층적 단위에 정보를 저장한다.
+	노드 트리는 노드들의 집합이며 노드간의 관계를 보여준다.
+
+노드 종류
+	문서 노드(document 노드)
+	요소 노드(element)
+	속성 노드(attribute)
+	텍스트 노드(text)
+	주석 노드(comment)
+	
+노드간의 관계
+	() 안의 것들은 요소 노드들만 관리하는 프로퍼티
+
+	parentNode
+	childNodes(children)
+	firstChild(firstElementChild)
+	lastChild(lastElementChild)
+	nextSibling(nextElementSibling)
+	previousSibling(previousElementSibling)
+
+
+
+
+
+
+

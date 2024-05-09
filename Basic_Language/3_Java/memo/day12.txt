@@ -1,0 +1,35 @@
+MVC 모델
+	소프트웨어 설계시 사용되는 디자인 패턴
+	만드는 방법이 아닌 "잘" 만들기에 대해 배우는 것
+
+	M : Model		데이터와 대응
+	V : View		보여지는 화면
+	C : Controller		흐름, 처리 담당
+
+MVC 1 model
+	View, Controller가 함께 공존하는 형태
+
+MVC 2 model
+	View, Controller가 분리된 형태
+
+DTO(Data Transfer Object) / VO(Value Object)
+	데이터 전송 객체
+	양쪽으로 전송되어 오고가는 데이터들을 담은 객체
+	여러 데이터들을 포장해서 만든 데이터 포장용 객체
+
+DAO(Data Access Object)
+	데이터 접근 객체
+	데이터들을 관리하는(CRUD) 여러 메소드들이 정의되어 있다
+	데이터베이스 접근용 객체
+
+
+
+
+
+
+
+
+
+
+
+

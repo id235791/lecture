@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animation - 1</title>
+<style>
+    .box{
+        margin: 100px; padding: 20px;
+        height: 80px;
+        border:1px solid black;
+    }
+    #a1{
+        /* animation-name: moving;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate; */
+        /* 
+            normal : 끝까지 진행 후 처음부터 다시
+            alternate : 순방향으로 진행 후 역방향으로 진행
+            reverse : 역방향으로 진행
+            alternate-reverse : 역방향으로 진행 후 순방향으로 진행
+        */
+        animation:moving 3s infinite alternate;
+    }
+    #a2{
+        /* animation-name: moving;
+        animation-duration: 10s; */
+        animation:moving 5s infinite alternate-reverse;
+    }
+
+    @keyframes moving {
+        from{
+            width: 170px;
+            background-color: cornsilk;
+            opacity: 0.5;
+            padding-left: 10px;
+            transform: scale(0.5) rotate(30deg);
+        }
+        to{
+            width: 300px;
+            background-color: indianred;
+            opacity: 1;
+            padding-left: 140px;
+            transform: scale(1) rotate(-15deg);
+        }
+    }
+</style>
+</head>
+<body>
+    <h2>animation - 1</h2>
+    <div class="box" id="a1">
+        <h3>CSS Animation</h3>
+    </div>
+    <div class="box" id="a2">
+        <h3>CSS Animation</h3>
+    </div>
+</body>
+</html>

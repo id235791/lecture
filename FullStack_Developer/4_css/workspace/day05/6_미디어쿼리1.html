@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미디어쿼리 - 1</title>
+<style>
+    h2::before{
+        content:"1. ";
+    }
+    h2::after{
+        content:" - 기본"
+    }
+    #lyric{
+        width: 1400px;
+        border:1px solid gray;
+    }
+    /*
+        데스크탑
+        1920 ~ 1024    
+    */
+    /* 화면너비 0 ~ 1280px */
+    @media screen and (max-width:1280px) {
+        body{
+            background-color: aliceblue;
+        }
+        h2::before{
+            content:"2. ";
+        }
+        h2::after{
+            content:" - 0px ~ 1280px"
+        }
+        #lyric{
+            width:1000px;
+        }
+    }
+    /* 노트북 */
+    /* 화면너비 0 ~ 1024px */
+    @media screen and (max-width:1024px) {
+        body{
+            background-color: beige;
+        }
+        h2::before{
+            content:"3. ";
+        }
+        h2::after{
+            content:" - 0px ~ 1024px";
+        }
+        #lyric{
+            width: 900px;
+        }
+    }
+    /* 화면너비 0 ~ 960px */
+    @media screen and (max-width:960px) {
+        body{
+            background-color: pink;
+            color:darkblue;
+        }
+        h2::before{
+            content:"4. ";
+        }
+        h2::after{
+            content:" - 0px ~ 960px";
+        }
+        #lyric{
+            width: 750px;
+        }
+    }
+    /* 태블릿 */
+    /* 화면너비 0 ~ 768px */
+    @media screen and (max-width:768px) {
+        body{
+            background-color: cadetblue;
+            color:brown;
+        }
+        h2::before{
+            content:"5. ";
+        }
+        h2::after{
+            content:" - 0px ~ 768px";
+        }
+        #lyric{
+            width:90%;
+        }
+    }
+    /* 모바일 */
+    /* 화면 너비 0 ~ 576px */
+    @media screen and (max-width:576px) {
+        body{
+            background-color: wheat;
+            color:red;
+        }
+        h2::before{
+            content:"6. ";
+        }
+        h2::after{
+            content:" - 0px ~ 576px";
+        }
+    }
+
+    @media screen and (max-width:376px) and (min-width:360px) {
+        body{
+            background-color: honeydew;
+            color:chocolate;
+        }
+        h2::before{
+            content:"7. ";
+        }
+        h2::after{
+            content:" - 360px ~ 376px";
+        }
+        #lyric{
+            width: 95%;
+        }
+    }
+</style>
+</head>
+<body>
+    <h2>미디어쿼리</h2>
+    <p>
+        미디어 쿼리는 화면 크기에 따른 각각의 속성 값을 지정하여, 여러개의 화면을 구성하는 기술이다.
+    </p>
+    <p id="lyric">
+        So lovely day so lovely Errday with you so lovely Du durudu durudu du durudu Spell L.o.v.e.L.e.e 이름만 불러도 you can feel me 눈빛만 봐도 알면서 my love
+    </p>
+</body>
+</html>

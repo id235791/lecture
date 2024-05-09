@@ -1,0 +1,1417 @@
+@import url("./layout_base.css");
+@font-face {
+    font-family: 'CookieRun-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+/* 공통 부분 */
+body{
+    font-family: "CookieRun-Regular";
+    font-size: 16px;
+    height: 100%;
+    color:#444;
+    white-space: normal;
+    word-wrap: break-word;
+    line-height: 1;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+h1, h2, h3, h4, h5, h6{
+    font-weight: normal;
+    font-size: inherit;
+}
+ul, ol, li{
+    list-style: none;
+}
+a{text-decoration: none;}
+a:link, a:visited, a:hover, a:focus{
+    color:#444;
+}
+/* clear 클래스는 float 없애는 용도라 after에 clear:both */
+.clear::after{
+    content:"";
+    display:block;
+    clear: both;
+}
+img, a, fieldset{
+    border: none;
+}
+/* hdd(hidden), legend 태그 숨기기 */
+.hdd, legend{
+    font-size: 0;
+    width:0;
+    height:0;
+    line-height: 0;
+    text-indent: -9999px;
+    overflow: hidden;
+    visibility: hidden;
+    position: absolute;
+    top:0;
+    left:0;
+}
+input, select, textarea, button, form, img, label{vertical-align: middle;}
+input[type=text], input[type=number], input[type=password], input[type=tel], input[type=email]{
+    box-sizing: border-box;
+    display: inline-block;
+    height: 45px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    line-height: normal;
+    font-size: 15px;
+}
+textarea{
+    box-sizing: border-box;
+    padding: 10px;
+    border:1px solid #ccc;
+    font-size: 15px;
+}
+/* css-radio 버튼(동그란 버튼 없애고 그림으로 띄우기 위함) */
+input[type=radio].css-radio {
+    overflow: hidden;
+    position: absolute;
+    left: -1000px;
+    width:1px;
+    height:1px;
+}
+/* css-radio 버튼 뒤의 label */
+input[type=radio].css-radio + label {
+    display: inline-block;
+    padding-left: 20px !important;
+    margin-right: 20px;
+    background: url(../images/bg_radio.png) no-repeat 0 0;
+    cursor: pointer;
+    vertical-align: middle;
+    font-size: 15px;
+    line-height: 16px;
+}
+input[type=radio].css-radio:checked + label {
+    background-position: 0 -50px;
+}
+/* 체크박스 */
+input[type=checkbox].css-checkbox {
+    overflow: hidden;
+    position: absolute;
+    left:-1000px;
+    width:1px;
+    height: 1px;
+}
+input[type=checkbox].css-checkbox + label {
+    display: inline-block;
+    height:20px;
+    padding-left: 30px !important;
+    line-height: 20px !important;
+    background:url(../images/bg_checkbox.png) no-repeat 0 0;
+    background-size: 20px;
+    cursor: pointer;
+    vertical-align: middle;
+    font-size: 15px;
+}
+input[type=checkbox].css-checkbox:checked + label {
+    background-position: 0 -20px;
+}
+/* 셀렉트  */
+select{
+    -webkit-appearance: none;
+    height: 30px;
+    padding:0 5px;
+    border: 1px solid #ccc;
+}
+.select_common {
+    display: inline-block;
+    box-sizing: border-box;
+    position: relative;
+    width: 158px;
+    height: 35px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background:url(../images/ico_selectArr.png) no-repeat 100% 50%;
+}
+.select_common select{
+    display: inline-block;
+    width:185px;
+    height: 29px;
+    padding:0 10px;
+    border:none;
+    background:none;
+    font-size: 15px;
+}
+/* 버튼들 */
+.btn_line{
+    text-align: center;
+    font-size: 0;
+}
+.btn_line a{ margin-left: 10px; }
+.btn_line a:first-child { margin-left: 0; }
+/* basecolor 버튼 */
+.btn_basecolor{ 
+    display: inline-block;
+    border: 1px solid #ccc;
+    font-size: 20px;
+    text-align: center;
+    width:125px;
+    height:50px;
+    line-height: 50px;
+    vertical-align: middle;
+    background:#384d75;
+    color:#fff !important;
+}
+/* 검색 버튼 */
+.btn_srch {
+    display:inline-block;
+    width:70px;
+    text-align: center;
+    height: 35px;
+    font-size:14px;
+    line-height: 35px;
+    vertical-align: middle;
+    background:#384d75;
+    color:#fff !important;
+}
+.btn_bbs{
+    display:inline-block;
+    background-color: #384d75;
+    width:70px;
+    height:35px;
+    line-height: 35px;
+    text-align: center;
+    color: #fff !important;
+    font-size: 14px;
+    vertical-align: middle;
+
+}
+input::-webkit-input-placeholder{ color:#999; }
+textarea::-webkit-input-placeholder{ color:#999; }
+
+table, thead, tbody, tfoot { border-collapse: collapse; border-spacing: 0; border:none; }
+/* -----------------서브페이지 공통 시작 ----------------- */
+.bodytext_area { box-sizing: border-box; padding:55px 50px 0; }
+.location_area {
+    height: 445px;
+    background: url(../images/img_top2.jpg) no-repeat center bottom;
+}
+.location_area.member { 
+    background:url(../images/img_top5.jpg) no-repeat center bottom;
+ }
+.location_area.customer{
+    background:url(../images/img_top2.jpg) no-repeat center bottom;
+}
+.location_area.package{
+    background: url(../images/img_top3.jpg) no-repeat center bottom;
+}
+ .location_area h2.tit_page{
+     padding:250px 0 0 0;
+     margin: 0 50px;
+     border-bottom: 1px solid #ccc;
+     font:30px "Arial Narrow";
+     color:#fff;
+     letter-spacing: 3px;
+ }
+ .location_area h2.tit_page .in { font-variant: small-caps; }
+ .location_area p.location { padding:20px 0 0 50px; color:#fff; }
+ .location_area p.location .path { display: inline-block; padding:0 10px; }
+ .location_area ul.page_menu { display: none; }
+/* -----------------서브페이지 공통 끝 ----------------- */
+/*
+    웹 접근성을 위한 skipnavi
+    https://nuli.navercorp.com/community/article/1132804 
+*/
+/* "본문내용" 숨기기 */
+.skipnavi{
+    position: absolute;
+    left:0; top:-50px;
+    text-indent: -9999px;
+    font-size: 0;
+    width:100%;
+    z-index:999;
+}
+.skipnavi > li > a:focus, .skipnavi > li > a:active {
+    position: absolute;
+    left:0;top:50px;
+    display: block;
+    width:100%;
+    padding:5px;
+    text-align:center;
+    font-size: 12px;
+    text-indent: 0px;
+    font-weight: bold;
+    background-color: #f2f2f2;
+}
+
+/* -----------------메인페이지(index.html) 시작 -----------------*/
+.box_inner{
+    width:1050px;
+    margin:0 auto;
+}
+
+/* 헤더 */
+header{
+    /* .wrap 가장 위쪽에 헤더 위치 */
+    position: absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:113px;
+    background: rgba(0,0,0,0.5);
+    z-index: 100;
+}
+/* "Tourist in tour" 왼쪽 float 통해 같은줄에 서브메뉴 넣기 위함 */
+header > .header_area > h1{
+    float:left;
+    padding: 45px 0 0;
+}
+/* 로고 이미지를 배경으로 한 a태그 block요소로 만들어서 크기조정 */
+header > .header_area > h1 > a{
+    display: block;
+    width:270px;
+    height:71px;
+    /* 접근성을 위한 문자열 숨기기 */
+    text-indent: -9999px;
+    overflow: hidden;
+    background: url("../images/logo.png") no-repeat;
+}
+/* 헤더 부분으로 로그인, 회원가입 옮기기 */
+.header_cont { float:right; width:780px; }
+/* 로그인, 회원가입 오른쪽정렬 */
+.header_cont .util{ text-align:right; padding-top: 10px; }
+/* 로그인, 회원가입 일렬로 */
+.header_cont .util li { display: inline; }
+/* 로그인 뒤에 | 넣으면서 디자인 */
+.header_cont .util li:first-child::after{
+    content:"|";
+    display: inline-block;
+    padding:0 10px;
+    font-size: 10px;
+    color:#eee;
+    position: relative;
+    top:-2px;
+}
+/* 메뉴들 전체 글자색 설정 */
+.header_cont .util li a { font-size: 14px; color:#eee }
+/* 메뉴들 정렬 */
+.header_cont .gnb{ float:right; box-sizing: border-box; padding-top: 5px; }
+/* 안에 있는 li들 일렬로 정렬 */
+.header_cont .gnb li{ float:left; }
+/* 메뉴들 위치조정, 글꼴과 글씨색 */
+.header_cont .gnb li a{ display:block; padding:26px 40px; font-size: 18px; color: #fff;}
+/* 맨 오른쪽 메뉴는 오른쪽 패딩을 없애서 우측정렬 */
+.header_cont .gnb li:last-child a{ padding-right:0; }
+/* 얘로 나중에 바꾸기 */
+.gnb_depth{ position: absolute; left:0; top:113px; width:100%; background: rgba(250,100,0,0.85); z-index: 100; display:none;} 
+/* 서브메뉴 보이게*/
+/* .gnb_depth{ position: absolute; left:0; top:113px; width:100%; background: rgba(250,100,0,0.85); z-index: 100;} */
+/* 서브메뉴 크기를 가로 최대로 */
+.gnb_depth .submenu_list { width: 1050px; margin:0 auto; text-align:left;}
+/* 안에 있는 li에 왼쪽패딩을 줘서 서브메뉴들 적절한 위치로 옮기기 */
+.gnb_depth2_1 .submenu_list{
+    box-sizing: border-box; padding-left: 480px;
+}
+.gnb_depth2_2 .submenu_list{
+    box-sizing: border-box; padding-left: 600px;
+}
+.gnb_depth2_3 .submenu_list{
+    box-sizing: border-box; padding-left: 730px;
+}
+.gnb_depth2_4 .submenu_list{
+    box-sizing: border-box; padding-left: 945px;
+}
+.gnb_depth .submenu_list li { display:inline; }
+.gnb_depth .submenu_list li a { display:inline-block; padding:20px; }
+.gnb_depth .submenu_list li:last-child a { padding-right: 0px; }
+
+#container{ padding-bottom: 70px; }
+
+/* PC 롤링 */
+.main_rolling_mobile{ display:none; }
+.visualRoll{ position: relative; width:100%; }
+.viewImgList { position: relative; width:100%; }
+/* "BE TOURLIST FOR BETTER LIFE" 배치 */
+.viewImgList li{
+    text-align: center;
+    height:550px;
+    line-height: 550px;
+    background-size: cover !important;
+}
+/* 첫 이미지는 맨위로 */
+.viewImgList li.imglist0{ position:relative; z-index: 50; background:url("../images/mainslide01.jpg") no-repeat center; }
+/* 나머지 둘은 아래에 숨기기 */
+.viewImgList li.imglist1{ position: absolute; width:100%; top:0; left:0; z-index: 10; background:url("../images/mainslide02.jpg") no-repeat center; }
+.viewImgList li.imglist2{ position: absolute; width:100%; top:0; left:0; z-index: 10; background:url("../images/mainslide03.jpg") no-repeat center; }
+
+/* "BE TOURLIST FOR BETTER LIFE" 배치 */
+.viewImgList li .roll_content { position: relative; }
+.viewImgList li .roll_content .roll_txtline {
+    position: absolute;
+    left: 0;
+    bottom: 60px; 
+    width: 100%; 
+    line-height: 1;
+    text-align: center; 
+    font-size: 22px; 
+    color: #fff; 
+    letter-spacing: 2px;
+}
+/* 롤링 버튼들 배치 */
+.rollbtnArea { 
+    position:absolute; 
+    width:100%; 
+    left:0; 
+    bottom:25px;
+    z-index: 200;
+}
+.rollbtnArea .rollingbtn { width:320px; margin: 0 auto; text-align: center;}
+/* 버튼들 일렬로 배치 */
+.rollbtnArea .rollingbtn li { display:inline-block; margin-right: 5px; }
+.rollbtnArea .rollingbtn li.butt0 { margin-left:10px; }
+/* 재생버튼은 숨기기 */
+.rollbtnArea .rollingbtn li.play { display:none; }
+.rollbtnArea .rollingbtn li a{ vertical-align: middle; }
+
+/* 다시 찾는 인기 여행지 TOP 3 */
+/* "다시 찾는 인기 여행지 TOP 3" 문자열 스타일 */
+.about_area h2{ padding:55px 0 105px; text-align: center; font-size: 40px;}
+/* 뒤에 깔리는 박스 색깔 */
+.about_area .about_box{ background-color: #f4f0e9;}
+/* 그림과 여행지 내용 위치, 크기 조정 */
+.about_area .place_list li{ float:left; width:32%; margin-left: 2%; text-align: center; position:relative; top:-50px;} 
+/* 맨 왼쪽 장소가 왼쪽마진이 있어서 한줄에 안나오니 줄여서 한줄에 배치 */
+.about_area .place_list li:first-child{ margin-left: 0; }
+/* 이미지 li에 꽉차게 */
+.about_area .place_list li .img_topplace{ width:100%; }
+/* 장소 이름 문자열 스타일 */
+.about_area .place_list li h3{ font-weight: bold; font-size: 18px; padding-top: 25px; color:#000; }
+/* 장소 소개 문자열 스타일 */
+.about_area .place_list li p.txt{ box-sizing: border-box; padding:10px 30px 0; width:100%; overflow: hidden; word-break: keep-all; line-height: 1.8; color:#666; }
+/* VIEW 글자 스타일 */
+.about_area .place_list li .view { display: inline-block; margin-top:20px; padding-top:5px; border-top:2px solid #333; color:#555; }
+
+/* 상담 및 공지사항 */
+.appbbs_area{ padding:60px 0; }
+/* 아이콘들 배경사진과 박스 만들기 */
+.appbbs_area > .appbbs_box > .app_line{
+    float:left;
+    width:66%;
+    box-sizing: border-box;
+    padding:45px 0;
+    text-align: center;
+    background:url("../images/bg_app.jpg") no-repeat;
+    font-size: 0;
+}
+/* 각 아이콘들의 가로 세로 크기 설정 */
+.appbbs_area > .appbbs_box > .app_line > a{
+    display:inline-block; 
+    width:45.4%; 
+    height: 100px;
+    line-height: 100px;
+    box-sizing: border-box;
+    padding-left: 75px; 
+    text-align: left;
+    /* 배경색 투명하게 */
+    background:rgba(0, 0, 0, 0.3) url("../images/ico_katalk.png") no-repeat 20px 50%;
+    border:2px solid #fff;
+    margin-right:10px;
+    font-size: 26px;
+    color:#fff;
+    vertical-align: middle;
+}
+/* 전화 상담 신청 그림 바꾸기 */
+.appbbs_area > .appbbs_box > .app_line > a + a{
+    margin-right: 0;
+    padding-left: 85px;
+    background-image: url("../images/ico_phone.png");
+}
+/* 공지사항 오른쪽으로 */
+.appbbs_box > .bbs_line { float:right; width:30%; }
+/* "NOTICE" 글자 크게 */
+.appbbs_box > .bbs_line h3{ font-size:26px; }
+/* 공지사항 내용들과 거리두기 */
+.appbbs_box > .bbs_line > .notice_recent { padding-top: 10px; }
+/* 각 공지사항 내용들 거리두기(글꼴에 따라 적절히 선택) */
+.appbbs_box > .bbs_line > .notice_recent > li{ padding: 6px 0; }
+.appbbs_box > .bbs_line > .notice_recent > li > a { 
+    /* 글꼴에 따라 적절히 선택 */
+    height: 20px;
+    display:block;
+    /* 살짝 들여쓰기 */
+    padding-left: 14px;
+    background:url("../images/ico_bullet.png") no-repeat 0 50%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* footer */
+/* footer 위에 선긋기 */
+footer{ border-top: 1px solid #ddd; }
+/* footer 아래쪽 띄우기 */
+footer > .foot_area { position: relative; padding-bottom: 40px; }
+/* footer 위쪽 선과 띄우기 */
+footer > .foot_area > .foot_list { padding-top: 25px; }
+/* 이용약관, 개인정보취급방침 일렬로 배치하기 */
+footer > .foot_area > .foot_list li { float:left; }
+footer > .foot_area > .foot_list li:first-child::after{
+    content: "|";
+    display: inline-block;
+    padding: 0 10px;
+    font-size: 10px;
+    color:#000;
+    position: relative;
+    top:-2px;
+}
+/* 이용약관, 개인정보취급방침 진하게, 크기조정 */
+footer > .foot_area > .foot_list > li > a{
+    font-weight: bold;
+    font-size: 15px;
+} 
+/* 사업자 정보 스타일링 */
+footer > .foot_area > h2 {
+    padding-top: 25px;
+    font-size: 14px;
+    color:#666;
+}
+/* 주소 스타일링 */
+footer > .foot_area > .addr {
+    padding-top:5px;
+    line-height: 1.4;
+    font-size: 13px;
+    color:#666;
+}
+footer > .foot_area > .addr > .space0 {
+    letter-spacing: 0;
+}
+/* Copyright 스타일링 */
+footer > .foot_area > .copy {
+    padding-top: 3px;
+    font-size: 13px;
+    color:#666;
+    letter-spacing: 0;
+}
+/* SNS 아이콘들 오른쪽 위로 이동 */
+footer > .foot_area > .snslink {
+    position: absolute;
+    right:20px;
+    top:50px;
+}
+/* SNS 아이콘들 일렬로 배치 */
+footer > .foot_area > .snslink > li {
+    float:left;
+    margin-left: 60px;
+}
+/* 네이버 아이콘 넣기 */
+footer > .foot_area > .snslink > li > a {
+    display: block;
+    width:50px;
+    height:74px;
+    text-indent: -9999px;
+    overflow: hidden;
+    background:url("../images/ico_blog_r.png") no-repeat;
+}
+/* 앞에 li가 있는 li ( facebook 아이콘 넣기 ) */
+footer > .foot_area > .snslink > li + li > a {
+    background:url("../images/ico_facebook_r.png") no-repeat;
+}
+/* 앞에 li가 두개 있는 li ( instagram 아이콘 넣기 ) */
+footer > .foot_area > .snslink > li + li + li> a {
+    background:url("../images/ico_instargram_r.png") no-repeat;
+}
+/* quick list */
+.quick_area {
+    position:fixed;
+    top:171px;
+    right:0;
+    width:94px;
+    z-index: 100;
+}
+.quick_area > .quick_list > li { 
+    text-align: center;
+    background-color: #282828;
+    font-size: 15px;
+}
+.quick_area > .quick_list > li > a {
+    display: block;
+    padding:15px 0;
+    border-top: 1px solid #4d4d4d;
+}
+.quick_list > .quick_list > li:first-child a {
+    border-top: none;
+}
+/* 윗줄과 아래줄 띄우기 */
+.quick_area > .quick_list > li > a > h3 {
+    padding-bottom: 10px;
+    color:#ddd;
+    letter-spacing: -1px;
+}
+/* 오시는 길 */
+.quick_area > .quick_list > li:last-child > a > h3 {
+    padding-bottom: 0;
+}
+.quick_area > .quick_list > li > a > p {
+    line-height: 1.3;
+    font-size: 12px;
+    color:#fff;
+}
+/* TOP */
+.to_top {
+    text-align: center;
+    background-color: #fff;
+}
+.to_top a {
+    display: block;
+    height: 45px;
+    box-sizing: border-box;
+    text-indent: -9999px;
+    overflow: hidden;
+    border-left: 1px solid #a3a3a3;
+    border-bottom: 1px solid #a3a3a3;
+    background:url("../images/ico_totop.png") no-repeat center;
+    background-size: 50%;
+}
+/* -----------------메인페이지(index.html) 끝 -----------------*/
+/* -----------------로그인페이지(login.html) 시작 -----------------*/
+.login_wrap { width:508px; margin:100px auto 0; }
+h1.loginTit{ text-align: center; }
+h1.loginTit > a { display: block; }
+h1.loginTit > a > img { width:100%; }
+
+.login_list { width: 75%; margin:70px auto 20px; }
+.login_list > li {
+    position: relative;
+    margin-bottom: 4px;
+    height: 54px;
+    box-sizing: border-box;
+    padding-left: 50px;
+    border-radius: 5px;
+    /* border : 1px solid black; */
+}
+.login_list > li > a {
+    display: block;
+    height:54px;
+    box-sizing: border-box;
+    line-height: 54px;
+    text-align: center;
+    font-size: 14px;
+    color:#fff;
+}
+.login_list > li:last-child { margin-bottom: 0; }
+.login_list > li.kakao { background: #f3e129 url(../images/ico_katalk.png) no-repeat 15px 50%; background-size: 45px 45px;}
+.login_list > li.kakao > a { color:#202224; }
+.login_list > li.naver { background: #00c300 url(../images/ico_naver.png) no-repeat 15px 50%; background-size: 45px 45px; }
+.login_list > li.facebook { background: #405ea9 url(../images/ico_face.png) no-repeat 15px 50%; background-size: 45px 45px; }
+.login_list > li.email { background: #888 url(../images/ico_cellphone.png) no-repeat 15px 50%; background-size: 45px 45px; }
+/* 
+    appearance
+    - 운영체제 및 브라우저에 기본적으로 설정되어 있는 테마를 기반으로 요소를 표현할 때 사용함
+    - 네이티브로 지원되는 모양을 해제하거나 추가할 때 사용
+    appearance: none; 원래 쓰이는 속성을 없앰
+*/
+.btnonoff_line { width:75%; margin:10px auto; text-align: center; }
+.btnonoff_line .btn_onoff { margin-left: 5px; font-size: 14px; }
+.switch { 
+    /* border:1px solid black; */
+    position: relative;
+    display:inline-block;
+    width:35px;
+    height:22px;
+    margin:0;
+    padding:0;
+    border-radius: 16px;
+    background-color: #e5e5e5;
+    vertical-align: top;
+    appearance: none;
+    cursor: pointer;
+    z-index: 0;
+}
+/* 회색 스위치 모양 위에 하얀색으로 덮어서 보더처럼 만들기 */
+.switch::before{
+    content:"";
+    position: absolute;
+    left:1px;
+    top:1px;
+    width: 33px;
+    height: 20px;
+    border-radius: 15px;
+    background-color: #fff;
+    z-index: 1;
+}
+/* 스위치 위의 원모양 그림자와 함께 맨 위로 올리기 */
+.switch::after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    box-shadow: 0 2px 5px #999;
+    left:1px;
+    top: 1px;
+    width:19px;
+    height:19px;
+    border-radius: 50%;
+    background-color:#fff;
+}
+/* -----------------로그인페이지(login.html) 끝 -----------------*/
+/* -----------------회원가입 페이지(join.html) 시작 -----------------*/
+.location_area.member > .box_inner > form { 
+    padding-top: 100px;
+}
+.appForm { margin:40px auto 0; }
+.appForm .info_pilsoo{
+    position: relative;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #000;
+    font-size: 15px;
+    color:#f00;
+}
+.appForm .pilsoo_item::before {
+    content:"*";
+    display: inline-block;
+    position: absolute;
+    left: 5px;
+    top: 0px;
+    width: 15px;
+    font-weight: bold;
+    font-size: 17px;
+    color: #f00;
+}
+.appForm .app_list {
+    padding:10px 0;
+    border-bottom: 1px solid #ccc;
+}
+.appForm .app_list li { padding:8px 0; }
+/* 라벨들 왼쪽 정렬, 스타일 조절 */
+.appForm .app_list li .tit_lbl {
+    position: relative;
+    float: left;
+    width: 150px;
+    box-sizing: border-box;
+    padding-left: 20px;
+    line-height: 42px;
+    font-weight: bold;
+    font-size: 17px;
+    letter-spacing: -1px;
+}
+/* 전체 요소 크기 조절 및 정렬 */
+.appForm .app_list li .app_content { float:right; width:770px; }
+.appForm .app_list li .app_content * { vertical-align: top; }
+/* "@" 위치조정 */
+.appForm .app_list li .app_content.email_area .ico_space { display: inline-block; padding-top: 15px; }
+/* 라디오, 체크박스 라벨들 조정 */
+.appForm .app_list li .app_content label{ vertical-align: middle; }
+/* 이메일 선택박스 */
+.appForm .app_list li .select_common {
+    width: 160px;
+    height: 45px;
+    background-position: 100% 50%;
+    border: 1px solid #ccc;
+}
+.appForm .app_list li .select_common select { width: 200px; height: 43px; }
+
+.appForm .app_list li .app_content.radio_area { height:45px; box-sizing: border-box; padding-top: 12px;}
+.appForm .app_list li .app_content.checkbox_area { 
+    height: 45px;
+    box-sizing: border-box;
+    padding-top: 12px;
+ }
+ .appForm .app_list li textarea{ height: 245px; }
+ .btn_line { padding:20px 0; }
+
+/* -----------------회원가입 페이지(join.html) 끝 -----------------*/
+/* -----------------내정보 페이지(mypage.html) 시작 ----------------- */
+/* "내 정보" 칸 만들기 */
+.myinfo dt{
+    width:170px;
+    height:70px;
+    line-height: 70px;
+    text-align: center;
+    background-color: #000;
+    font-size: 18px;
+    color: #fff;
+}
+/* "내 정보" 아래의 선 */
+.myinfo dd { border-top:2px solid #000; }
+/* 전체 내용 살짝 옮기고 회색 배경 넣기 */
+.regForm .reg_list { padding: 0 0; background:url(../images/bg_reglist.png) repeat-y; }
+.regForm .reg_list li {
+    min-height: 60px;
+    padding: 0;
+    border-bottom: 1px solid #ccc;
+}
+.regForm .reg_list li .tit_lbl {
+    position: relative;
+    float: left;
+    width: 150px;
+    box-sizing: border-box;
+    padding-left: 20px;
+    line-height: 60px;
+    font-weight: bold;
+    font-size: 16px;
+}
+.regForm .reg_list li .reg_content{
+    float:right;
+    width:770px;
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-top: 22.5px;
+    font-size: 15px;
+}
+
+.regForm .reg_list li .reg_content * { vertical-align: middle; }
+.regForm .reg_list li .reg_content.radio_area:not(.gender){ padding-top: 10px; }
+.regForm .reg_list li .reg_content .info_line{
+    padding:5px 10px 5px 0;
+    font-size: 15px;
+}
+/* -----------------내정보 페이지(mypage.html) 끝 ----------------- */
+/* ----------------- 리스트 페이지(notice_list.html) 시작 ----------------- */
+/* 검색파트 오른쪽 정렬 */
+.minisrch_form { width:100%; text-align: right; margin-bottom: 20px; }
+/* 키워드 입력박스 */
+.minisrch_form .tbox{
+    padding:0 5px 0 30px;
+    width:200px;
+    height:35px;
+    line-height: 30px;
+    border:none;
+    border-bottom: 1px solid #ccc;
+    background:url(../images/ico_search.png) no-repeat 10px 50%;
+    background-size: 15px;
+}
+/* 게시글 테이블 위치 */
+.bbsListTbl{ width:100%; border-top:2px solid #384d75; }
+/* 셀들 크기 조정 */
+.bbsListTbl th, .bbsListTbl td { padding:10px; box-sizing: border-box; height: 55px; }
+.bbsListTbl th { border-bottom: 1px solid #ccc; background-color: #f0F3Fa; }
+/* 제목 빼고 가운데정렬, 선 긋기 */
+.bbsListTbl td { text-align: center; line-height: 1.3; border-bottom: 1px solid #ccc; }
+/* 제목들 왼쪽 정렬 */
+.bbsListTbl td.tit_notice{ text-align: left; }
+
+.bbsListTbl td:nth-child(1) { width: 10%; }
+.bbsListTbl td:nth-child(2) { width: 55%; }
+.bbsListTbl td:nth-child(3) { width: 15%; }
+.bbsListTbl td:nth-child(4) { width: 20%; }
+/* 페이징 가운데정렬 */
+.pagination{
+    padding: 40px 0 0;
+    text-align: center;
+}
+.pagination a{
+    display: inline-block;
+}
+/* 화살표 버튼 정렬 */
+.pagination a.pbtn{
+    display: inline-block;
+    padding:7px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 0;
+}
+/* 페이지 숫자 버튼들 정렬 */
+.pagination a .pagenum{
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    vertical-align: middle;
+}
+.pagination a .currentPage{
+    border-radius: 3px;
+    background-color: #384d75;
+    color: #fff;
+}
+.pagination a:hover .pagenum{
+    border-radius: 3px;
+    background-color: #ddd;
+}
+/* ----------------- 리스트 페이지(notice_list.html) 끝 ----------------- */
+/* ----------------- 공지사항 상세보기(notice_view.html) 시작 ----------------- */
+/* 선긋기, 아래쪽 띄우기 */
+.bbsview_list { padding-bottom: 30px; border-top:2px solid #384d75;}
+.bbsview_list li {
+    box-sizing: border-box;
+    padding:0 15px;
+    border-bottom: 1px solid #ccc;
+    font-size: 14px;
+    color:#666;
+}
+/* 제목 */
+.bbsview_list li.bbs_title{
+    width:100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    height: 50px;
+    line-height: 50px;
+    font-weight: bold;
+    font-size: 16px;
+}
+/* 날짜 */
+.bbsview_list li.bbs_date{ height: 40px; line-height: 40px; float:left; width:50%; }
+.bbsview_list li.bbs_hit{ height:40px; line-height: 40px; float:left; width:50%; }
+.bbsview_list li.bbs_content { clear:both; min-height: 200px; padding:20px 15px;}
+.bbsview_list li.bbs_content .editor_content{ line-height: 1.4; }
+
+/* 이전, 다음글 윗선 */
+.near_list { border-top:1px solid #ccc; }
+/* 이전, 다음글 사이사이와 마지막선 */
+.near_list li { padding:10px; border-bottom: 1px solid #ccc; }
+.near_list li:after{ content:""; display:block; clear:both; }
+.near_list li h4 {
+    float:left;
+    width:100px;
+    padding: 0 0 0 50px;
+    background:url(../images/ico_nearNext.png) no-repeat 12px 50%;
+    font-size: 15px;
+}
+.near_list li h4.next { background:url(../images/ico_nearPrev.png) no-repeat 12px 50%; }
+/* ----------------- 공지사항 상세보기(notice_view.html) 끝 ----------------- */
+/* ----------------- 프로그램 페이지(program.html) 시작 ----------------- */
+.bodytext_area.place_area{ padding:55px 0 0;}
+.program_list li { float:left; width:31.5%; margin:0 0.9%; }
+/* 1, 4, 7, .. 번째 자식마다 클리어 */
+.program_list li:nth-child(3n+1){ clear:both; }
+/* 리스트 균등하게 배치 */
+.program_list li .img_place{ display:block; width:100%; }
+/* 장소 이름 */
+.program_list li h3 { padding:40px 0 0; font-weight: bold; font-size: 22px; }
+/* 일시 */
+.program_list li .subttl { padding:25px 0 0; font-weight: bold; font-size: 16px; color:#fa6400; letter-spacing: 0;}
+.program_list li .program_content { padding: 15px 0 0; line-height: 1.8; font-size: 15px; }
+.program_list li .program_content p { width:100%; overflow: hidden; word-break: keep-all; }
+.program_list li .program_content p .subtxt { display: none; }
+.program_list li .btn_more{ padding:10px 0 20px; text-align: center; font-size: 12px; }  
+.program_list li .btn_more a { display: inline-block; padding: 5px 7px; border-radius: 3px; background-color: #000; color: #fff; }
+/* ----------------- 프로그램 페이지(program.html) 끝 ----------------- */
+/* ----------- 태블릿(갤럭시탭, 아이패드, ...) 반응형 시작 ------------- */
+@media screen and (max-width:1065px) and (min-width:801px) {
+    .box_inner{ width: 100%; }
+    header .header_area h1{ padding-left: 20px; }
+    /* width가 커서 내려가있던 메뉴들을 크기 줄이며 올리기 */
+    .header_cont{ float:right; width:60%; padding-right: 20px;}
+    /* 하기전에 서브메뉴 눈에 보이게 바꾸기 */
+    .header_cont .gnb li a { padding: 26px 25px; }
+    .gnb_depth .submenu_list { width:100%; padding-left: 52%; }
+    .gnb_depth .submenu_list a { padding:20px; }
+
+    /* 전체 아래쪽 여백 줄이기 */
+    #container{ padding-bottom: 20px; }
+    /* 인기 장소 위치조정 */
+    .about_area .place_list { box-sizing: border-box; padding:0 20px; }
+    /* 상담, 공지 부분 조정 */
+    .appbbs_area .appbbs_box { box-sizing: border-box; padding:0 20px; }
+    /* 카카오, 전화상담 글자 크기 */
+    .appbbs_area .appbbs_box .app_line a { font-size: 21px; }
+
+    /* 푸터 위치 조정 */
+    footer .foot_area { box-sizing: border-box; padding-left: 20px; }
+    footer .foot_area .snslink li { margin-left: 15px; }
+
+    /* 사이드 상담 버튼들 숨기기 */
+    .quick_area .quick_list { display:none; }
+    /* top버튼 위치, 크기 조정 */
+    .to_top {
+        position: fixed;
+        right:20px;
+        bottom: 115px;
+        text-align: center;
+        background:none;
+        z-index: 100;
+    }
+    /* top버튼 크기, 테두리, 이미지 바꾸기 */
+    .to_top a {
+        display: block;
+        width:45px;
+        height: 45px;
+        border: none;
+        background:url(../images/ico_totop_mo.png) no-repeat center;
+        background-size: 45px;
+    }
+    /*--- 회원가입 ---*/
+    .appForm .app_list li .tit_lbl { width:21%; }
+    .appForm .app_list li .app_content{ width:79%; }
+
+    /* --- 개인 정보 수정 --- */
+    .regForm .reg_list li .tit_lbl { width: 21%; }
+    .regForm .reg_list li .reg_content { width:79%; }
+}
+/* ----------- 태블릿(갤럭시탭, 아이패드, ...) 반응형 끝 ------------- */
+/* ----------- 일반 폰 반응형 시작 ------------- */
+@media screen and (max-width:800px) {
+    .box_inner{width:100%;}
+    header{
+        height:90px;
+        text-align: center;
+        z-index: 200;
+        background-color: rgba(0,0,0,0.5);
+    }
+    header .header_area h1 {
+        float:none;
+        width: 100%;
+        height:50px;
+        text-align: center;
+        padding:35px 0 0;
+    }
+    header .header_area h1 a {
+        display:inline-block;
+        width:180px;
+        height:23px;
+        background-size: 180px 23px;
+    }
+
+    header > .header_area > .openMOgnb{
+        display:block;
+        position:absolute;
+        left:15px;
+        top:35px;
+        width:23px;
+        height:16px;
+    }
+    /* 줄 세개 긋기 */
+    header > .header_area > .openMOgnb span {
+        box-sizing: border-box;
+        display: block;
+        width:25px;
+        height:3px;
+        margin-bottom: 4px;
+        border-radius: 10px;
+        background-color: #fff;
+    }
+    /* 아래 두개 작게 만들기 */
+    header > .header_area > .openMOgnb span + span{width:17px;}
+    /* 가장 아래것은 다시 키우고 아래여백 없애기 */
+    header > .header_area > .openMOgnb span:last-child {
+        width:25px;
+        margin-bottom: 0;
+    }
+    /* 로그인 회원가입   */
+    /* .header_cont {
+        float:none;
+        width:100%;
+        background-color: #31353d;
+    } */
+    /*display땜에 처음에 화면 넓게나옴 */
+    .header_cont {
+        float:none;
+        width:100%;
+        background-color: #31353d;
+        display: none;
+    }
+    .header_cont .util{ padding: 20px; }
+    .header_cont .util li{ float:left; }
+    .header_cont .util li:first-child:after {
+        content:"|";
+        display: inline-block;
+        padding:0 10px;
+        font-size: 10px;
+        color:#a2a3a3;
+        position: relative;
+        top:-2px;
+    } 
+    .header_cont .util li a { font-size: 16px;color:#fff; }
+
+    .header_cont .closePop { display: block; position:absolute; right:0; top:15px; }
+    .header_cont .closePop a {
+        display: block;
+        width:60px;
+        height:60px;
+        text-indent: -9999px;
+        overflow: hidden;
+        background:url(../images/btn_closeMenu.png) no-repeat;
+        background-size: 60px;
+    }
+
+    .header_cont .gnb {
+        float:none;
+        box-sizing: border-box;
+        padding-top: 0;
+        height: auto;
+        border-top: 1px solid #83868b;
+
+    }
+    .header_cont .gnb li {
+        float: left;
+        width:50%;
+        text-align: left;
+        box-sizing: border-box;
+        border-bottom: 1px solid #83868b;
+    }
+    .header_cont .gnb li a {
+        display: block;
+        padding: 0 0 0 65px;
+        height: 60px;
+        line-height: 60px;
+        background:url(../images/ico_gnb01.png) no-repeat 10px center;
+        background-size: 49px 55px;
+        font-size: 16px;
+        color:#fff;
+    }
+    .header_cont .gnb li + li a {
+        background-image: url(../images/ico_gnb02.png);
+    }
+    .header_cont .gnb li + li + li a{
+        background-image: url(../images/ico_gnb03.png);
+    }
+    .header_cont .gnb li + li + li + li a{
+        background-image: url(../images/ico_gnb04.png);
+    }
+
+    .main_rolling_pc { display:none; }
+    .main_rolling_mobile { display: block; }
+    .main_rolling_mobile .swiper-container .swiper-wrapper .swiper-slide img{ width:100%; }
+    .main_rolling_mobile .swiper-pagination {
+        width:auto;
+        right:20px;
+        left:auto;
+        top:auto;
+        bottom:20px;
+        font-size: 0;
+    }
+    /* 전체 위치 */
+    #container{
+        position: relative;
+        width:100%;
+        padding-bottom:30px;
+    }
+    /* "다시 찾는 인기 여행지" 크기 위치 조정 */
+    .about_area h2{
+        padding:27px 0 25px;
+        font-size: 20px;
+    }
+    /* 장소 밑으로 내리기 */
+    .about_area h2 b {
+        display: block;
+        padding-top: 10px;
+    }
+    .about_area .about_box {
+        background-color: #fff;
+    }
+    /* 장소들 한줄에 하나씩으로 배치 바꾸기 */
+    .about_area .place_list li {
+        float:none;
+        width:100%;
+        margin:0;
+        box-sizing: border-box;
+        padding:0 20px;
+        top:0;
+    }
+    /* 장소 소개글 */
+    .about_area .place_list li p.txt{
+        padding:10px 50px 30px;
+        line-height: 1.4;
+    }
+    .about_area .place_list li .view{
+        padding-bottom: 10px;
+        margin:0 0 30px;
+    }
+    /* 상담 및 공지 */
+    .appbbs_area{ padding:0 20px; }
+    /* 상담버튼 없애기 */
+    .appbbs_box .app_line { display: none; }
+    .appbbs_box .bbs_line {
+        float:none;
+        width:100%;
+        padding:20px 0;
+        border-top: 1px solid #d6d7d8;
+    }
+    .appbbs_box .bbs_line h3 { font-weight: bold; font-size: 19px; }
+
+    footer .foot_area{ box-sizing: border-box; padding:0 20px 120px; }
+    footer .foot_area h2{ padding-top:15px; font-size: 14px; }
+    footer .foot_area .addr{ line-height: 1.3; font-size: 14px; color:#767676; }
+    footer .foot_area .copy{ padding:3px 0 20px; font-size: 14px; color:#787878; }
+    footer .gubun { color:#fff; }
+    /* footer 내용 한줄에 하나씩 */
+    footer .br_line{ display:block; }
+
+    footer .foot_area .snslink { position: static; width:210px; margin: 10px auto; }
+    footer .foot_area .snslink li { margin-left: 30px; }
+    footer .foot_area .snslink li:first-child{ margin-left: 0; }
+
+    /* 퀵 메뉴 아래쪽 배치 */
+    .quick_area .quick_list { position: fixed; left:0; bottom:0; width:100%; }
+    .quick_area .quick_list li {
+        float:left;
+        width:31%;
+        text-align: left;
+        background-color: #3a3e46;
+        font-size: 15px;
+    }
+    .quick_area .quick_list li + li { width:37%; }
+    .quick_area .quick_list li + li + li { width:32%; }
+    .quick_area .quick_list li:first-child::after {
+        content:"";
+        display: inline-block;
+        width:1px;
+        height:16px;
+        position: absolute;
+        right:31%;
+        top:50%;
+        margin-top: -8px;
+        background-color: #76787e;
+    }
+    .quick_area .quick_list li:first-child::before{
+        content: "";
+        display: inline-block;
+        width:1px;
+        height:16px;
+        position: absolute;
+        left:32%;
+        top:50%;
+        margin-top: -8px;
+        background-color: #76787e;
+    }
+    .quick_area .quick_list li a { display: block; padding:10px 0; border-top: none; color:#fff; }
+    .quick_area .quick_list li a h3 {
+        height:37px;
+        line-height: 37px;
+        padding-bottom: 0;
+        padding-left: 45px;
+        background:url(../images/ico_phone_mobtm.png) no-repeat 20px center;
+        background-size: 20px;
+        color:#fff;
+        letter-spacing: -1;
+    }
+    .quick_area .quick_list li + li a h3 {
+        background: url(../images/ico_katalk_mobtm.png) no-repeat 20px center;
+        background-size: 20px;
+    }
+    .quick_area .quick_list li + li + li a h3 {
+        background: url(../images/ico_contact_mobtm.png) no-repeat 20px center;
+        background-size: 20px;
+    }
+    .quick_area .quick_list a h3 em{ display: inline; }
+    .quick_area .quick_list a p{ display:none; }
+
+    .to_top {
+        position: fixed;
+        right:20px;
+        bottom:100px;
+        text-align: center;
+        background:none;
+        z-index: 100;
+    }
+    .to_top a {
+        display: block;
+        width:45px;
+        height:45px;
+        border: none;
+        background:url(../images/ico_totop_mo.png) no-repeat center;
+        background-size: 45px;
+    }
+    /* ---모바일 서브 페이지 공통--- */
+    .location_area h2.tit_page{ padding:140px 0 0 0; margin:0 45px; }
+    .location_area p.location{ display: none; }
+    .location_area ul.page_menu{ display: block; padding:10px 0 0 45px; }
+    .location_area ul.page_menu li a {
+        display:block;
+        margin-right: 45px;
+        font-size: 15px;
+        color:#ddd;
+    }
+    .location_area ul.page_menu li a.on{
+        border-bottom: 1px solid #fff;
+        color:#fff;
+    }
+    .bodytext_area{
+        box-sizing: border-box;
+        padding:33px 20px 0;
+    }
+    .btn_basecolor {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        height: 50px;
+        font-size: 20px;
+        line-height: 50px;
+        vertical-align: middle;
+        background: #384d75;
+        color: #fff !important;
+        font-weight: bold;
+    }
+
+    .btn_bbs {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        height: 35px;
+        font-size: 14px;
+        line-height: 35px;
+        vertical-align: middle;
+        background: #384d75;
+        color: #fff !important;
+        font-weight: bold;
+    }
+
+    /* ---로그인--- */
+    .login_wrap { width:100%; margin:0 auto; }
+    .login_wrap { padding-top:75px; }
+
+    /* ---회원가입--- */
+    .location_area.member {
+        height:260px;
+        background:url(../images/img_top5.jpg) no-repeat center bottom / cover;
+    }
+    .appForm{ margin:20px auto; }
+    .appForm .pilsoo_item::before{top:1px;}
+    .appForm .app_list li { position: relative; padding:10px 0; border-bottom: 1px solid #ccc; }
+    .appForm .app_list li:last-child{
+        border-bottom: none;
+        padding-bottom: 10px;
+    }
+    .appForm .app_list li .tit_lbl {
+        float:none;
+        width:auto;
+        line-height: 30px;
+    }
+    .appForm .app_list li .app_content{
+        float: none;
+        width:auto;
+    }
+    .appForm .app_list li .app_content *{
+        vertical-align: middle;
+    }
+    .appForm .app_list li .app_content input[type="text"], .appForm .app_list li .app_content input[type="password"], .appForm .app_list li .app_content input[type="tel"]{
+        border:none;
+        width:100% !important;
+    }
+    .appForm .app_list li .app_content.email_area{
+        padding:5px 0 0;
+        font-size: 0;
+    }
+    .appForm .app_list li .app_content.email_area input[type="text"]{
+        border:1px solid #ccc;
+        width:45% !important;
+        font-size: 14px;
+    }
+    .appForm .app_list li .app_content.email_area .ico_space {
+        width:10% !important;
+        text-align: center;
+        font-size: 14px;
+    }
+    .appForm .app_list li .select_common{
+        width:100%;
+        height:39px;
+        margin-top: 10px;
+    }
+    .appForm .app_list li .select_common select{
+        width: 100%;
+        height: 39px;
+    }
+    .appForm .app_list li .app_content.radio_area{
+        padding-left: 20px;
+        height:40px;
+        padding-top: 10px;
+    }
+    .appForm .app_list li .app_content.checkbox_area{
+        padding-left: 20px;
+        height:40px;
+        padding-top: 10px;
+    }
+    .appForm .app_list li textarea{ height:130px; }
+    .appForm .app_list{ padding:20px 0; }
+    /* --- 내 정보 수정 --- */
+    .regForm{
+        width:100%;
+        margin:0 auto;
+    }
+    .regForm .reg_list{
+        padding:10px 0 0;
+        background:none;
+    }
+    .regForm .reg_list li {
+        position: relative;
+        min-height: 50px;
+        padding:0;
+        border-bottom: 1px solid #ccc;
+    }
+    .regForm .reg_list li .tit_lbl{
+        position: relative;
+        float:none;
+        width:auto;
+        box-sizing: border-box;
+        padding-left: 10px;
+    }
+    .regForm .reg_list li .reg_content{
+        float:none;
+        width:auto;
+        box-sizing: border-box;
+        padding-left: 10px;
+        padding-top: 0;
+        padding-bottom: 20px;
+        font-size: 15px;
+    }
+    .regForm .reg_list li .reg_content *{
+        vertical-align: middle;
+    }
+    .regForm .reg_list li .reg_content.radioarea{
+        padding-top:5px;
+    }
+    .regForm .reg_list li .reg_content label{
+        vertical-align: middle;
+    }
+    .regForm .reg_list li .reg_content .info_line{
+        padding:10px 10px 3px 0;
+        line-height: 1.4;
+        font-size: 15px;
+    }
+    /* --- 공지사항 리스트 --- */
+    .location_area.customer {
+        height:260px;
+        background: url(../images/img_top2.jpg) no-repeat center bottom / cover;
+    }
+    .bbsListTbl{
+        width:100%;
+        border-top: 2px solid #384d75;
+    }
+    .bbsListTbl th, .bbsListTbl td {
+        padding:10px;
+        box-sizing: border-box;
+        height: 45px;
+    }
+    .bbsListTbl th:nth-child(1){display: none;}
+    .bbsListTbl td:nth-child(1){display: none;}
+    .bbsListTbl th:nth-child(3){display: none;}
+    .bbsListTbl td:nth-child(3){display: none;}
+
+    .bbsListTbl th:nth-child(2){width:70%;}
+    .bbsListTbl th:nth-child(4){width:30%;}
+
+    .bbsListTbl td{line-height: 1.3; border-bottom: 1px solid #ccc;}
+    
+    /* --- 공지사항 상세보기 --- */
+    .near_list{display:none;}
+
+    /* --- 프로그램 소개 --- */
+    .location_area.package{
+        height:260px;
+        background:url(../images/img_top3.jpg) no-repeat center bottom / cover;
+    }
+    /* 전체 내용, 헤더쪽과의 사이 여백 줄이기 */
+    .bodytext_area.place_area{ padding: 33px 0 0; }
+    /* 전체 내용 양쪽 여백 줄이기 */
+    .program_list{ padding:0 20px; }
+    /* 내용들 하나씩 보도록 배치, 사이선 긋기 */
+    .program_list li{
+        float:none;
+        width:100%;
+        margin:0%;
+        box-sizing: border-box;
+        border-top: 1px solid #ccc;
+        padding:30px 0px;
+    }
+    /* 맨위거는 빼기 */
+    .program_list li:first-child{
+        border-top: none;
+        padding-top: 0;
+    }
+    /* 장소 이름 */
+    .program_list li h3{ padding:20px 0 0; text-align: center; }
+    /* 장소 날짜 */
+    .program_list li .subttl{ padding:15px 0 0; text-align: center; font-size: 18px; }
+    /* 숨겼던 서브텍스트 다 보여주기 */
+    .program_list li .program_content p .subtxt{ display: inline; }
+    /* 더보기 버튼 없애기 */
+    .program_list li .btn_more{ display:none; }
+}
+/* ----------- 일반 폰 반응형 끝 ------------- */

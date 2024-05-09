@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상대위치 지정방식</title>
+<style>
+    div{
+        padding: 20px; margin: 20px;
+        width: 300px; height: 50px;
+        border:1px solid red;
+    }
+    .relative1{
+        position: relative;
+        left:100px;
+        background-color: aliceblue;
+    }
+    .relative2{
+        position: relative;
+        right:-50px;
+        top:-50px;
+        background-color: antiquewhite;
+    }
+</style>
+</head>
+<body>
+    <h2>상대위치 지정방식</h2>
+    <div>기존 박스</div>
+    <div class="relative1">상대위치 지정방식</div>
+    <div class="relative2">상대위치 지정방식</div>
+</body>
+</html>

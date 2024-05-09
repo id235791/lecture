@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>break문 - 2</title>
+</head>
+<body>
+    <h2>break문 - 2</h2>
+    <script>
+        'use strict';
+        for(;;){
+            const sel = Number(prompt('원하는 메뉴를 선택하세요(1.치킨 2.파전 3.팥빙수 4.라면 5.떡볶이 6.종료'));
+
+            switch(sel){
+                case 1:
+                    alert('치킨이 나옵니다');
+                    break;
+                case 2:
+                    alert('파전이 나옵니다');
+                    break;
+                case 3:
+                    alert('팥빙수가 나옵니다');
+                    break;
+                case 4:
+                    alert('라면이 나옵니다');
+                    break;
+                case 5:
+                    alert('떡볶이가 나옵니다');
+                    break;
+                case 6:
+                    alert('프로그램을 종료합니다');
+                    break;
+            }
+            if(sel == 6) break;
+        }
+    </script>
+</body>
+</html>

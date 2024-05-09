@@ -1,0 +1,12 @@
+Exception 처리
+	application.properties 파일에 예외처리에 대한 설정들을 작성
+	templates 폴더 내에 설정해둔 경로로 오류코드.html 을 생성
+
+Git
+	형상 관리 시스템(버전 관리 시스템)의 한 종류
+
+Staging - 로컬 레포지토리에 업로드(버전 관리 준비 단계)
+Commit - 버전 관리 확정
+
+Push - 깃허브 레포지토리에 프로젝트 업로드
+Pull - 깃허브 레포지토리에 있는 프로젝트 받기

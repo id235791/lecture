@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>불리언형</title>
+</head>
+<body>
+    <h2>불리언형</h2>
+    <script>
+        'use strict';
+        const b1 = true;
+        const b2 = false;
+        console.log(b1);
+        console.log(b2);
+        console.log(typeof(b1));
+        console.log("-------------------------");
+        const b3 = Boolean(undefined);  //false
+        const b4 = Boolean(null);       //false
+        const b5 = Boolean("");         //false
+        const b6 = Boolean(0);          //false
+        const b7 = Boolean({});         //true
+        console.log(b3);
+        console.log(b4);
+        console.log(b5);
+        console.log(b6);
+        console.log(b7);
+    </script>
+</body>
+</html>

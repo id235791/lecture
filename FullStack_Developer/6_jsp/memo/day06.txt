@@ -1,0 +1,113 @@
+EL문과 JSTL
+	라이브러리로 자바 구문을 만들어 놓고 필요할 때마다 꺼내 쓰면 되기 때문에
+	유지보수에 편하다. JSP 페이지 내에서 자바코드와 HTML코드(태그형태)가
+	섞여 있으면 가독성이 떨어진다. EL문과 JSTL문을 사용하면 HTML과
+	태그형태로만 구성된 일관된 소스코드를 볼 수 있다.
+
+EL문
+	Expression Language
+	값을 간결하고 간편하게 출력, 표현해 줄 수 있는 언어
+
+	JSP			EL
+	<%=name%>		${name}
+	<%=3+5%>		${3+5}
+
+	[연산자]
+		/	div	${10/3}, ${10 div 3}
+		%	mod
+		&&	and
+		||	or
+		!	not
+		<	lt
+		>	gt
+		<=	le
+		>=	ge
+		==	eq
+		!=	ne
+
+		empty	뒤에 올 값이 비어있다면 true / 아니라면 false
+			${empty data} : data의 값이 없으면 true
+
+			session.getAttribute("loginUser") == null
+			${empty loginUser}
+
+JSTL
+	JSP Standard Tag Library
+	연산이나 조건문, 반복문을 편하게 처리할 수 있으며, JSP 페이지 내에서
+	자바코드를 사용하지 않고도 로직을 구현할 수 있는 효과적인 방법을 제공한다.
+
+	JSP				JSTL
+	<% if(조건식){ %>			<c:if test="조건식">
+		<p>결과</p>			<p>결과</p>
+	<% } %>				</c:if>
+
+라이브러리 다운로드
+	https://archive.apache.org/dist/jakarta/taglibs/standard/binaries/
+	> jakarta-taglibs-standard-1.1.2.zip 다운로드 > 압축 해제
+	> 사용할 프로젝트에 라이브러리 추가(lib 폴더 안의 jstl.jar, standard.jar)
+
+MVC2
+	[JSP 방식]
+		a.jsp -> b.jsp -> c.jsp
+			  ↑↓
+			  DB
+
+		각 페이지마다 필요시 자바코드가 작성되며, DB와 연결하는 코드도
+		JSP 파일 안에 모두 작성된다. 분리되어 있찌 않기 때문에
+		소규모 프로젝트에는 어울리는 방식이지만 가독성이 떨어지고 분업과
+		유지보수가 좋지 않으므로 규모가 커지면 불편해진다.
+
+	[MVC Model 1 방식]
+		a.jsp -> b.jsp -> c.jsp
+			  ↑↓
+			DAO,DTO
+			  ↑↓
+			  DB
+
+		b.jsp 에서 DAO의 메소드를 호출함으로써 자바코드가 섞이게 된다.
+		하지만 선언(구현)은 분리되어 JAVA 파일에(class) 구현되어 있으므로
+		JSP 내의 JAVA 코드의 양이 굉장히 줄어들게 된다. 하지만 페이지가
+		확장될수록 유지보수가 상대적으로 좋지 않다.
+
+	[MVC Model 2 방식]
+		[View]	[Controller - Servlet]	[View]
+		a.jsp	->	B.java	->	c.jsp
+		      web.xml	  ↑↓
+				DAO,DTO
+			  	  ↑↓
+				  DB
+
+		a.jsp 에서 다음 페이지를 이동하기 전에 필요한 비즈니스 로직을
+		B.java 서블릿에 완벽하게 분리하여 관리한다. 요청시 알맞는 서블릿으로
+		web.xml에서 참고 후 찾아가고 그 곳에서 처리 완료된 결과를 들고
+		c.jsp로 이동하여 출력하는 형태이다.
+
+Front-Controller 패턴
+
+		/do/*
+		*.do
+	a.jsp -> web.xml -> Servlet(FrontController) -> c.jsp
+				   if, switch
+					↓↑
+				Controller(Service - ~~~Action)
+					↓↑
+				      DAO,DTO
+					↓↑
+					DB
+
+	개발자가 정의한 URI(~.us, /board/~, ...)를 페이지 요청 주소에
+	작성하게 되면 web.xml에 가서 매핑되어 있는 서블릿을 찾는다.
+	각 URL들(/user/join, /user/login, ...)을 전부 web.xml에
+	하나씩 매핑해놓게 되면 web.xml의 코드가 길어지기 때문에 *.us, /user/* 형태로
+	하나의 서블릿에 매핑을 해놓는다.(.us가 붙은 모든 요청은 하나의 경로로 보내주도록 한다)
+	이러한 경로를 통해 가게 되는 서블릿 파일을 프론트 컨트롤러 라고 한다.
+	(가장 먼저 모든 요청을 맞이하는 컨트롤러 라서 프론트 컨트롤러) 이 프론트 컨트롤러는
+	.us 앞 혹은, /user/ 뒤에 붙은 요청명으로(login, join, ...) 어떤 로직을 수행할지
+	판단하고 분기처리(if, switch)를 하게된다.
+
+
+
+
+
+
+

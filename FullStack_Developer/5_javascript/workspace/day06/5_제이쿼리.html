@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제이쿼리</title>
+</head>
+<body>
+    <h2>제이쿼리</h2>
+    <p class="redText">여기는 전부 빨간색 글씨</p>
+    <p class="redText">여기도 또한 빨간색 글씨</p>
+    <input type="button" value="초기화" onclick="reset()">
+    <hr>
+    <p id="text"><span>오픈소스</span> 기반의 자바스크립트 라이브러리</p>
+    <p></p>
+</body>
+<!-- <script src="./js/jquery-3.7.1.min.js"></script> -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    // const redText = document.getElementsByClassName("redText");
+    // for(let i=0;i<redText.length;i++){
+    //     redText[i].addEventListener("click",function(e){
+    //         e.target.style.color = "red";
+    //     })
+    // }
+
+    // window.onload = function(){
+    //     console.log("제이쿼리 시작!");
+    // }
+    $(function(){
+        console.log("제이쿼리 시작!");
+    })
+
+    //$(선택자).on("이벤트명",이벤트리스너) : 선택된 대상들에게 이벤트리스너 등록
+    $(".redText").on("click",function(e){
+        e.target.style.color = "red";
+    })
+    
+    function reset(){
+        // $(선택자).css("속성명","속성값") : 선택된 대상들의 css 설정
+        $(".redText").css("color","black");
+    }
+
+    // 바닐라 자바스크립트의 메소드는 사용할 수 없음
+    // $("#text>span").setAttribute("class","open");
+
+    // $(선택자).attr("속성명","속성값") : 선택된 대상들의 속성 설정
+    $("#text>span").attr("class","open");
+
+    // 제이쿼리로 클래스 추가, 삭제
+    $("#text>span").addClass("source");
+    $("#text>span").removeClass("open");
+    // 클래스를 가지고 있는지 여부 확인
+    console.log($("#text>span").hasClass("open"));
+
+    // .css(), .attr()은 속성명만 넘길 시 현재 그 속성의 값이 리턴된다.
+    console.log($("#text>span").attr("class"))
+    console.log($(".redText").css("color"));
+
+    // document.getElementById("text").nextElementSibling.innerHTML = "변경된 문자열!";
+
+    // $(선택자).next() : 다음 형제 노드(요소)
+    // $(선택자).text(값) : 선택된 대상들의 contents 변경
+    $("#text").next().text("변경된 문자열!");
+
+    console.log($("#text").next().text());
+</script>
+</html>

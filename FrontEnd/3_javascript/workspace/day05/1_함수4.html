@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>화살표 함수</title>
+    <script>
+        'use strict';
+        const hello = () => console.log('안녕하세요!');
+
+        const send = (x, y) => console.log(`매개변수로 전달받은 값 : x=${x}, y=${y}`);
+
+        const sum = (start, end) => {
+            let sum = 0;
+            for(let i=start; i<=end; i++){
+                sum += i;
+            }
+            return sum;
+        }
+    </script>
+</head>
+<body>
+    <h2>화살표 함수</h2>
+    <script>
+        'use strict';
+        hello();
+        
+        send(10, 3);
+
+        const result = sum(1, 10);
+        console.log(result);
+
+        const age = Number(prompt('나이를 입력하세요'));
+        
+        const isAdult = (age > 18) ? 
+            () => alert('성인입니다') : 
+            () => alert('미성년입니다');
+
+        isAdult();
+    </script>
+</body>
+</html>

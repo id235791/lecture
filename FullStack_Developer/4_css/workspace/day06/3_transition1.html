@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transition - 1</title>
+<style>
+    div{
+        width: 100px;
+        height: 100px;
+        margin: 30px;
+        border: 1px solid black;
+    }
+    #bg-tr{
+        background-color: aliceblue;
+        /* transition-property: background-color;
+        transition-timing-function: linear;
+        transition-duration: 2s;
+        transition-delay: 0s; */
+        transition: background-color linear 2s 0s;
+    }
+    #bg-tr:hover{
+        background-color: navy;
+    }
+    #border-tr{
+        background-color: darkolivegreen;
+        border:5px dotted hotpink;
+        /* transition: border ease 2s; */
+        transition: all ease 2s;
+    }
+    #border-tr:hover{
+        background-color: tomato;
+        border:5px dashed darkcyan;
+        border-radius:50%;
+    }
+</style>
+</head>
+<body>
+    <h2>transition - 1</h2>
+    <div id="bg-tr"></div>
+    <div id="border-tr"></div>
+</body>
+</html>

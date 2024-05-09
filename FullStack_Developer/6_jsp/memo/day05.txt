@@ -1,0 +1,33 @@
+DBCP(DataBase Connection Pool)
+	DB 연결이 필요할 때마다 연결을 직접 한다면 코드가 복잡해지며
+	많은 요청이 있을 때 연결 속도가 저하될 수 있다. 따라서 미리
+	Connection들을 만들어 두고 필요시 저장된 공간에서 가져다 쓰고
+	반납하는 기법이다.
+
+JNDI(Java Naming and Directory Interface)
+	디렉터리 서비스에서 제공하는 데이터 및 객체를 발견하고 참고하기 위한
+	자바 API이며 외부에 존재하는 객체를 가져오기 위한 기술이다.
+
+MyBatis
+	모델과 DB의 매개체 - ODM(Object Data Mapping)
+	JAVA 소스코드 안에 SQL문을 작성하면 코드가 길어지고
+	섞여 있기 때문에 유지보수 및 분업이 쉽지 않다.
+	MyBatis는 기존 JDBC 방식과는 달리 SQL문을 XML 파일에
+	작성함으로써 코드가 줄어들고 SQL문 수정이 편해진다.
+	또한 DBCP를 사용하여 커넥션을 여러 개 생성하여 보관하기 때문에
+	JDBC만 사용하는 것보다 작업 효율과 가독성이 좋아진다.
+
+MyBatis 다운로드
+	https://blog.mybatis.org/ > Products 탭 클릭 >
+	MyBatis 3 download 클릭 > myabtis-3.5.14.zip 클릭
+	
+
+
+
+
+
+
+
+
+
+

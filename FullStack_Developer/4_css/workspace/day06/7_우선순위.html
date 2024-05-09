@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>우선순위</title>
+<style>
+    div{
+        width: 300px; height: 20px;
+        background-color: yellow;
+        padding: 30px; margin: 30px;
+    }
+    #id-style{
+        background-color: red;
+    }
+    .class-style{
+        background-color: green;
+    }
+    .class-style2{
+        background-color: gold;
+    }
+    div{
+        background-color: purple;
+    }
+    #imp{
+        background-color: violet !important;
+    }
+    ul > li.li-class{
+        /* 태그 2개, 클래스 1개 -> 12점 */
+        background-color: coral;
+    }
+    ul > li{
+        /* 태그 2개 -> 2점 */
+        background-color: skyblue;
+    }
+    li{
+        /* 태그 1개 -> 1점 */
+        background-color: black;
+    }
+</style>
+</head>
+<body>
+    <h2>우선순위</h2>
+    <div id="imp" class="class-style" style="background-color: blue;">div 1번(important 적용)</div>
+    <div id="id-style" class="class-style" style="background-color: blue;">div 2번(인라인 스타일 - 1000점)</div>
+    <div id="id-style">div 3번(id 스타일 - 100점)</div>
+    <div class="class-style">div 4번(class 스타일 - 10점)</div>
+    <div>div 5번(마지막에 적용한 스타일)</div>
+    <div class="class-style2 class-style">div 6번(마지막에 적용한 스타일)</div>
+    <hr>
+    <ul>
+        <li class="li-class">li 내용</li>
+    </ul>
+</body>
+</html>

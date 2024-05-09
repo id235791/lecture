@@ -1,0 +1,243 @@
+express-session 모듈
+	세션을 관리하기 위한 익스프레스 미들웨어 모듈
+	npm i express-session
+
+	app.use(session({세션모듈의 옵션}));
+
+세션 모듈의 옵션
+	secret : 쿠키를 임의로 변조하는 것을 방지하기 위한 값.
+	이 값을 통해서 세션을 암호화하여 저장
+	resave : 세션을 언제나 저장할지 지정하는 값.
+	이 값은 false로 하는 것을 권장
+	saveUninitialized : 세션이 저장되기 전에
+	saveUninitialized 상태로 미리 만들어서 저장
+
+세션 초기 설정
+	const 객체명 = req.session;
+	객체명.변수 : 값;
+
+세션 변수 사용
+	객체명.변수;
+
+세션 삭제
+	req.session.destroy(() => {
+		세션 삭제시 처리할 문장;
+		...
+	});
+
+
+MongoDB
+
+MongoDB의 특징
+	NoSQL이기 때문에 관계형 데이터베이스의 테이블 개념이 없음
+	데이터가 모인 하나의 단위를 컬렉션이라고 부름
+	데이터를 정해 놓은 컬럼의 형태로 컬렉션에 넣어야 한다는 제약이 없음
+	MongoDB의 데이터베이스는 컬렉션의 집합
+	컬렉션은 여러개의 문서 객체를 가질 수 있음
+
+	예)
+	{"id":1, "userid":"apple", "userpw":"1234", "gender":"여자"}
+	{"name":"김사과", "weight":50.5, "blood":"A형"}
+
+document -> collection -> database
+
+document
+	RDBMS의 record와 비슷한 개념
+	데이터 구조가 한개 이상의 key-value-pair로 이루어져 있음
+	동적인 스키마를 가지고 있음
+	같은 collection 안에 있는 document끼리 다른 스키마를 가지고 있을 수 있음
+
+collection
+	document의 그룹
+	collection 내부에 document들이 위치
+	table과 비슷한 개념이지만 RDBMS와 달리 스키마를 따로 가지지 않음
+
+mongoDB 다운로드
+	https://www.mongodb.com/try/download/community
+
+MongoDB 환경설정
+	내pc 오른쪽 버튼 속성 클릭 -> 고급 시스템 설정 -> 환경 변수 버튼 클릭
+	-> 시스템 변수 -> 변수에서 path를 찾아 편집 버튼 클릭 -> 
+	새로 만들기 버튼을 클릭 ->
+	C:\Program Files\MongoDB\Server\5.0\bin 경로 넣고 확인 버튼 클릭
+	-> 터미널에서 mongo로 mongodb 실행
+
+
+MongoDB의 문법
+	데이터베이스 확인
+		show dbs;
+
+	데이터베이스 생성
+		use 데이터베이스명;
+		use frontend;
+		데이터베이스가 없으면 생성, 있으면 선택
+	데이터베이스에 자료가 없을 경우 show dbs에서 나타나지 않음
+
+컬렉션 생성
+	db.createCollection('컬렉션명');
+	db.createCollection('testCollection');
+
+컬렉션 확인
+	show collections;
+
+컬렉션 삭제
+	db.컬렉션명.drop();
+	db.testCollection.drop();
+
+연습용 컬렉션 만들기
+	db.createCollection('member');
+
+document 추가
+	db.컬렉션명.insert(객체);
+	db.member.insert({'userid':'apple',
+	'userpw':'1111', 'name':'김사과'});
+
+document 확인
+	db.컬렉션명.find();
+	db.member.find();
+
+	db.컬렉션명.find().pretty();
+	db.member.find().pretty();
+
+	db.컬렉션명.find(객체).pretty();
+	db.member.find({"userid":"apple"}).pretty();
+
+
+	_id는 각 document의 유일한 키로 쓰이는 고유한 값
+	{ "_id" : ObjectId("61986314c1e941737b145f40"), "userid" :
+	"apple", "userpw" : "1111", "name" : "김사과" }
+
+	db.member.insert({"userid":"apple","userpw":"1111",
+	"name":"김사과","gender":"남자"});
+	db.member.insert({"userid":"banana","userpw":"2222",
+	"name":"반하나","gender":"여자"});
+	db.member.insert({"userid":"cherry","userpw":"3333",
+	"name":"이체리","gender":"남자"});
+	db.member.insert({"userid":"durian","userpw":"4444",
+	"name":"차두리","gender":"여자","point":500});
+	db.member.insert({"userid":"etrog","userpw":"5555",
+	"name":"유자석","gender":"남자","point":700});
+	db.member.insert({"userid":"feijoa","userpw":"6666",
+	"name":"피조아","gender":"여자","point":800});
+	db.member.insert({"userid":"grape","userpw":"7777",
+	"name":"최포도","gender":"남자","point":1000});
+	db.member.insert({"userid":"hazelnut","userpw":"8888",
+	"name":"헤이즈","gender":"여자","point":300});
+	db.member.insert({"userid":"ichigo","userpw":"9999",
+	"name":"박딸기","gender":"남자","point":400});
+
+document의 비교연산
+	$eq : 주어진 값과 일치하는 값을 찾음
+	$gt : 주어진 값보다 큰 값을 찾음
+	$gte : 주어진 값보다 크거나 같은 값을 찾음
+	$lt : 주어진 값보다 작은 값을 찾음
+	$lte : 주어진 값보다 작거나 같은 값을 찾음
+	$ne : 주어진 값과 일치하지 않는 값을 찾음
+	$in : 주어진 배열안에 속하는 값을 찾음
+	$nin : 주어진 배열안에 속하지 않는 값을 찾음
+
+	ex) 포인트가 700이상인 멤버를 검색
+	db.member.find({"point":{$gte:700}}).pretty();
+
+document의 논리연산
+	$and : 주어진 모든 조건이 true일 때 true인 결과를 찾음
+	$or : 주어진 조건 중 하나라도 true일 때 true인 결과를 찾음
+	$not : 주어진 조건이 false일 때 true, true일 때 false인 결과를 찾음
+
+	ex) 아이디가 "etrog"이고 비밀번호가 "4444"인 멤버를 검색
+	db.member.find({$and:[{"userid":"etrog"},
+	{"userpw":"4444"}]}).pretty();
+
+문제.
+	1. 이름이 "박딸기"인 멤버를 검색
+	db.member.find({"name":"박딸기"}).pretty();
+
+	2. 포인트가 800보다 작거나 같은 멤버를 검색
+	db.member.find({"point":{$lte:800}}).pretty();
+
+	3. 아이디가 "apple" 또는 "banana"인 멤버를 검색
+	db.member.find({$or:[{"userid":"apple"},
+	{"userid":"banana"}]}).pretty();
+	db.member.find({"userid":{$in:["apple","banana"]}}).pretty();
+
+	4. 성별이 "여자"이고 포인트가 700이상인 멤버를 검색
+	db.member.find({$and:[{"gender":"여자"},
+	{"point":{$gte:700}}]}).pretty();
+
+document의 정렬
+	db.컬렉션명.find().sort(객체)
+
+	sort의 객체
+		1. 형태
+		{key:value} -> key는 데이터의 field명,
+		value의 값은 1(오름차순), -1(내림차순)
+		2. 여러 key를 입력할 수 있고, 먼저 입력한 key가 우선권을 가짐
+	ex) _id 내림차순으로 정렬
+	db.member.find().sort({"_id":-1}).pretty();
+
+document의 개수 제한
+	limit() : 출력할 데이터 개수를 제한할 때 사용
+		db.컬렉션명.find().limit(출력할 개수);
+		db.member.find().limit(3).pretty();
+
+document 데이터 생략 후 출력
+	skip() : 출력할 데이터의 시작부분을 설정할 경우 사용
+		db.컬렉션명.find().skip(생량할 개수);
+		db.member.find().skip(2).pretty();
+
+문제.
+	member 컬렉션의 데이터를 limit(), skip()를 사용하여 아래와 같이 출력
+	1. 
+		apple
+		banana
+		cherry
+	답)
+	db.member.find().limit(3).pretty();
+
+	2.
+		durian
+		etrog
+		feijoa
+	답)
+	db.member.find().skip(3).limit(3).pretty();
+
+	3.
+		grape
+		hazelnut
+		ichigo
+	답)
+	db.member.find().skip(6).limit(3).pretty();
+
+document의 수정
+	1. 특정 field 업데이트
+		db.컬렉션명.update(객체, {$set:바뀔객체});
+		db.member.update({"userid":"grape"},
+		{$set:{name:"정포도"}});
+
+	2. document replace
+		db.컬렉션명.update(변경할 객체, 바뀔 객체);
+		db.member.update({"_id" : ObjectId("61986434c1e941737b145f45")},
+		{"userid" : "jamun","userpw" : "0000",
+		"name" : "홍자문"});
+
+		*document replace는 _id가 바뀌지 않음
+
+	3. 특정 field 제거
+		db.컬렉션명.update(변경할 객체, {$unset:{제거할 객체}});
+		db.member.update({"userid":"jamun"},
+		{$unset:{"userpw":1}});
+
+		"userpw":1 , 1은 true의 의미
+
+	4. 여러 document의 특정 field를 수정
+		db.컬렉션명.update(적용할 객체, $set:{수정할 객체},
+		{multi: true});
+	
+	ex)
+	point가 700보다 크거나 같은 document의 비밀번호를 모두 "1111"로 설정
+		db.member.update({point:{$gte:700}},
+		{$set:{"userpw":"1111"}}, {multi: true});
+
+document의 삭제
+	db.컬렉션명.remove(객체);
+	db.member.remove({"_id":ObjectId("61986434c1e941737b145f45")});

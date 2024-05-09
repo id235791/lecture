@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>클래스 선택자</title>
+<style>
+    .redText {
+        color:red;
+    }
+    .blueText{
+        color:blue;
+    }
+    .bigText{
+        font-size: 20px;
+    }
+    /* redText 클래스를 가지면서 bigText 라는 클래스도 가지는 요소 선택 */
+    /* 선택자1선택자2 : 선택자1과 선택자2 를 둘 다 만족하는 요소 선택 */
+    .redText.bigText{
+        font-size: 30px;
+    }
+    p.bigText{
+        background-color: aliceblue;
+    }
+</style>
+</head>
+<body>
+    <h2>클래스 선택자</h2>
+    <p>
+        <span class="redText bigText">클래스 선택자</span>는 <span class="blueText">특정 집단의 여러 요소를 한번에 선택</span>할 때 사용합니다.
+    </p>
+    <p class="bigText">
+        <span class="redText">특정 집단을 클래스(class)</span> 라고 하며, <span class="blueText">. 기호를 사용</span>하여 같은 클래스 이름을 가지는 요소들을 모두 선택합니다.
+    </p>
+    p#mycontainer.container.pBox.pTag 로 emmet
+    <p id="mycontainer" class="container pBox pTag"></p>
+</body>
+</html>

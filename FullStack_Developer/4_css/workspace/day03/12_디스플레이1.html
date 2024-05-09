@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디스플레이 - 1</title>
+<style>
+    img{ width: 150px; }
+    div{
+        border: 1px solid red;
+        margin: 20px; padding: 10px;
+    }
+    #block img{
+        display: block;
+    }
+    
+    .box{
+        box-sizing: border-box;
+        border: none;
+        width:100px;
+        height:100px;
+        margin: 0; padding: 0;
+        border:3px solid blue;
+    }
+    span.ib{
+        /* display: block; */
+        display: inline-block;
+    }
+    div.ib{
+        /* display: inline; */
+        display: inline-block;
+    }
+</style>
+</head>
+<body>
+    <h2>디스플레이 - 1</h2>
+    <div id="inline">
+        <img src="./images/김민재.webp" alt="">
+        <img src="./images/손흥민.jpg" alt="">
+        <img src="./images/이강인.webp" alt="">
+    </div>
+    <div id="block">
+        <img src="./images/김민재.webp" alt="">
+        <img src="./images/손흥민.jpg" alt="">
+        <img src="./images/이강인.webp" alt="">
+    </div>
+    <hr>
+    <span class="box ib"></span><span class="box ib"></span><span class="box ib"></span>
+    <hr>
+    <div class="box ib"></div>
+    <div class="box ib"></div>
+    <div class="box ib"></div>
+</body>
+</html>

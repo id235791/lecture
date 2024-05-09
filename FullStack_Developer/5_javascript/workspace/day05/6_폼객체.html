@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>폼 객체</title>
+<style>
+    input[type=search]{
+        outline: none;
+    }
+</style>
+</head>
+<body>
+    <h2>폼 객체</h2>
+    <!-- onsubmit : form이 제출될 때 수행, return false(제출안함) / return true(제출함) -->
+    <!-- <form name="frm" action="/board/search.jsp" method="get" onsubmit="return sendit()"> -->
+    <form name="frm" action="/board/search.jsp" method="get">
+        <p id="txt">&nbsp;</p>
+        <input type="search" name="search" id="search" placeholder="검색어를 입력하세요">
+        <!-- <input type="submit" value="검색"> -->
+        <!-- <input type="button" value="검색" onclick="sendit2()"> -->
+        <input type="button" value="검색" onclick="sendit3()">
+    </form>
+</body>
+<script>
+    const frm = document.frm;
+    const search = frm.search;
+    console.log(search.placeholder);
+    search.placeholder = "검색어를 부탁해요~";
+
+    function sendit(){
+        if(search.value == ""){
+            alert("검색어를 입력하세요!");
+            return false;
+        }
+        if(search.value.length <= 1){
+            alert("검색어는 두 자 이상 입력하세요!");
+            return false;
+        }
+        return true;
+    }
+
+    function sendit2(){
+        if(search.value == ""){
+            alert("검색어를 입력하세요!");
+            search.focus();
+            search.style.borderColor = "red";
+            return;
+        }
+        if(search.value.length <= 1){
+            alert("검색어는 두 자 이상 입력하세요!");
+            search.value = "";
+            search.focus();
+            return;
+        }
+        frm.submit();
+    }
+    function sendit3(){
+        const txt = document.getElementById("txt");
+        if(search.value == ""){
+            txt.innerHTML = "검색어를 입력하세요!";
+            search.focus();
+            return;
+        }
+        if(search.value.length <= 1){
+            txt.innerHTML = "검색어는 두 자 이상 입력하세요!";
+            search.value = "";
+            search.focus();
+            return;
+        }
+        frm.submit();
+    }
+</script>
+</html>

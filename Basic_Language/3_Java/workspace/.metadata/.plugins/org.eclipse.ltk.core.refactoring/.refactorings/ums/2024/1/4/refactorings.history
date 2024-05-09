@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 5 packages to &apos;jdbc_ums/src&apos;&#x0D;&#x0A;- Original project: &apos;ums&apos;&#x0D;&#x0A;- Destination element: &apos;jdbc_ums/src&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     ums/src/controller&#x0D;&#x0A;     ums/src/model.dao&#x0D;&#x0A;     ums/src/view&#x0D;&#x0A;     ums/src/model&#x0D;&#x0A;     ums/src/model.dto" description="Copy packages" destination="=jdbc_ums/src" element1="/src&lt;controller" element2="/src&lt;model.dao" element3="/src&lt;view" element4="/src&lt;model" element5="/src&lt;model.dto" flags="589830" fragments="5" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1705973011243" version="1.0"/>
+</session>

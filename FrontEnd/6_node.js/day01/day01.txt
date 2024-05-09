@@ -1,0 +1,98 @@
+nodejs
+	서버에서 실행되는 자바스크립트
+	백엔드와 프론트엔드가 같은 언어를 사용하는게 장점
+	Google V8 JavaScript 엔진을 사용하여 코드를 실행하고
+	기본 모듈이 자바스크립트로 사용
+	웹서버(apache, iis, zeus ..)와 같은 소프트웨어가 필요없이
+	웹서버 역할을 할 수 있는 내장 라이브러리가 존재
+	npm이라는 패키지 관리자가 포함 - 라이브러리 다운받아 탑재시키는것
+
+설치 확인
+	cmd에서 node -v 명령어를 실행
+
+	nodejs.org > LTS버전 설치(안정화버전) > 설치파일 실행
+
+	npm -v : npm 버전 확인
+
+package.json 만들기
+	실행시 참고하는 json파일
+	
+	npm init : 옵션을 직접 제공
+	Visual Studio Code에서 Ctrl + ` > npm init >
+	enter( 괄호는 기본값 )로 진행
+
+	npm init -y 기본값으로 만들기
+
+node.js 실행
+	node 파일명
+
+fs 모듈
+	파일 처리와 관련된 모듈
+	node.js에서 가장 중요하고 기초가 되는 모듈
+
+	readFile()	: 파일을 비동기적으로 읽음
+	readFileSync()	: 파일을 동기적으로 읽음
+	writeFile()	: 파일을 비동기적으로 씀
+	writeFileSync()	: 파일을 동기적으로 씀
+
+동기식과 비동기식
+	동기식	: 프로그램이 동작하는 상태에서 완전히 해당 내용을 끝내고
+		다음으로 넘기는 방식, 순차적
+	비동기식	: 동작이 끝나지 않은 상태에서도 제어권을 넘긴 후에
+		프로그램을 계속 진행하는 방식
+
+예외처리
+	try{
+		예외가 발생할 수 있는 문장
+	} catch(e){
+		예외가 발생했을 경우 수행할 문장
+	} finally{
+		예외 발생 여부에 상관없이 수행할 문장
+	}
+
+http 모듈
+	http 웹 서버를 생성하는 것과 관련된 모든 기능을 담당
+
+	createServer()	: server 객체를 생성
+	writeHead()	: 응답 header를 구성
+	end()		: 응답 body를 작성
+	listen()	: 서버를 실행하고 클라이언트를 기다림
+
+MIME 형식
+	응답의 형식이 무엇인지를 Header에 포함된 MIME을 통해 브라우저에 알려줌
+	브라우저는 이것을 참고하여 응답을 어떻게 해석할 지 알 수 있다
+
+	text/plain	일반적인 text 파일 
+	text/html	html 형식 파일
+	text/css	css 형식 파일
+	text/xml	xml 형식 파일
+	image/jpeg	jpeg 이미지 파일
+	image/png	png 이미지 파일
+	video/mpeg	mpeg 동영상 파일
+	audio/mp3	mp3 음악 파일
+	...
+
+yout.com
+	유튜브 mp3 추출 사이트
+
+express 모듈
+	http 모듈만 사용해서 웹 서버를 구성하면 직접 많은 기능을 따로 개발해야 하는
+	불편한 점이 많음
+	간단한 코드로 웹서버의 기능을 대부분 구현할 수 있음
+	미들웨어와 라우터를 이용하여 편리하게 웹 서버를 구성
+
+package 설치
+	npm install 모듈명
+	npm i 모듈명
+	
+
+
+
+
+
+
+
+
+
+
+

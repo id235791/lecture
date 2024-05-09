@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노드 생성</title>
+</head>
+<body>
+    <h2>노드 생성</h2>
+    <p id="el">새로운 문장(노드)이 이 앞에 추가됨</p>
+    <p id="attr">이 단락에 새로운 속성이 추가됨</p>
+    <p id="text"></p>
+    <input type="button" value="요소노드생성" onclick="createNode()">
+    <input type="button" value="속성노드생성" onclick="createAttr()">
+    <input type="button" value="텍스트노드생성" onclick="createText()">
+</body>
+<script>
+    function createNode(){
+        const newNode = document.createElement("p");
+        newNode.innerHTML = "새로운 요소";
+
+        const el = document.getElementById("el");
+        document.body.insertBefore(newNode,el);
+    }
+    function createAttr(){
+        const newAttr = document.createAttribute("style");
+        newAttr.value = "color:deeppink; background-color:deepskyblue;"
+
+        const attr = document.getElementById("attr");
+        attr.setAttributeNode(newAttr);
+
+        // attr.setAttribute("style","color:deeppink; background-color:deepskyblue;");
+    }
+    function createText(){
+        const text = document.getElementById("text");
+        const newText = document.createTextNode("Hello Javascript!");
+        text.appendChild(newText);
+    }
+</script>
+</html>

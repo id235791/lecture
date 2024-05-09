@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문서객체모델 - 1</title>
+</head>
+<body>
+    <h2>문서객체모델 - 1</h2>    
+    <ul>
+        <li name="view">HTML</li>
+        <li>CSS</li>
+        <li class="js">Javascript</li>
+        <li class="js">Ajax</li>
+        <li id="server">Tomcat</li>
+        <li id="back">Servlet</li>
+    </ul>
+    <input type="button" value="name으로 요소찾기" onclick="f1()">
+    <input type="button" value="class로 요소찾기" onclick="f2()">
+    <input type="button" value="id로 요소찾기" onclick="f3()">
+    <input type="button" value="tagname으로 요소찾기" onclick="f4()">
+    <hr>
+    <p class="A B C" id="pTag"></p>
+</body>
+<script>
+    function f1(){
+        const view = document.getElementsByName("view");
+        console.log(view);
+        view[0].style.color = "red";
+        console.log(view[0]);
+    }
+    function f2(){
+        const js = document.getElementsByClassName("js");
+        console.log(js);
+        for(let tag of js){
+            tag.innerHTML = `<input type='button' value='${tag.innerHTML}'>`;
+        }
+    }
+    function f3(){
+        const server = document.getElementById("server");
+        console.log(server);
+        server.setAttribute("title","server태그");
+        console.log(server.getAttribute("title"));
+    }
+    function f4(){
+        const li = document.getElementsByTagName("li");
+        console.log(li);
+        for(let i=0;i<li.length;i++){
+            li[i].setAttribute("class","li"+i);
+        }
+    }
+
+    const pTag = document.querySelector("#pTag");
+    // let temp = pTag.getAttribute("class");
+    // pTag.setAttribute("class",temp+" D");
+    pTag.classList.add("D");
+
+    /*
+    let temp = pTag.getAttribute("class");
+    const arClass = temp.split(" ");//["A","B","C","D"]
+    const result = new Array();
+
+    for(let c of arClass){
+        if(c != "B"){
+            result.push(c);
+        }
+    }
+    pTag.setAttribute("class",result.join(" "));
+    */
+    pTag.classList.remove("B");
+
+    document.querySelector("ul>li:nth-child(2)").style.color = "blue";
+
+</script>
+</html>

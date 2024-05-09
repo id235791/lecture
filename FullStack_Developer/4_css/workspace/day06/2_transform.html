@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transform</title>
+<style>
+    p{
+        width: 400px;
+        height: 20px;
+        border: 3px solid black;
+        padding: 20px;
+        margin-left: 150px;
+    }
+    #trans1{
+        background-color: deeppink;
+        transform: translate(30px,30px);
+    }
+    #trans2{
+        background-color: deepskyblue;
+        /* transform: rotate(60deg); */
+        transform: rotateX(180deg);
+    }
+    #trans3{
+        background-color: steelblue;
+        /* transform: scale(1.5); */
+        transform: scale(1.5,0.7);
+    }
+    #trans4{
+        background-color: gold;
+        transform:skew(60deg,15deg);
+    }
+    #trans4:hover{
+        transform:skew(60deg,15deg) scale(1.2);
+    }
+    #gradient{
+        background:darkblue;
+        /* safari, chrome, edge, whale, ... */
+        background: -webkit-linear-gradient(left,red,darkblue);
+        /* firefox */
+        background: -moz-linear-gradient(left,red,darkblue);
+        /* opera */
+        background: -o-linear-gradient(left,red,darkblue);
+        background: linear-gradient(left,red,darkblue);
+    }
+</style>
+</head>
+<body>
+    <h2>transform</h2>
+    <p>original</p>
+    <p id="trans1">translate</p>
+    <p id="trans2">rotate</p>
+    <p id="trans3">scale</p>
+    <p id="trans4">skew</p>
+    <p id="gradient">gradient</p>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>속성 선택자 - 1</title>
+<style>
+    [href] {
+        text-decoration: none;
+        color:deeppink;
+    }
+    [class="attr"]{
+        color:white;
+        background-color: brown;
+    }
+    h2[title]{
+        color:blue;
+        text-align: center;
+    }
+    input[type="button"]{
+        background-color: green;
+    }
+</style>
+</head>
+<body>
+    <h2>속성 선택자 - 1</h2>
+    <p>
+        <a href="www.naver.com">네이버</a>
+    </p>
+    <h2 title="h2 요소의 title 속성">title 속성을 가지고 있는 h2</h2>
+    <p title="p 요소의 title 속성" class="attr">
+        속성명과 속성값이 모두 일치하는 요소를 선택자로 지정
+    </p>
+    <input type="button" value="나는 그냥 버튼">
+    <hr>
+    input:text[name=userid]#userid.input-txt emmet으로 요소 만들기
+    <input type="text" name="userid" id="userid" class="input-txt">
+</body>
+</html>

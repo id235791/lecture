@@ -19,7 +19,7 @@ function App() {
           Learn React
         </a>
       </header>
-      <MyComponent name="홍길동"></MyComponent>
+      <MyComponent name="김사과" id="" idol=""></MyComponent>
     </div>
   );
 }

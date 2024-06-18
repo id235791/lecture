@@ -1,24 +1,25 @@
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import Header from './components/Header'
-import Footer from './components/Footer'
-import Join from './components/Join';
-import Info from './components/Info';
-import BoardContainer from './container/BoardContainer'
-import Product from './components/Product';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Main from './pages/Main';
+import Header from './layout/Header';
+import Footer from './layout/Footer';
+import Info from './pages/Info';
+import Join from './pages/Join';
+import BoardList from './pages/BoardList';
+import Product from './pages/Product';
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Header/>
-      <Routes>
-        <Route path="/join" element={<Join/>}></Route>
-        <Route path="/info" element={<Info/>}></Route>
-        <Route path="/board" element={<BoardContainer/>}></Route>
-        <Route path="/product/:prodnum" element={<Product/>}></Route>
-      </Routes>
-      <Footer/>
-    </BrowserRouter>
-  );
+const App = () => {
+    return (
+        <BrowserRouter>
+            <Header></Header>
+            <Routes>
+                <Route path="/" element={<Main></Main>}></Route>
+                <Route path="/info" element={<Info></Info>}></Route>
+                <Route path="/join" element={<Join></Join>}></Route>
+                <Route path="/board" element={<BoardList></BoardList>}></Route>
+                <Route path="/product/:prodnum" element={<Product></Product>}></Route>
+            </Routes>
+            <Footer></Footer>
+        </BrowserRouter>
+    )
 }
-
 export default App;

@@ -1,12 +1,11 @@
-const Button = ({href="", className="",text,size="common",hide,onClick,id}) =>{
-    return <a
-        onClick={onClick}
-        href={href}
+const Button = ({className,value,size="common",hide,id,onClick}) => {
+    return <input
+        type="button"
         className={`${size}-btn ${className}`}
-        // style={ {속성명:'속성값'}    }
-        style={hide?{dispaly:'none'}:{}}
-        id={id}>
-        {text}
-    </a>
+        value={value}
+        style={hide?{display:'none'}:{}}
+        id={id}
+        onClick={onClick}
+    ></input>
 }
 export default Button;

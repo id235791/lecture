@@ -1,32 +1,38 @@
-import { useRef } from "react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import BoardList from "../components/BoardList";
 
 const BoardContainer = () => {
-    const [list,setList] = useState([]);
-    const INDEX = useRef(0);
+    const [list, setList] = useState([]);
     const NUM = useRef(0);
+    const KEY = useRef(0);
 
-    const remove = (key) => {
+
+    const remove = (key)=>{
         for(let i=0;i<list.length;i++){
             if(list[i].key == key){
                 list[i] = null;
             }
             else if(list[i].key > key){
-                list[i].num -= 1;
+                list[i].key -= 1;
             }
         }
-        NUM.current -= 1;
-        setList(list.filter((item) => item != null));
+        KEY.current -= 1;
+        setList(
+            list.filter(
+                (item) => item!=null
+            )
+        );
     }
-    const write = () => {
-        const newEl = {key:INDEX.current,num:NUM.current};
-        INDEX.current += 1;
+    const write = ()=>{
+        const board = {key:KEY.current,num:NUM.current};
+        KEY.current += 1;
         NUM.current += 1;
-        setList((prevList)=>
-            [newEl,...prevList]
-        )
+
+        setList(
+            (prevList)=>[board,...prevList]
+        );
     }
+
     return <BoardList
         list={list}
         remove={remove}

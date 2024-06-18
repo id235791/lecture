@@ -13,19 +13,17 @@
 	2. movieList 만들고 <List> 구현
 	3. <Add> 구현
 
+Router의 필요성
+	모든것을 다 React Element로 해결하기엔 한계가 있음
+	ex02 처럼 모두 document.location을 이용한 command로 나누어주기에도 복잡함
+	페이지 이동처럼 구현하기 위해 Router 필요
+
 React-Router
 	리액트는 SPA 방식이기 때문에 새로운 페이지를 로드하는 것이 아님
 	하나의 페이지 안에서 필요한 데이터들을 가져오며 렌더링 해주는 형태
 	URL에 따라 분기처리를 통해 해당하는 React Element를 렌더링
 
 	결론 : 각각의 URL에 따라 선택된 데이터를 하나의 페이지에서 렌더링 해주는 라이브러리
-	
+
 설치
 	해당 프로젝트 경로로 이동 > npm i react-router-dom
-
-
-
-
-
-
-

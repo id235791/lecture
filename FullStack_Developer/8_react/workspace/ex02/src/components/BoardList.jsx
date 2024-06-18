@@ -1,4 +1,5 @@
 const BoardList = ({list,remove,write}) => {
+    console.dir(list);
     return (
         <>
             <ul>
@@ -11,8 +12,8 @@ const BoardList = ({list,remove,write}) => {
                                 remove(key);
                             }
                             return (
-                                <li className={`r${num}`}>
-                                    게시글 번호 {num+1} ({key}번째 요소)
+                                <li className={`r${num}`} key={key}>
+                                    게시글 번호 {num} - {key}번째 게시글
                                     <a href="#" onClick={clickRemove}>삭제</a>
                                 </li>
                             )
@@ -20,7 +21,7 @@ const BoardList = ({list,remove,write}) => {
                     )
                 }
             </ul>
-            <input type="button" value="게시글추가" onClick={write}></input>
+            <input type="button" value="게시글 추가" onClick={write}/>
         </>
     )
 }

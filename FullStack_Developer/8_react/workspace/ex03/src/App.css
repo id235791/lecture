@@ -1,24 +1,14 @@
-#root{
-    width:400px;
-    margin: 0 auto;
+*{
+    margin:0; padding: 0; box-sizing: border-box;
 }
-header{
-    display: flex;
-    justify-content: space-between;
-}
-h2{
-    margin: 10px auto;
-    font-size: 40px;
+nav{ overflow: hidden; }
+nav li{ float: left; list-style: none; width: 50%; }
+.container{
+    width: 400px;
+    margin: 100px auto;
     text-align: center;
+    border:1px solid black;
 }
-form{
-    width:400px;
-    text-align: center;
-}
-table{
-    width:400px;
-    margin:0 auto;
-}
-td{
-    text-align: center;
+.container table{
+    width: 100%;
 }

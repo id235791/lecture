@@ -25,6 +25,7 @@ public class StrTest {
 //		"문자열".charAt(n) : "문자열" 에서 n번째 인덱스 위치의 문자를 반환
 		char ch = msg.charAt(6);//'J'
 		System.out.println("6번째 글자 : "+ch);
+//		범위를 벗어나는 경우 오류 발생
 //		ch = msg.charAt(10000);
 //		System.out.println("10000번째 글자 : "+ch);
 		

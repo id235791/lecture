@@ -12,7 +12,7 @@ public class StrTest {
 		System.out.println("띄어쓰기 뒷 부분 : "+arr1[1]);
 //		split()은 나누지 못했다면 전체 문자열 한 개가 담겨있는 한 칸짜리 String[] 반환
 		String[] arr2 = msg.split("u");//{"Hello Java!"}
-		System.out.println(arr2[0]);
+		System.out.println("나누기 실패 : "+arr2[0]);
 		
 //		"문자열1".indexOf("문자열2") : "문자열1" 에서 "문자열2" 가 시작하는 인덱스 반환
 		int idx = msg.indexOf("J");//6

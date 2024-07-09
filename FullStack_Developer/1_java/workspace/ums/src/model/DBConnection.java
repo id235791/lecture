@@ -57,7 +57,11 @@ public class DBConnection {
 	 * @return 수정 성공시 true / 실패시 false
 	 */
 	public boolean update(String key,int col,String newData) {
-		String result = "";
+		String result = ""+colname[0];
+		for (int i = 1; i < colname.length; i++) {
+			result += "\t"+colname[i];
+		}
+		result+="\n";
 		boolean check = false;
 		try {
 			BufferedReader br =  new BufferedReader(new FileReader(file));
@@ -113,7 +117,11 @@ public class DBConnection {
 	 * @return 수정 성공시 true / 실패시 false
 	 */
 	public boolean update(String key,String col,String newData) {
-		String result = "";
+		String result = ""+colname[0];
+		for (int i = 1; i < colname.length; i++) {
+			result += "\t"+colname[i];
+		}
+		result+="\n";
 		int col_num = 0;
 		boolean check = false;
 		try {
@@ -172,7 +180,11 @@ public class DBConnection {
 	 * @param key : 삭제하고자 하는 행을 찾기위한 key, 삭제하고자 하는 행의 고유한 값(PK)
 	 */
 	public boolean delete(String key) {
-		String result = "";
+		String result = ""+colname[0];
+		for (int i = 1; i < colname.length; i++) {
+			result += "\t"+colname[i];
+		}
+		result+="\n";
 		boolean check = false;
 		try {
 			BufferedReader br =  new BufferedReader(new FileReader(file));
@@ -296,7 +308,7 @@ public class DBConnection {
 				else {
 					for (int i = 0; i < len-1; i++) {
 						for (int j = i; j < len; j++) {
-							if(resultSet.get(i)[col].charAt(0) > resultSet.get(j)[col].charAt(0)) {
+							if(resultSet.get(i)[col].compareTo(resultSet.get(j)[col]) > 0) {
 								temp2 = resultSet.get(i);
 								resultSet.set(i, resultSet.get(j));
 								resultSet.set(j, temp2);
@@ -378,14 +390,14 @@ public class DBConnection {
 					for (int i = 0; i < len-1; i++) {
 						for (int j = i; j < len; j++) {
 							if(asc) {
-								if(resultSet.get(i)[col].charAt(0) > resultSet.get(j)[col].charAt(0)) {
+								if(resultSet.get(i)[col].compareTo(resultSet.get(j)[col]) > 0) {
 									temp2 = resultSet.get(i);
 									resultSet.set(i, resultSet.get(j));
 									resultSet.set(j, temp2);
 								}
 							}
 							else{
-								if(resultSet.get(i)[col].charAt(0) < resultSet.get(j)[col].charAt(0)) {
+								if(resultSet.get(i)[col].compareTo(resultSet.get(j)[col]) < 0) {
 									temp2 = resultSet.get(i);
 									resultSet.set(i, resultSet.get(j));
 									resultSet.set(j, temp2);
@@ -549,14 +561,14 @@ public class DBConnection {
 					for (int i = 0; i < len-1; i++) {
 						for (int j = i; j < len; j++) {
 							if(asc) {
-								if(resultSet.get(i)[colnum].charAt(0) > resultSet.get(j)[colnum].charAt(0)) {
+								if(resultSet.get(i)[colnum].compareTo(resultSet.get(j)[colnum]) > 0) {
 									temp2 = resultSet.get(i);
 									resultSet.set(i, resultSet.get(j));
 									resultSet.set(j, temp2);
 								}
 							}
 							else {
-								if(resultSet.get(i)[colnum].charAt(0) < resultSet.get(j)[colnum].charAt(0)) {
+								if(resultSet.get(i)[colnum].compareTo(resultSet.get(j)[colnum]) < 0) {
 									temp2 = resultSet.get(i);
 									resultSet.set(i, resultSet.get(j));
 									resultSet.set(j, temp2);
@@ -663,8 +675,7 @@ public class DBConnection {
 				else {
 					for (int i = 0; i < len-1; i++) {
 						for (int j = i; j < len; j++) {
-							if(resultSet.get(i)[order_col].charAt(0)
-									> resultSet.get(j)[order_col].charAt(0)) {
+							if(resultSet.get(i)[order_col].compareTo(resultSet.get(j)[order_col]) > 0) {
 								temp2 = resultSet.get(i);
 								resultSet.set(i, resultSet.get(j));
 								resultSet.set(j, temp2);
@@ -741,16 +752,14 @@ public class DBConnection {
 					for (int i = 0; i < len-1; i++) {
 						for (int j = i; j < len; j++) {
 							if(asc) {
-								if(resultSet.get(i)[order_col].charAt(0)
-										> resultSet.get(j)[order_col].charAt(0)) {
+								if(resultSet.get(i)[order_col].compareTo(resultSet.get(j)[order_col]) > 0) {
 									temp2 = resultSet.get(i);
 									resultSet.set(i, resultSet.get(j));
 									resultSet.set(j, temp2);
 								}
 							}
 							else {
-								if(resultSet.get(i)[order_col].charAt(0)
-										< resultSet.get(j)[order_col].charAt(0)) {
+								if(resultSet.get(i)[order_col].compareTo(resultSet.get(j)[order_col]) < 0) {
 									temp2 = resultSet.get(i);
 									resultSet.set(i, resultSet.get(j));
 									resultSet.set(j, temp2);
@@ -822,8 +831,7 @@ public class DBConnection {
 				else {
 					for (int i = 0; i < len-1; i++) {
 						for (int j = i; j < len; j++) {
-							if(resultSet.get(i)[colnum].charAt(0)
-									> resultSet.get(j)[colnum].charAt(0)) {
+							if(resultSet.get(i)[colnum].compareTo(resultSet.get(j)[colnum]) > 0) {
 								temp2 = resultSet.get(i);
 								resultSet.set(i, resultSet.get(j));
 								resultSet.set(j, temp2);
@@ -905,16 +913,14 @@ public class DBConnection {
 					for (int i = 0; i < len-1; i++) {
 						for (int j = i; j < len; j++) {
 							if(asc) {
-								if(resultSet.get(i)[colnum].charAt(0)
-										> resultSet.get(j)[colnum].charAt(0)) {
+								if(resultSet.get(i)[colnum].compareTo(resultSet.get(j)[colnum]) > 0) {
 									temp2 = resultSet.get(i);
 									resultSet.set(i, resultSet.get(j));
 									resultSet.set(j, temp2);
 								}
 							}
 							else {
-								if(resultSet.get(i)[colnum].charAt(0)
-										< resultSet.get(j)[colnum].charAt(0)) {
+								if(resultSet.get(i)[colnum].compareTo(resultSet.get(j)[colnum]) < 0) {
 									temp2 = resultSet.get(i);
 									resultSet.set(i, resultSet.get(j));
 									resultSet.set(j, temp2);
@@ -1128,8 +1134,7 @@ public class DBConnection {
 				else {
 					for (int i = 0; i < len-1; i++) {
 						for (int j = i; j < len; j++) {
-							if(resultSet.get(i)[order_col].charAt(0)
-									> resultSet.get(j)[order_col].charAt(0)) {
+							if(resultSet.get(i)[order_col].compareTo(resultSet.get(j)[order_col]) > 0) {
 								temp2 = resultSet.get(i);
 								resultSet.set(i, resultSet.get(j));
 								resultSet.set(j, temp2);
@@ -1233,16 +1238,14 @@ public class DBConnection {
 					for (int i = 0; i < len-1; i++) {
 						for (int j = i; j < len; j++) {
 							if(asc) {
-								if(resultSet.get(i)[order_col].charAt(0)
-										> resultSet.get(j)[order_col].charAt(0)) {
+								if(resultSet.get(i)[order_col].compareTo(resultSet.get(j)[order_col]) > 0) {
 									temp2 = resultSet.get(i);
 									resultSet.set(i, resultSet.get(j));
 									resultSet.set(j, temp2);
 								}
 							}
 							else {
-								if(resultSet.get(i)[order_col].charAt(0)
-										< resultSet.get(j)[order_col].charAt(0)) {
+								if(resultSet.get(i)[order_col].compareTo(resultSet.get(j)[order_col]) < 0) {
 									temp2 = resultSet.get(i);
 									resultSet.set(i, resultSet.get(j));
 									resultSet.set(j, temp2);
@@ -1328,8 +1331,7 @@ public class DBConnection {
 				else {
 					for (int i = 0; i < len-1; i++) {
 						for (int j = i; j < len; j++) {
-							if(resultSet.get(i)[colnum].charAt(0)
-									> resultSet.get(j)[colnum].charAt(0)) {
+							if(resultSet.get(i)[colnum].compareTo(resultSet.get(j)[colnum]) > 0) {
 								temp2 = resultSet.get(i);
 								resultSet.set(i, resultSet.get(j));
 								resultSet.set(j, temp2);
@@ -1439,16 +1441,14 @@ public class DBConnection {
 					for (int i = 0; i < len-1; i++) {
 						for (int j = i; j < len; j++) {
 							if(asc) {
-								if(resultSet.get(i)[colnum].charAt(0)
-										> resultSet.get(j)[colnum].charAt(0)) {
+								if(resultSet.get(i)[colnum].compareTo(resultSet.get(j)[colnum]) > 0) {
 									temp2 = resultSet.get(i);
 									resultSet.set(i, resultSet.get(j));
 									resultSet.set(j, temp2);
 								}
 							}
 							else {
-								if(resultSet.get(i)[colnum].charAt(0)
-										< resultSet.get(j)[colnum].charAt(0)) {
+								if(resultSet.get(i)[colnum].compareTo(resultSet.get(j)[colnum]) < 0) {
 									temp2 = resultSet.get(i);
 									resultSet.set(i, resultSet.get(j));
 									resultSet.set(j, temp2);
@@ -1529,12 +1529,3 @@ public class DBConnection {
 		return true;
 	}
 }
-
-
-
-
-
-
-
-
-

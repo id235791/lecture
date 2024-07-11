@@ -12,7 +12,7 @@ HashMap
 
 	.keySet()		Key들만 모여있는 Set을 리턴
 	.values()		Value들만 모여있는 Collection을 리턴
-	.entrySet()		Entry들이 모여있는 Set
+	.entrySet()		Entry들이 모여있는 Set을 리턴
 
 컬렉션 이용시 주의할 점
 	컬렉션에서는 요소들을 비교할 때 그 요소 타입의 equals() 혹은 hashCode()로
@@ -30,7 +30,7 @@ HashMap
 	}
 
 API(Application Programming Interface)
-	자바 시스템을 제어하기 위해 자바에서 제공하는 명령어들을 의미한다.
+	자바 시스템을 제어하기 위해 자바에서 제공하는 명령어들을 모아놓은 집합체를 의미한다.
 	선배 개발자들이 JAVA에서 코딩을 쉽게 할 수 있도록 미리 만들어 놓은 것
 	API 의 종류는 굉장히 많고 다양하기 때문에 모두 외우는 것은 불가능하다.
 	그렇기 때문에 처음 보는 API라도 설명과 이름, 매개변수 등을 잘 읽고

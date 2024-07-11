@@ -30,7 +30,7 @@ JVM(Java Virtual Machine)
 
 JRE(Java Runtime Environment)
 	자바 실행 환경
-	JVM을 생성해주는 부분
+	JVM을 생성해주는 부분,
 	JVM에서 실행할 때 필요한 라이브러리 파일들과 기타 파일들을 가지고 있다.
 	햇빛, 물, 공기, 흙, ...
 
@@ -41,14 +41,12 @@ JDK(Java Development Kit)
 	자원, 삽, 비료, ...
 
 Java 설치
-	jdk 11 로 설치
-
-	id235761@gmail.com
-	Asdf1234!
+	jdk download 검색, 17버전
 
 통합 개발 환경(IDE)
-	Eclipse 19-12 Eclipse IDE for Enterprise Java Developers
-	https://drive.google.com/file/d/1Wrqc2aAGczVo-YwPiRZrh55aEB4ZxcyU/view?usp=drive_link
+	Eclipse 설치
+	https://www.eclipse.org/downloads/packages/release/2022-12/r
+	Eclipse IDE for Enterprise Java and Web Developers 로 설치
 	
 자바 프로그램의 구조
 
@@ -63,9 +61,10 @@ Java 설치
 	해당하는 클래스, 메소드 등의 영역을 나타낸다.
 	*현재 선언중임을 의미한다.
 
-	public class 클래스명{
-		해당 클래스의 영역
+	public class PrintTest1 {
+		PrintTest1 클래스의 영역
 	}
+
 
 주석
 	해석하지 않고 싶은 문장 앞에 사용한다.
@@ -139,8 +138,8 @@ Java 설치
 	자료형 변수명 = 초기값;
 	자료형 변수명;
 
-	int x = 10; //선언
-	x = 5; //사용
+	int x = 10;	//선언
+	x = 5;		//사용
 
 변수 선언시 RAM
 	int x = 10;
@@ -153,29 +152,31 @@ Java 설치
 	초기화를 해준다.(초기값을 넣어준다)
 	되도록 선언부(구역의 상단부)에 한꺼번에 선언한다.
 
-변수명 주의사항
-	숫자는 맨 앞에 쓸 수 없다.(1num -> num1)
-	예약어는 쓸 수 없다.(class, public, int)
-	특수문자는 쓸 수 없다.
-	공백을 쓸 수 없다.
-	_(언더바)는 사용 가능하다.(now_here)
-	카멜 표기법 : nowHere
-
-	되도록 소문자로 사용한다.(시작은 무조건 소문자로!)
-	되도록 한글은 사용하지 않는다.
-	뜻이 있는 명사형 단어를 사용한다.
-
 변수의 사용
 	이미 선언된 변수의 변수명을 그대로 사용한다.
 
 	int data = 10;
 
-	data = 5;	(공간을 사용)
-	println(data);	(값을 사용)
+	data = 5;		(공간을 사용)
+	println(data);		(값을 사용)
 
 변수의 사용 이유
 	1. 반복되는 같은 의미의 값을 쉽게 관리하기 위해서
-	2. 값에 의미부여를 하기 위해서
+	2. 의미가 없는 값에 의미부여를 하기 위해서(변수명도 나름 중요)
+		double height = 180.22;
+		syso(height);
+
+변수명 주의사항
+	숫자는 맨 앞에 쓸 수 없다.(1num -> num1)
+	예약어는 쓸 수 없다.(class, public, int, ...)
+	특수문자는 쓸 수 없다.
+	공백은 쓸 수 없다.
+	_(언더바)는 사용 가능하다.(now_here)
+	카멜 표기법 : nowHere
+
+	되도록 소문자로 사용한다.(시작은 무조건 소문자로)
+	되도록 한글은 사용하지 않는다.
+	뜻이 있는 명사형 단어를 사용한다.
 
 .(하위 연산자)
 	A.b : A 안의 b / A 의 b

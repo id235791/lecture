@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class LoginView {
 	public LoginView() {
 		Scanner sc = new Scanner(System.in);
-		BankManager manger = new BankManager();
+		BankManager manager = new BankManager();
 		
 		System.out.print("계좌번호 : ");
 		String account = sc.next();
@@ -13,9 +13,9 @@ public class LoginView {
 		String pw = sc.next();
 		
 		//로그인 처리 메소드 호출
-		if(manger.login(account,pw)) {
-			//성공이기 때문에 BankManger.session 에 특정 객체가 담겨있는 상태
-			System.out.println(BankManager.session.name+"님 다시 만나니 반가워요~");
+		if(manager.login(account,pw)) {
+			//성공이기 때문에 BankManager.session에 특정 객체가 담겨져 있는 상태이므로 내부에서 사용 가능
+			System.out.println(BankManager.session.name+"님 다시 보니 반가워요~");
 			//메인화면
 			new MainView();
 		}
@@ -24,8 +24,6 @@ public class LoginView {
 		}
 	}
 }
-
-
 
 
 

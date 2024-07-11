@@ -1,7 +1,8 @@
 package bms;
 
-//1000원 입금시 500원만 입금
-public class Kookmin extends Bank{
+//1000원 입금 시 500원만 입금 
+public class Kookmin extends Bank {
+
 	public Kookmin(String account, String pw, String name) {
 		super(account, pw, name);
 	}

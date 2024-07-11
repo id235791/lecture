@@ -30,6 +30,7 @@ public class TestData {
 //		업 캐스팅 되었을 때만 가능하다. 따라서 instanceof 로 타입 비교부터 먼저 해준다.
 		
 		if(obj == null) { return false; }
+		if(obj == this) { return true; }
 		//1. 타입 비교
 		if(obj instanceof TestData) {
 			//2. 다운 캐스팅

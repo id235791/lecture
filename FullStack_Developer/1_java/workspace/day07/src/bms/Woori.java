@@ -11,6 +11,6 @@ public class Woori extends Bank {
 	void show() {
 		balance /= 2;
 		super.show();
-	}	
+	}
 	
 }

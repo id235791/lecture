@@ -1,7 +1,7 @@
-package multi;
+package multi_inh;
 
 public class C {
-	void f() {
+	public void f() {
 		System.out.println("C 클래스의 f()");
 	}
 }

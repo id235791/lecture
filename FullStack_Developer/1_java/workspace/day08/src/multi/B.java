@@ -1,4 +1,4 @@
-package multi;
+package multi_inh;
 
 public interface B {
 	default void f() {

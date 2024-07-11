@@ -10,7 +10,7 @@ public class Student {
 	int math;
 	int tot;
 	
-	Student(String name, int ban, int bun){
+	public Student(String name, int ban, int bun) {
 		this.name = name;
 		this.ban = ban;
 		this.bun = bun;

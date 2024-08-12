@@ -73,8 +73,8 @@ document 객체
 요소 찾기
 	getElementById()		해당 값을 id 속성으로 가지고 있는 요소 선택
 	getElementsByClassName()	해당 값을 class 속성으로 가지고 있는 요소들을 선택
-	getElementsByTagName()		해당 값을 name 속성으로 가지고 있는 요소들을 선택
-	getElementsByName()		해당 태그들로 만들어진 요소들을 선택
+	getElementsByTagName()		해당 태그들로 만들어진 요소들을 선택
+	getElementsByName()		해당 값을 name 속성으로 가지고 있는 요소들을 선택
 
 	querySelector()			css 선택자에 해당하는 요소 선택
 	querySelectorAll()		css 선택자에 해당하는 요소들을 선택

@@ -14,6 +14,7 @@ public interface BoardMapper {
 	int insertBoard(BoardDTO board);
 	
 	List<BoardDTO> getList(Criteria cri);
+	List<BoardDTO> getListByUserid(String userid);
 	long getTotal(Criteria cri);
 	long getLastNum(String userid);
 	BoardDTO getBoardByNum(long boardnum);

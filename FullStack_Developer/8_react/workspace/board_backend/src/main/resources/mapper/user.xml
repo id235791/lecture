@@ -12,7 +12,10 @@
 		select * from t_user where userid=#{userid}
 	</select>
 	<update id="updateUser">
-		
+		update t_user
+		set userpw=#{userpw}, zipcode=#{zipcode}, addr=#{addr},
+		addrdetail=#{addrdetail}, addretc=#{addretc}, userhobby=#{userhobby}
+		where userid=#{userid}
 	</update>
 	<delete id="deleteUser">
 		delete from t_user where userid=#{userid}

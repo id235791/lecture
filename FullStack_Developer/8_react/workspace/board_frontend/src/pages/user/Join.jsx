@@ -2,11 +2,11 @@ import axios from "axios";
 import Button from "../../components/Button";
 import DaumPostcode from "../../components/DaumPostCode";
 import { useNavigate } from "react-router-dom";
+import Hobby from "../../components/Hobby";
 
 const Join = () => {
     const navigate = useNavigate();
     let pwTest = [false,false,false,false,false]
-    const userhobby = [];
     const checkId = (e) => {
         e.preventDefault();
         const result = document.getElementById(`result`);
@@ -24,15 +24,15 @@ const Join = () => {
                 if(xhr.status == 200){
                     let txt = xhr.responseText.trim();
                     if(txt == "O"){
-
                         result.innerHTML = "사용할 수 있는 아이디입니다!";
                         document.joinForm.userpw.focus();
                     }
-                    else{
-                        result.innerHTML = "중복된 아이디가 있습니다!";
-                        userid.value = "";
-                        userid.focus();
-                    }
+                    
+                }
+                else{
+                    result.innerHTML = "중복된 아이디가 있습니다!";
+                    userid.value = "";
+                    userid.focus();
                 }
             }
         }
@@ -46,7 +46,6 @@ const Join = () => {
         const pw_check = document.getElementById(`pw_check`);
         const reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[~?!@-]).{4,}$/;
         const c = document.querySelectorAll(`.pw_check span`);
-        console.log(pwTest);
         if(userpw.value.length == 0){
             for(let i=0;i<5;i++){
                 pwTest[i] = false;
@@ -96,89 +95,6 @@ const Join = () => {
         }
     }
 
-    let flag1=true;
-    let flag2=true;
-    const addHobby = (e) => {
-        flag2 = false;
-        if(e){
-            e.preventDefault();
-        }
-        const joinForm = document.joinForm;
-        const hobby_list = document.getElementsByClassName("hobby_list")[0];
-        let hobby = joinForm.hobby;
-        if(hobby.value == ""){
-            alert("취미를 입력해 주세요.")
-            hobby.focus();
-            return;
-        }
-        if(userhobby.indexOf(hobby.value) != -1){
-            alert("중복된 취미입니다.")
-            hobby.focus();
-            hobby.value = "";
-            return;
-        }
-        if(!/^[가-힣a-zA-Z\s]+$/.test(hobby.value)){
-            alert("정확한 취미를 입력해 주세요.")
-            hobby.focus();
-            hobby.value = "";
-            return;
-        }
-        if(userhobby.length >= 5){
-            alert("취미는 5개 이하로 입력해 주세요.")
-            return;
-        }
-        const inputHobby = document.createElement("span");
-        inputHobby.classList = "userhobby";
-        inputHobby.name = "userhobby";
-        inputHobby.innerHTML = "<span>"+hobby.value+"</span>";
-        userhobby.push(hobby.value);
-        
-        const xBox = document.createElement("a")
-        xBox.classList = "xBox";
-        xBox.addEventListener('click',function(e){
-            let deleteHobby = e.target.parentElement.innerText;
-            for(let i in userhobby){
-                if(userhobby[i] == deleteHobby){
-                    userhobby.splice(i,1);
-                    break;
-                }
-            }
-            e.target.parentElement.remove();
-        })
-        inputHobby.appendChild(xBox);
-        
-        hobby_list.appendChild(inputHobby);
-        
-        const hobbies = document.querySelectorAll(".userhobby>span");
-        for(let i=0;i<hobbies.length;i++){
-            hobbies[i].addEventListener('click',deleteHobby)
-        }
-        
-        hobby.value="";
-        hobby.focus();
-    }
-    const hobbyKeyUp = (e) => {
-        console.log(flag1, flag2);
-        if(e.key === "Enter"){
-            if(flag1 && flag2){
-                flag1 = false;
-                addHobby();
-            }
-        }
-        flag1 = true;
-        flag2 = true;
-    }
-
-    const deleteHobby = (e) => {
-        let deleteHobby = e.target.innerText;
-        for(let i in userhobby){
-            if(userhobby[i] == deleteHobby){
-                userhobby.splice(i,1);
-                break;
-            }
-        }
-        e.target.parentElement.remove();
-    }
     const clickJoin = (e) => {
         e.preventDefault();
         const joinForm = document.joinForm;
@@ -254,15 +170,12 @@ const Join = () => {
             addrdetail.focus();
             return false;
         }
-        console.log(userhobby);
-        if(userhobby.length == 0){
+        const userhobby = joinForm.userhobby;
+        if(userhobby.value.length == 0){
             alert("취미는 적어도 1개 이상 입력해 주세요!");
             joinForm.hobby.focus();
             return false;
         }
-
-        const hobbyTag = joinForm.userhobby;
-        hobbyTag.value = userhobby.join("\\");
 
         const user = {
             "userid":userid.value,
@@ -273,13 +186,12 @@ const Join = () => {
             "addr":joinForm.addr.value,
             "addrdetail":addrdetail.value,
             "addretc":joinForm.addretc.value,
-            "userhobby":hobbyTag.value
+            "userhobby":userhobby.value
         }
         console.log(user);
 
         axios.post('/api/user/join',user)
         .then(resp =>{
-            console.log(resp);
             if(resp.data == "O"){
                 alert("회원가입 성공!")
                 navigate("/");
@@ -381,13 +293,7 @@ const Join = () => {
                             <tr className="hobby_area">
                                 <th>취미</th>
                                 <td>
-                                    <div>
-                                        <div className="hobby_input">
-                                            <input type="text" name="hobby" onKeyUp={hobbyKeyUp}/><Button value="추가" onClick={addHobby}></Button>
-                                        </div>
-                                        <div className="hobby_list"></div>
-                                        <input type="hidden" value="" name="userhobby"/>
-                                    </div>
+                                    <Hobby></Hobby>
                                 </td>
                             </tr>
                             <tr>

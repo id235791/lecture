@@ -35,6 +35,9 @@
 		<include refid="cri"></include>
 		boardnum > 0 order by boardnum desc limit #{startrow},#{amount}
 	</select>
+	<select id="getListByUserid">
+		select * from t_board where userid=#{userid}
+	</select>
 	<select id="getTotal">
 		select count(*) from t_board where
 		<include refid="cri"></include>

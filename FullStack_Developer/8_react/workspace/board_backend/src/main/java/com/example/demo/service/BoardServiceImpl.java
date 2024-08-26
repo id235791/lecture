@@ -19,6 +19,7 @@ import com.example.demo.domain.dto.BoardDTO;
 import com.example.demo.domain.dto.Criteria;
 import com.example.demo.domain.dto.FileDTO;
 import com.example.demo.domain.dto.PageDTO;
+import com.example.demo.domain.dto.ReplyDTO;
 import com.example.demo.mapper.BoardMapper;
 import com.example.demo.mapper.FileMapper;
 import com.example.demo.mapper.ReplyMapper;

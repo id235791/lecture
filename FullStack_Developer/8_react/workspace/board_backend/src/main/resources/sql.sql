@@ -30,6 +30,7 @@ insert into t_board (boardtitle,boardcontents,userid) values('테스트 제목3'
 insert into t_board (boardtitle,boardcontents,userid) values('테스트 제목4','테스트 내용4','durian');
 
 insert into t_board (boardtitle,boardcontents,userid) (select boardtitle, boardcontents, userid from t_board);
+select * from t_board;
 
 drop table t_file;
 create table t_file(
@@ -48,3 +49,5 @@ create table t_reply(
     boardnum bigint,
     userid varchar(300)
 );
+select * from t_reply;
+delete from t_reply where replynum = 8;

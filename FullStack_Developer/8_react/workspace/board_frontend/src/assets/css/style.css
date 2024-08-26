@@ -1092,7 +1092,7 @@ img.thumbnail:hover{
 	border-radius: 5px;
 	text-align: center;	
 }
-.reply_line > .replyForm > div > textarea{
+.reply_line textarea{
 	width:600px; height:80px;
 	border:2px solid #ccc;
 	border-radius: 5px;
@@ -1111,6 +1111,7 @@ img.thumbnail:hover{
 	border-top:1px solid gray;
 	padding:0;
 	padding-top:30px;
+	margin-top: 20px;
 }
 .replies li.no-reply{
 	text-align: center;

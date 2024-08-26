@@ -3,13 +3,16 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 
-const Header = ({loginUser}) => {
+const Header = ({}) => {
+    const [loginUser,setLoginUser] = useState("");
     const navigate = useNavigate();
     useEffect(()=>{
-        if(loginUser == ""){
+        axios.get(`/api/user/loginCheck`)
+        .then(resp=>{ setLoginUser(resp.data) })
+        .catch((e)=>{
             alert("로그인 후 이용하세요!");
             navigate("/")
-        }
+        });
     },[])
 
     const clickLogout = ()=>{

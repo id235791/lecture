@@ -59,10 +59,10 @@
 					<option value="TW">제목 또는 작성자</option>
 					<option value="TCW">제목 또는 내용 또는 작성자</option>
 				</select>
-				<input type="search" id="keyword" name="keyword" th:value="">
+				<input type="search" id="keyword" name="keyword">
 				<a id="search-btn" class="btn" onclick="">검색</a>
-				<input type="hidden" name="pagenum" th:value="">
-				<input type="hidden" name="amount" th:value="">
+				<input type="hidden" name="pagenum">
+				<input type="hidden" name="amount">
 			</form>
 		</div>
 	</div>
@@ -82,7 +82,7 @@
 		</div>
 		<div class="chat-input">
 			<form>
-				<input type="hidden" id="userid" name="userid" th:value="">
+				<input type="hidden" id="userid" name="userid">
 				<span class="echo-receiver"></span> <input type="text"
 					id="chat-input" placeholder="Send a message..."
 					onkeyup="sendEcho();" />

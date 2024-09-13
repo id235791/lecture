@@ -10,22 +10,15 @@ import com.kh.demo.domain.dto.Criteria;
 import com.kh.demo.domain.dto.FileDTO;
 
 public interface BoardService {
-	boolean regist(BoardDTO board, MultipartFile[] files) throws Exception;
-	
-	BoardDTO getDetail(long boardnum);
 	List<BoardDTO> getList(Criteria cri);
 	long getTotal(Criteria cri);
+	boolean regist(BoardDTO board, MultipartFile[] files) throws Exception;
+	BoardDTO getDetail(long boardnum);
 	long getLastNum(String userid);
-	ArrayList<String> getHotBoardList(List<BoardDTO> list);
-	ArrayList<Long> getReplyCntList(List<BoardDTO> list);
-	
+	void increaseReadCount(long boardnum);
 	boolean modify(BoardDTO board, MultipartFile[] files, String updateCnt) throws Exception;
-	boolean increaseReadCount(long boardnum);
-	
 	boolean remove(long boardnum);
-
 	List<FileDTO> getFiles(long boardnum);
-	
 }
 
 

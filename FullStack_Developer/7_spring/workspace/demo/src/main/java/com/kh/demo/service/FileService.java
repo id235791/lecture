@@ -1,9 +1,10 @@
-package com.kh.demo.service;
+package com.example.demo.service;
+
+import java.util.HashMap;
 
 import org.springframework.core.io.Resource;
-import org.springframework.http.ResponseEntity;
 
 public interface FileService {
-	ResponseEntity<Resource> getThumbnailResource(String systemname) throws Exception;
-	ResponseEntity<Resource> downloadFile(String systemname, String orgname) throws Exception;
+	HashMap<String, Object> getTumbnailResource(String systemname) throws Exception;
+	Resource downloadFile(String systemname, String orgname) throws Exception;
 }

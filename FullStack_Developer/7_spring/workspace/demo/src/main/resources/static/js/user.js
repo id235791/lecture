@@ -1,144 +1,4 @@
-const result = document.getElementById("result");
-//비밀번호 유효성 검사를 위한 배열
-let pwTest = [false,false,false,false,false]
-const arHobby = [];
-
-function sendit(){
-    const joinForm = document.joinForm;
-
-    const userid = joinForm.userid;
-    if(userid.value == ""){
-    	alert("아이디를 입력하세요!");
-    	userid.focus();
-    	return;
-    }
-    if(userid.value.length<5 || userid.value.length>12){
-    	alert("아이디는 5자 이상 12자 이하로 입력하세요!");
-    	userid.focus();
-    	return;
-    }
-    
-    if(result.innerHTML == ""){
-    	alert("아이디 중복검사를 진행해주세요!");
-    	userid.focus();
-    	return;
-    }
-    if(result.innerHTML == "중복된 아이디가 있습니다!"){
-    	alert("중복체크 통과 후 가입이 가능합니다!");
-    	userid.focus();
-    	return;
-    }
-    
-    //아래쪽의 pwcheck() 함수를 통해 유효성 검사를 통과했다면 pwTest 배열에는 true값만 존재한다.
-    //무언가 실패했다면 false가 포함되어 있으므로, 반복문을 통해 해당 배열을 보며 false값이 있는지 검사
-    for(let i=0;i<5;i++){
-    	if(!pwTest[i]){
-    		alert("비밀번호 확인을 다시하세요!");
-    		userpw.value="";
-    		userpw.focus();
-    		return;
-    	}
-    }
-    const username = joinForm.username;
-    const exp_name = /^[가-힣]+$/;
-    if(!exp_name.test(username.value)){
-    	alert("이름에는 한글만 입력하세요!");
-    	username.focus();
-    	return false;
-    }
-    
-    const usergender = joinForm.usergender;
-    if(!usergender[0].checked && !usergender[1].checked){
-    	alert("성별을 선택하세요!");
-    	return;
-    }
-    const foreigner = joinForm.foreigner;
-    if(!foreigner[0].checked && !foreigner[1].checked){
-    	alert("국적을 선택하세요!");
-    	return;
-    }
-    
-    const zipcode = joinForm.zipcode;
-    if(zipcode.value == ""){
-        alert("주소찾기를 진행해 주세요!");
-        findAddr();
-        return;
-    }
-    const addrdetail = joinForm.addrdetail;
-    if(addrdetail.value == ""){
-        alert("상세주소를 입력해 주세요!");
-        addrdetail.focus();
-        return;
-    }
-
-    if(arHobby.length == 0){
-    	alert("취미는 적어도 1개 이상 입력해 주세요!");
-    	joinForm.hobby.focus();
-    	return;
-    }
-    const hobbyTag = joinForm.userhobby;
-    hobbyTag.value = arHobby.join("\\");// "축구\농구\영화";
-    
-    joinForm.submit();
-}
-function pwcheck(){
-    const userpw = document.joinForm.userpw;
-    const userpw_re = document.joinForm.userpw_re;
-    //아래쪽에 있는 귀여운 span 태그들 가져오기
-    const c = document.querySelectorAll(".pw_check span");
-    //영어 대문자, 영어 소문자, 숫자, 특수문자를 한 글자씩 포함하는지 확인하는 정규식
-    const reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[~?!@-]).{4,}$/;
-    
-    if(userpw.value == ""){
-    	for(let i=0;i<5;i++){
-    		pwTest[i] = false;
-    		c[i].classList = "";
-    	}
-    	return;
-    }
-    if(!reg.test(userpw.value)){
-    	c[0].classList = "pcf";
-    	pwTest[0] = false;
-    }
-    else{
-    	c[0].classList = "pct";
-    	pwTest[0] = true;
-    }
-    if(userpw.value.length < 8){
-    	c[1].classList = "pcf";
-    	pwTest[1] = false;
-    }
-    else{
-    	c[1].classList = "pct";
-    	pwTest[1] = true;
-    }
-    //같은 문자가 네번 연속해서 있는지 검사하는 정규식
-    if(/(\w)\1\1\1/.test(userpw.value)){
-    	c[2].classList = "pcf";
-    	pwTest[2] = false;
-    }
-    else{
-    	c[2].classList = "pct";
-    	pwTest[2] = true;
-    }
-    //[]안의 문자들로 문자열이 이루어져 있는지 검사하는 정규식
-    if(!/^[a-zA-Z0-9~?!@-]*$/.test(userpw.value)){
-    	c[3].classList = "pcf";
-    	pwTest[3] = false;
-    }
-    else{
-    	c[3].classList = "pct";
-    	pwTest[3] = true;
-    }
-    if(userpw.value != userpw_re.value){
-    	c[4].classList = "pcf";
-    	pwTest[4] = false;
-    }
-    else{
-    	c[4].classList = "pct";
-    	pwTest[4] = true;
-    }
-}
+//주소찾기 관련된 함수
 function findAddr() {
     new daum.Postcode({
         oncomplete: function(data) {
@@ -186,77 +46,9 @@ function findAddr() {
         }
     }).open();
 }
-function addHobby(){
-	const joinForm = document.joinForm;
-	const hobby_list = document.getElementsByClassName("hobby_list")[0];
-	const hobby = joinForm.hobby;
-	
-	if(hobby.value == ""){
-		alert("취미를 입력해 주세요!");
-		hobby.focus();
-		return;
-	}
-	if(arHobby.indexOf(hobby.value) != -1){
-		alert("중복된 취미입니다!");
-		hobby.focus();
-		hobby.value="";
-		return;
-	}
-	if(arHobby.length == 5){
-		alert("취미는 5개 이하로 입력해주세요!");
-		return;
-	}
-	
-	//span 태그 노드 생성
-	const inputHobby = document.createElement("span");
-	//span 태그 노드 클래스 값으로 userhobby
-	inputHobby.classList = "userhobby";
-	//span 태그 노드 name 값으로 userhobby
-	inputHobby.name = "userhobby";
-	//span 태그 노드 내부 내용으로 입력한 취미 문자열 설정
-	inputHobby.innerHTML = hobby.value;
-	//취미 목록 배열에 입력한 취미 문자열 추가
-	arHobby.push(hobby.value);
-	
-	//a태그 노드 생성
-	const xBox = document.createElement("a");
-	//디자인을 위한 클래스 설정
-	xBox.classList = "xBox";
-	//위에서 만든 span 태그의 자식으로 xBox 추가
-	inputHobby.appendChild(xBox);
-	//추가되어 있는 span태그 클릭 시 취미를 지워주기 위한 이벤트 설정
-	inputHobby.addEventListener('click',deleteHobby);
-	//아래쪽의 취미 목록을 보여줄 div의 자식으로 span태그 추가
-	hobby_list.appendChild(inputHobby);
-	
-	hobby.value = "";
-	hobby.focus();
-}
-function hobbyKeyup(){
-	if(window.event.keyCode == 13){
-		addHobby();
-	}
-}
-function deleteHobby(e){
-	let deleteNode = null;
-	if(e.target.classList == "xBox"){
-		deleteNode = e.target.parentNode;
-	}
-	else{
-		deleteNode = e.target;
-	}
-	
-	let txt = deleteNode.innerText;
-	console.log(txt);
-	for(let i in arHobby){
-		if(arHobby[i] == txt){
-			arHobby.splice(i,1);
-			break;
-		}
-	}
-	
-	deleteNode.remove();
-}
+
+//중복체크 관련된 코드
+const result = document.getElementById("result");
 function checkId(){
 	const xhr = new XMLHttpRequest();
 	const userid = document.joinForm.userid;
@@ -280,15 +72,216 @@ function checkId(){
 					userid.focus();
 				}
 			}
-		}
+		}	
 	}
 	
 	xhr.open("GET","/user/checkId?userid="+userid.value);
 	xhr.send();
 }
 
+//비밀번호 검사에 관련된 코드들
+//비밀번호 유효성 검사를 위한 배열
+const pwTest = [false,false,false,false,false];
+function pwcheck(){
+	const userpw = document.joinForm.userpw;
+	const userpw_re = document.joinForm.userpw_re;
+	//아래쪽에 있는 귀여운 span 태그들 가져오기
+	const spans = document.querySelectorAll(".pw_check span");
+	
+	//영어 대문자, 영어 소문자, 숫자, 특수문자를 한 글자씩 포함하는지 확인하는 정규식
+	const reg = /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[~?!@-]).{4,}$/
+	
+	//무언가 키를 눌렀지만 value가 비었다는 뜻은 다 지웠다는 뜻
+	//모든 span태그들 디자인 초기화, 유효성 검사용 배열 초기화
+	if(userpw.value == ""){
+		for(let i=0;i<5;i++){
+			pwTest[i] = false;
+			spans[i].classList="";
+		}
+		return;
+	}
+	
+	if(!reg.test(userpw.value)){
+		pwTest[0] = false;
+		spans[0].classList = "pcf"
+	}
+	else{
+		pwTest[0] = true;
+		spans[0].classList = "pct";
+	}
+	if(userpw.value.length < 8){
+		pwTest[1] = false;
+		spans[1].classList = "pcf"
+	}
+	else{
+		pwTest[1] = true;
+		spans[1].classList = "pct"
+	}
+	//같은 문자가 네번 연속해서 있는지 검사하는 정규식
+	if(/(\w)\1\1\1/.test(userpw.value)){
+		pwTest[2] = false;
+		spans[2].classList = "pcf";
+	}
+	else{
+		pwTest[2] = true;
+		spans[2].classList = "pct";
+	}
+	//[]안의 문자들로 문자열이 이루어져 있는지 검사하는 정규식
+	if(!/^[a-zA-Z0-9~?!@-]*$/.test(userpw.value)){
+		pwTest[3] = false;
+		spans[3].classList = "pcf";
+	}
+	else{
+		pwTest[3] = true;
+		spans[3].classList = "pct";
+	}
+	if(userpw.value != userpw_re.value){
+		pwTest[4] = false;
+		spans[4].classList = "pcf";
+	}
+	else{
+		pwTest[4] = true;
+		spans[4].classList = "pct";
+	}
+}
+const arHobby = [];
+function addHobby(){
+	const joinForm = document.joinForm;
+	const hobby_list = document.getElementsByClassName("hobby_list")[0];
+	const hobby = joinForm.hobby;
 
+	if(hobby.value == ""){
+		alert("취미를 입력해 주세요!");
+		hobby.focus();
+		return;
+	}
+	if(arHobby.indexOf(hobby.value) != -1){
+		alert("중복된 취미입니다!");
+		hobby.focus();
+		hobby.value = "";
+		return;
+	}
+	if(arHobby.length == 5){
+		alert("취미는 5개 이하로 입력해주세요!")
+		return;
+	}
+	//span 태그 노드 생성
+	const inputHobby = document.createElement("span");
+	//span 태그 노드 클래스 속성 값으로 userhobby
+	inputHobby.classList = "userhobby";
+	//span 태그 노드 name 속성 값으로 userhobby
+	inputHobby.name = "userhobby";
+	//span 태그 노드 내부 내용으로 입력한 취미 문자열 설정
+	inputHobby.innerHTML = hobby.value;
+	//취미 목록 배열에 입력한 취미 문자열 추가
+	arHobby.push(hobby.value);
+	
+	//a태그 노드 생성
+	const xBox = document.createElement("a");
+	//a 태그 노드 클래스 속성 값으로 xBox
+	xBox.classList = "xBox";
+	//만들어진 a태그를 위에 만든 span 태그의 자식으로 추가
+	inputHobby.appendChild(xBox);
+	//추가되어 있는 취미 삭제 이벤트 등록
+	inputHobby.addEventListener("click",deleteHobby)
+	//아래쪽의 취미 목록을 보여줄 div의 자식으로 span태그 추가
+	hobby_list.appendChild(inputHobby);
+	
+	hobby.value = "";
+	hobby.focus();
+}
+function hobbyKeyup(){
+	if(window.event.keyCode == 13){
+		addHobby();
+	}
+}
+function deleteHobby(e){
+	//e.target : 클릭된 대상(1. span태그 클릭 / 2. a태그 클릭)
+	let deleteNode = null;
+	if(e.target.classList == "xBox"){
+		deleteNode = e.target.parentNode;
+	}
+	else{
+		deleteNode = e.target;
+	}
+	
+	let txt = deleteNode.innerText;
+	for(let i in arHobby){
+		if(arHobby[i] == txt){
+			arHobby.splice(i,1);
+			break;
+		}
+	}
+	deleteNode.remove();
+}
 
+function sendit(){
+	const joinForm = document.joinForm;
+	
+	const userid = joinForm.userid;
+	if(userid.value == ""){
+		alert("아이디를 입력하세요!");
+		userid.focus();
+		return;
+	}
+	if(result.innerHTML == ""){
+		alert("아이디 중복검사를 진행해주세요!");
+		userid.focus();
+		return;	
+	}
+	if(result.innerHTML == "중복된 아이디가 있습니다!"){
+		alert("중복체크 통과 후 가입이 가능합니다!");
+		userid.focus();
+		return;
+	}
+	//아래쪽의 pwcheck() 함수를 통해 유효성 검사를 통과했다면 pwTest 배열에는 true값만 존재한다.
+    //무언가 실패했다면 false가 포함되어 있으므로, 반복문을 통해 해당 배열을 보며 false값이 있는지 검사
+	for(let i=0;i<5;i++){
+		if(!pwTest[i]){
+			alert("비밀번호 확인을 다시 해주세요!");
+			userpw.value = "";
+			userpw.focus();
+			return;
+		}
+	}
+	const username = joinForm.username;
+	const exp_name = /^[가-힣]+$/;
+	if(!exp_name.test(username.value)){
+		alert("이름에는 한글만 입력하세요!");
+		username.focus();
+		return false;
+	}
+	const usergender = joinForm.usergender;
+	if(!usergender[0].checked && !usergender[1].checked){
+		alert("성별을 선택하세요!")
+		return;
+	}
+	const foreigner = joinForm.foreigner;
+	if(!foreigner[0].checked && !foreigner[1].checked){
+		alert("국적을 선택하세요!")
+		return;
+	}
+	const zipcode = joinForm.zipcode;
+	if(zipcode.value == ""){
+	    alert("주소찾기를 진행해 주세요!");
+	    findAddr();
+	    return;
+	}
+	const addrdetail = joinForm.addrdetail;
+	if(addrdetail.value == ""){
+	    alert("상세주소를 입력해 주세요!");
+	    addrdetail.focus();
+	    return;
+	}
+	if(arHobby.length == 0){
+		alert("취미는 적어도 1개 이상 입력해주세요!");
+		joinForm.hobby.focus();
+		return;
+	}
+	const hobbyTag = joinForm.userhobby;
+	hobbyTag.value = arHobby.join("\\");// "축구\농구\영화";
+	joinForm.submit();
+}
 
 
 

@@ -103,13 +103,17 @@
 		</div>
 		<div class="chat-input">
 			<form>
-				<input type="hidden" id="userid" name="userid" th:value="${session.loginUser}">
-				<span class="echo-receiver"></span> <input type="text"
-					id="chat-input" placeholder="Send a message..."
-					onkeyup="sendEcho();" />
-				<button type="submit" class="chat-submit" id="chat-submit">
-					<span class="material-symbols-outlined">send</span>
-				</button>
+				<div id="chat-text-box">
+					<input type="hidden" id="userid" name="userid" th:value="${session.loginUser}">
+					<span class="echo-receiver"></span> <input type="text"
+						id="chat-input" placeholder="Send a message..."
+						onkeyup="" />
+				</div>
+				<div id="chat-btn">
+					<button type="submit" class="chat-submit" id="chat-submit">
+						<span class="material-symbols-outlined">send</span>
+					</button>
+				</div>
 			</form>
 		</div>
 	</div>
@@ -187,24 +191,23 @@
 		$(".chat-box").toggle('scale');
 		socket = new WebSocket('ws://localhost:8080/chat/'+$('#userid').val());
 		
-		//소켓 연결에 오류가 발생했을 때 수행할 이벤트
+		//클라이언트 측에서 소켓 연결에 오류가 발생했을 때 수행할 이벤트
 		socket.onerror = function(e){}
-		//소켓 연결이 열렸을 때 수행할 이벤트
+		//클라이언트 측에서 소켓 연결이 열렸을 때 수행할 이벤트
 		socket.onopen = function(e){
-			socket.send('in : '+$('#userid').val())
+			console.log(e)
 		}
-		//소켓 연결을 통해 메세지가 전달되었을 때 수행할 이벤트
+		//클라이언트 측에 소켓 연결을 통해 메세지가 전달되었을 때 수행할 이벤트
 		socket.onmessage = function(e){
 			onMessage(e);
 		}
-		//소켓 연결을 종료할 때 수행할 이벤트
+		//클라이언트 측에서 소켓 연결을 종료할 때 수행할 이벤트
 		socket.onclose = function(e){
 			$(".chat-logs").html("");
 		}
 	})
 	//닫기 버튼을 클릭했을 때 호출될 이벤트, 창 닫기, 소켓 접속 종료
 	$(".chat-box-toggle").click(function(){
-		socket.send('out : '+$("#userid").val());
 		$("#chat-circle").toggle('scale');
 		$(".chat-box").toggle('scale');
 		socket.close();

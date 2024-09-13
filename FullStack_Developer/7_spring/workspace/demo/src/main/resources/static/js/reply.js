@@ -1,48 +1,43 @@
 const replyService = {
-	insert:function(data,callback){
-		console.log("전송 :",data);
+	insert:function(reply,callback,err){
 		$.ajax({
 			type:"POST",
 			url:"/reply/regist",
-			data:JSON.stringify(data),
+			data:JSON.stringify(reply),
 			contentType:"application/json;charset=utf-8",
-			success:function(result,status,xhr){
-				callback(result)
+			success:function(){
+				callback();
 			},
-			error:function(result,status,xhr){
-				
+			error:function(){
+				err();
 			}
 		})
 	},
-	selectAll:function(data,callback){
-		let boardnum = data.boardnum;
-		let pagenum = data.pagenum;
-		
+	selectAll:function(data, callback){
+		const {pagenum,boardnum} = data;
+		//121번 게시글의 2페이지 댓글 리스트 요청 : /reply/121/2
 		$.getJSON(
-			`/reply/list/${boardnum}/${pagenum}`,
+			`/reply/${boardnum}/${pagenum}`,
 			function(data){
-				//data : 응답되는 JSON ({ replyCnt:댓글갯수, list:[...] })
+				//data : 응답되는 JSON 형태의 객체({replyCnt:댓글개수, list:[...]})
 				callback(data.replyCnt, data.list);
 			}
 		)
 	},
-	delete:function(replynum,callback,error){
+	delete:function(replynum,callback){
 		$.ajax({
-			type:"DELETE",
 			url:`/reply/${replynum}`,
+			type:"DELETE",
 			success:function(result){
 				callback(result);
-			},
-			error:function(result){
-				error(result);
 			}
 		})
 	},
-	update:function(data,callback){
+	update:function(reply, callback){
 		$.ajax({
+			url:`/reply/${reply.replynum}`,
 			type:"PUT",
-			url:"/reply/"+data.replynum,
-			data:JSON.stringify(data),
+			data:JSON.stringify(reply),
 			contentType:"application/json;charset=utf-8",
 			success:function(result){
 				callback(result);
@@ -50,7 +45,6 @@ const replyService = {
 		})
 	}
 }
-
 
 
 

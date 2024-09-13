@@ -1,9 +1,10 @@
-package com.kh.demo.service;
+package com.example.demo.service;
 
-import com.kh.demo.domain.dto.UserDTO;
+import com.example.demo.domain.UserDTO;
 
 public interface UserService {
 	boolean join(UserDTO user);
 	boolean login(String userid, String userpw);
 	boolean checkId(String userid);
+	boolean leaveId(String userid);
 }

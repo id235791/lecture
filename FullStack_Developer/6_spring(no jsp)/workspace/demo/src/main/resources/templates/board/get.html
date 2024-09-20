@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>get</title>
+<link href="/css/style.css" rel="stylesheet">
+</head>
+<body class="get">
+	<th:block th:if="${w != null and w != ''}">
+		<script>
+			alert("게시글 등록 성공!");
+		</script>
+	</th:block>
+	<div id="wrap" class="get">
+		<th:block th:replace="~{layout/header::header(${session.loginUser})}"></th:block>
+		<table border="1" class="board_area">
+			<tbody>
+				<tr>
+					<th>제목</th>
+					<td id="boardtitle">[[${board.boardtitle}]]</td>
+				</tr>
+				<tr>
+					<th>작성자</th>
+					<td id="userid">[[${board.userid}]]</td>
+				</tr>
+				<tr>
+					<th>조회수</th>
+					<td id="readcount">[[${board.readcount}]]</td>
+				</tr>
+				<tr>
+					<th>내용</th>
+					<td id="boardcontents">[[${board.boardcontents}]]</td>
+				</tr>
+				<tr th:each="file:${files}" th:if="${files != null and files.size() > 0}">
+					<th>첨부파일[[${fileStat.index+1}]]</th>
+					<td>
+						<a th:href="@{'/file/download' (systemname=${file.systemname}, orgname=${file.orgname})}">[[${file.orgname}]]</a>
+						<!-- th:with - 일종의 변수 선언 -->
+						<th:block th:with="sar=${file.systemname.split('[.]')}">
+							<th:block th:with="ext = ${sar[sar.length-1]}">
+								<img class="thumbnail" th:if="${ext == 'jpg' or ext == 'png'
+								 or ext == 'jpeg' or ext == 'gif' or ext == 'webp'}"
+								 th:src="${'/file/thumbnail?systemname='+file.systemname}">
+							</th:block>
+						</th:block>
+					</td>
+				</tr>
+				<tr th:if="${files == null or files.size() == 0}" class="no-file">
+					<td colspan="2">첨부 파일이 없습니다.</td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="btn_area">
+			<tbody>
+				<tr>
+					<td>
+						<th:block th:if="${board.userid == session.loginUser}">
+							<a class="btn" th:href="${'/board/modify'+cri.listLink+'&boardnum='+board.boardnum}">수정</a>
+							<a class="btn" th:href="${'/board/remove'+cri.listLink+'&boardnum='+board.boardnum}">삭제</a>
+						</th:block>
+						<a class="btn" th:href="${'/board/list'+cri.listLink}">목록</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="reply_line">
+			<a href="#" class="btn regist">댓글 등록</a>
+			<div class="replyForm row" style="display:none;">
+				<div>
+					<h4>작성자</h4>
+					<input type="text" name="userid" th:value="${session.loginUser}" readonly>
+				</div>
+				<div>
+					<h4>내용</h4>
+					<textarea id="replycontents" name="replycontents" placeholder="Contents"></textarea>
+				</div>
+				<div>
+					<a href="#" class="btn finish">등록</a>
+					<a href="#" class="btn cancel">취소</a>
+				</div>
+			</div>
+			<ul class="replies"></ul>
+			<div class="page"></div>
+		</div>
+	</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="/js/reply.js"></script>
+<script th:inline="javascript">
+	const replyForm = $(".replyForm")
+	const boardnum = /*[[${board.boardnum}]]*/'';
+	const loginUser = /*[[${session.loginUser}]]*/'';
+	const replies = $(".replies");
+	const page = $(".page");
+	let nowPage = 1;
+	window.setTimeout(function(){
+		document.querySelector("#wrap>div:nth-child(1)").style.display="none";
+	},1200)
+	$(".regist").click(function(e){
+		e.preventDefault();
+		replyForm.show();
+		//e.target : 현재 이벤트가 일어난 대상 객체(바닐라) -> 바닐라 자바스크립트 코드 사용(.style, .id, .innerHTML)
+		//$(this) : 현재 이벤트가 일어난 대상 객체(jQuery) -> jQuery 코드 사용(.css(), .attr(), .text() )
+		$(this).hide();
+		$("#replycontents").val("");
+		$("#replycontents").focus();
+	})
+	let insertFlag = false;
+	$(".finish").click(function(e){
+		e.preventDefault();
+		//DB처리 요청
+		//{replycontents:"작성한 데이터", boardnum:121, userid:"apple"}
+		const reply = {
+			replycontents:$("#replycontents").val(),
+			boardnum:boardnum,
+			userid:loginUser
+		};
+		
+		replyService.insert(reply,function(){
+			//DOM
+			alert("댓글 등록 성공!")
+			insertFlag = true;
+			showList();
+		},function(){
+			alert("댓글 등록 실패!")
+		})
+		
+		
+		replyForm.hide();
+		$(".regist").show();
+	})
+	$(".cancel").click(function(e){
+		e.preventDefault();
+		replyForm.hide();
+		$(".regist").show();
+	})
+	
+	$(document).ready(function(){
+		showList();
+	})
+	
+	function showList(){
+		replyService.selectAll(
+			{boardnum:boardnum, pagenum:nowPage},
+			function(replyCnt, list){
+				if(insertFlag){
+					nowPage = Math.ceil(replyCnt/5);
+					showList();
+					insertFlag = false;
+					return;
+				}
+				let str = "";
+				if(list == null || list.length == 0){
+					//댓글이 하나도 없을 때
+					if(nowPage == 1){
+						//<li class="no-reply">등록된 댓글이 없습니다.</li>
+						replies.html('<li class="no-reply">등록된 댓글이 없습니다.</li>');
+						return;
+					}
+					//삭제를 통해서 현재 페이지의 모든 댓글이 삭제되었을 때
+					else{
+						nowPage--;
+						showList();
+						return;
+					}
+				}
+				//댓글이 있을 때
+				for(let i=0;i<list.length;i++){
+					const reply = list[i];
+					str += `<li class="li${reply.replynum} row">
+	<div class="row">
+		<strong class="userid">${reply.userid}</strong>
+		<p class="reply${reply.replynum}">
+			${reply.replycontents}
+		</p>
+	</div>
+	<div>
+		<strong></strong>
+	</div>`;
+					if(reply.userid == loginUser){
+						str += `<div>
+		<a href="${reply.replynum}" class="modify btn">수정</a>
+		<a href="${reply.replynum}" class="mfinish btn" style="display:none;">수정 완료</a>
+		<a href="${reply.replynum}" class="remove btn">삭제</a>
+	</div>`
+					}
+					str += "</li>";
+				}
+				replies.html(str);
+				
+				$(".modify").click(modifyReply);
+				$(".mfinish").click(modifyReplyOk);
+				$(".remove").click(removeReply);
+				
+				//댓글 페이징 DOM 구현
+				showReplyPages(replyCnt);
+			}
+		)
+	}
+	let modifyFlag = false;
+	function modifyReply(e){
+		e.preventDefault();
+		if(!modifyFlag){
+			modifyFlag = true;
+			let replynum = e.target.getAttribute("href");
+			//수정해야 할 댓글의 <p>태그 ex) <p>댓글내용</p>
+			const replyTag = $(".reply"+replynum);
+			//댓글내용
+			const replycontents = replyTag.text().trim();
+			//<p><textarea class="1 mdf">댓글내용</textarea></p>
+			replyTag.html(`<textarea class="${replynum} mdf">${replycontents}</textarea>`);
+			//수정 버튼 감추기
+			$(this).hide();
+			//수정 완료 버튼 보이기
+			$(this).next().show();
+			//만들어진 textarea에 focus
+			$("."+replynum).focus();
+		}
+		else{
+			alert("수정중인 댓글이 있습니다!");
+		}
+	}
+	function modifyReplyOk(e){
+		e.preventDefault();
+		modifyFlag = false;
+		
+		let replynum = e.target.getAttribute("href");
+		let replycontents = $("."+replynum).val();
+		
+		if(replycontents == ""){
+			alert("수정할 댓글 내용을 입력하세요!");
+			$("."+replynum).focus();
+			return;
+		}
+		replyService.update(
+			{replynum:replynum, replycontents:replycontents,userid:loginUser},
+			function(result){
+				alert(`${result}번 댓글 수정 완료!`);
+				showList();
+			}
+		)
+		
+		
+		
+	}
+	function removeReply(e){
+		e.preventDefault();
+		let replynum = e.target.getAttribute("href");
+		replyService.delete(replynum,function(result){
+			alert(`${result}번 댓글 삭제 완료!`)
+			showList();
+		})
+	}
+	
+	function showReplyPages(replyCnt){
+		let endPage = Math.ceil(nowPage/5)*5;
+		let startPage = endPage - 4;
+		//19 20 21
+		//	 4	5
+		//20 20 20
+		endPage = (endPage-1)*5 < replyCnt ? endPage : Math.ceil(replyCnt/5);
+		
+		let prev = startPage != 1;
+		let next = endPage*5 < replyCnt;
+		
+		let str = "";
+		if(prev){
+			str += `<a class="changePage page-btn" href="${startPage-1}">&lt;</a>`
+		}
+		for(let i=startPage; i<=endPage; i++){
+			if(i == nowPage){
+				str += `<span class="nowPage">${i}</span>`
+			}
+			else{
+				str += `<a class="changePage page-btn" href="${i}">${i}</a>`
+			}
+		}
+		if(next){
+			str += `<a class="changePage page-btn" href="${endPage+1}">&gt;</a>`
+		}
+		
+		page.html(str);
+		
+		$(".changePage").click(function(e){
+			e.preventDefault();
+			nowPage = e.target.getAttribute("href");
+			showList();
+			window.setTimeout(function(){
+				window.scrollTo(0,document.body.scrollHeight);
+			},10)
+		})
+		
+	}
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,114 @@
+MyBatis 동적 태그들
+	if
+	choose(when, otherwise)
+	where
+	trim
+	foreach
+
+[if]
+	<if test="조건식">
+		내용
+	</if>
+
+[choose, when, otherwise]
+	<choose>
+		<when test="조건식">
+			내용	
+		</when>
+		...
+		<otherwise>
+			내용
+		</otherwise>
+	</choose>
+
+[where]
+	태그 안의 내용으로 where절을 만들어 주지만, 내용이 없다면 아무것도 작성되지 않는다.
+
+	select * from t_board
+	<where>
+		<if test="boardnum != null">
+			boardnum = #{boardnum}
+		</if>
+	</where>
+
+	select * from t_board
+	where 
+	<if test="boardnum != null">
+		boardnum = #{boardnum}
+	</if>
+
+	*또 다른 파훼법
+	select * from t_board
+	where 
+	<if test="userid != null">
+		userid = #{userid} and
+	</if>
+	boardnum > 0
+
+[trim]
+	<trim prefix="a" prefixOverrides="b" suffix="c" suffixOverrides="d">
+		b 내용 d
+	</trim>
+
+	결과 : a 내용 c
+
+[foreach]
+	List, 배열, Map 등을 이용해서 루프를 처리한다.
+	<foreach collection="컬렉션명" index="키의 이름" item="값의 이름">
+	</foreach>
+
+	ex)
+	arData - ["하나", "둘", "셋"]
+
+	<foreach collection="arData" index="i" item="data">
+		#{i} = #{data}
+	</foreach>
+
+	※결과 : 0 = '하나' 1 = '둘' 2 = '셋'
+
+	ex)
+	arMap - {"userid":"apple", "userpw":"1234"}
+
+	<foreach collection="arMap" index="key" item="value">
+		#{key} = #{value} or
+	</foreach>
+
+	※결과 : 'userid' = 'apple' or 'userpw' = '1234' or
+
+제목으로 "제목1" 을 검색했을 때
+	select * from t_board where
+	boardtitle like ('%제목1%')
+
+제목, 내용 으로 "제목1" 을 검색했을 때
+	select * from t_board where
+	boardtitle like ('%제목1%')
+	or boardcontents like ('%제목1%')
+
+제목, 내용, 작성자로 "제목1"을 검색했을 때
+	select * from t_board where
+	boardtitle like ('%제목1%')
+	or boardcontents like ('%제목1%')
+	or userid like ('%제목1%')
+
+type='TW'
+typeArr : {"T", "W"}
+1.
+t : 'T'
+
+2.
+t : 'W'
+
+
+select * from t_board where
+(boardtitle like ('%'지우개'%')
+or userid like ())
+and
+boardnum > 0 order by boardnum desc limit #{startrow}, #{amount} 
+
+
+
+
+
+
+
+

@@ -1,0 +1,27 @@
+package com.example.demo.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+
+import com.example.demo.domain.Criteria;
+import com.example.demo.domain.ReplyDTO;
+
+@Mapper
+public interface ReplyMapper {
+	int insertReply(ReplyDTO reply);
+
+	ReplyDTO getLastReply(String userid);
+
+	long getTotal(long boardnum);
+	List<ReplyDTO> getList(Criteria cri, long boardnum);
+
+	int deleteReply(long replynum);
+	int deleteRepliesByBoardnum(long boardnum);
+
+	ReplyDTO getDetail(long replynum);
+
+	int updateReply(ReplyDTO reply);
+
+	int getRecentReplyCnt(long boardnum);
+}

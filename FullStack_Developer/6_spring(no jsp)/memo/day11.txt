@@ -1,0 +1,4 @@
+Exception 처리
+	application.properties 파일에 예외 처리에 대한 설정들을 작성
+	templates 폴더 내에 설정해둔 경로로 오류코드.html 을 생성
+	그 html 파일에 오류 응답 페이지를 작성

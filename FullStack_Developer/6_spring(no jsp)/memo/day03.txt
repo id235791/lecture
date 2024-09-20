@@ -1,0 +1,8 @@
+Lombok 설치
+	https://projectlombok.org/ > Download > Download 1.18.34 클릭
+	> 다운받은 .jar파일 실행
+		아이콘이 커피잔 모양 : 더블클릭
+		아이콘이 그 외 모양 : cmd 실행 > java -jar lombok.jar파일경로
+	> 경고메세지 무시 > Specify location 클릭 후 STS 경로 찾기
+	> Install/Update 클릭
+

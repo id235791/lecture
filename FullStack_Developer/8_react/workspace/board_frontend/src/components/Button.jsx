@@ -1,4 +1,4 @@
-const Button = (props) => {
-    return <input className={props.className} type="button" id={props.id} value={props.value} onClick={props.onClick}></input>
+const Button = ({className, id, value, onClick}) => {
+    return <input type="button" className={className} id={id} value={value} onClick={onClick}></input>
 }
 export default Button;

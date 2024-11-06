@@ -3,26 +3,19 @@ package com.example.demo.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
-import com.example.demo.domain.dto.BoardDTO;
-import com.example.demo.domain.dto.Criteria;
+import com.example.demo.domain.BoardDTO;
+import com.example.demo.domain.Criteria;
 
 @Mapper
 public interface BoardMapper {
-	//insert
-	int insertBoard(BoardDTO board);
-	
 	List<BoardDTO> getList(Criteria cri);
-	List<BoardDTO> getListByUserid(String userid);
 	long getTotal(Criteria cri);
+	int insertBoard(BoardDTO board);
+	BoardDTO getBoardByBoardnum(long boardnum);
 	long getLastNum(String userid);
-	BoardDTO getBoardByNum(long boardnum);
-
+	void updateReadCount(long boardnum, int readcount);
 	int updateBoard(BoardDTO board);
-
-	//@Param : MyBatis에 일반 변수로 두 개 이상을 넘길 때, XML쪽에서 사용하기 위해 @Param 어노테이션을 이용해서 name을 달아준다.
-	int updateReadCount(@Param("boardnum")long boardnum,@Param("readcount") int readcount);
-	
 	int deleteBoard(long boardnum);
+	List<BoardDTO> getListByUserid(String userid);
 }

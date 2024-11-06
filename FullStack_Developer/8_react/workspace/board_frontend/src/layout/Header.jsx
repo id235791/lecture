@@ -3,40 +3,45 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
 
-const Header = ({}) => {
-    const [loginUser,setLoginUser] = useState("");
+const Header = () => {
+    const [loginUser, setLoginUser] = useState("");
     const navigate = useNavigate();
-    useEffect(()=>{
-        axios.get(`/api/user/loginCheck`)
-        .then(resp=>{ setLoginUser(resp.data) })
-        .catch((e)=>{
-            alert("로그인 후 이용하세요!");
-            navigate("/")
-        });
-    },[])
 
-    const clickLogout = ()=>{
-        axios.get("/api/user/logout")
+    const clickLogout = () => {
+        axios.get(`/api/user/logout`)
         .then(resp => {
             if(resp.data == "O"){
+                alert("안녕히가세요!");
                 navigate("/");
             }
         })
     }
-    const clickMypage = ()=>{
+    const clickMypage = () => {
         navigate("/user/myInfo");
     }
+    const goList = () => {
+        const cri = {
+            pagenum:1,
+            amount:10,
+            type:"a",
+            keyword:"",
+            startrow:0
+        }
+        navigate("/board/list",{state:cri})
+    }
 
-    const cri = {
-        pagenum:1,
-        amount:10,
-        type:"a",
-        keyword:"",
-        startrow:0
-    }
-    const goList = ()=>{
-        navigate(`/board/list`,{state:cri});
-    }
+    useEffect(()=>{
+        axios.get(`/api/user/loginCheck`)
+        .then((resp)=>{
+            if(resp.data.trim() == ""){
+                alert("로그인 후 이용하세요!");
+                navigate("/");
+            }
+            else{
+                setLoginUser(resp.data);
+            }
+        })
+    },[])
     return (
         <header>
             <div className="title">
@@ -47,8 +52,8 @@ const Header = ({}) => {
                     <span>{loginUser}님 환영합니다</span>
                 </div>
                 <div className="cols-2 row btn_area">
-                    <Button onClick={clickLogout} value="로그아웃" size="half" id="logout-btn"></Button>
-                    <Button onClick={clickMypage} value="마이페이지" size="half" id={"mypage-btn"}></Button>
+                    <Button value="로그아웃" id="logout-btn" onClick={clickLogout}></Button>
+                    <Button value="마이페이지" id="mypage-btn" onClick={clickMypage}></Button>
                 </div>
             </div>
         </header>

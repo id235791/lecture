@@ -5,15 +5,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.domain.dto.BoardDTO;
-import com.example.demo.domain.dto.UserDTO;
+import com.example.demo.domain.BoardDTO;
+import com.example.demo.domain.UserDTO;
 import com.example.demo.mapper.BoardMapper;
 import com.example.demo.mapper.FileMapper;
 import com.example.demo.mapper.ReplyMapper;
 import com.example.demo.mapper.UserMapper;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
+	
 	@Autowired
 	private UserMapper umapper;
 	@Autowired
@@ -22,7 +23,7 @@ public class UserServiceImpl implements UserService{
 	private ReplyMapper rmapper;
 	@Autowired
 	private FileMapper fmapper;
-	
+
 	@Override
 	public boolean join(UserDTO user) {
 		return umapper.insertUser(user) == 1;
@@ -30,7 +31,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public boolean login(String userid, String userpw) {
-		UserDTO user = umapper.getUserById(userid);
+		UserDTO user = umapper.getUserByUserid(userid);
 		if(user != null) {
 			if(user.getUserpw().equals(userpw)) {
 				return true;
@@ -41,14 +42,15 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public boolean checkId(String userid) {
-		return umapper.getUserById(userid) == null;
-	}
-	
-	@Override
-	public UserDTO getDetail(String loginUser) {
-		return umapper.getUserById(loginUser);
+		UserDTO user = umapper.getUserByUserid(userid);
+		return user == null;
 	}
 
+	@Override
+	public UserDTO getDetail(String userid) {
+		return umapper.getUserByUserid(userid);
+	}
+	
 	@Override
 	public boolean modify(UserDTO user) {
 		return umapper.updateUser(user) == 1;
@@ -63,5 +65,11 @@ public class UserServiceImpl implements UserService{
 		}
 		return umapper.deleteUser(userid) == 1;
 	}
-	
+
 }
+
+
+
+
+
+

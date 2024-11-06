@@ -1,14 +1,13 @@
-import axios from "axios";
 import Button from "../../components/Button";
 import DaumPostcode from "../../components/DaumPostCode";
 import { useNavigate } from "react-router-dom";
 import Hobby from "../../components/Hobby";
+import axios from 'axios';
 
 const Join = () => {
     const navigate = useNavigate();
     let pwTest = [false,false,false,false,false]
     const checkId = (e) => {
-        e.preventDefault();
         const result = document.getElementById(`result`);
         const userid = document.joinForm.userid;
         if(userid.value == ""){
@@ -16,7 +15,7 @@ const Join = () => {
             userid.focus();
             return false;
         }
-
+        // localhost:8080/api/user/checkId?userid=apple
         const xhr = new XMLHttpRequest();
 
         xhr.onreadystatechange = function(){
@@ -24,20 +23,20 @@ const Join = () => {
                 if(xhr.status == 200){
                     let txt = xhr.responseText.trim();
                     if(txt == "O"){
+                        //성공
                         result.innerHTML = "사용할 수 있는 아이디입니다!";
                         document.joinForm.userpw.focus();
                     }
-                    
-                }
-                else{
-                    result.innerHTML = "중복된 아이디가 있습니다!";
-                    userid.value = "";
-                    userid.focus();
+                    else{
+                        //실패
+                        result.innerHTML = "중복된 아이디가 있습니다!";
+                        userid.value = "";
+                        userid.focus();
+                    }
                 }
             }
         }
-
-        xhr.open("GET",`/api/user/checkId?userid=${userid.value}`)
+        xhr.open("GET","/api/user/checkId?userid="+userid.value);
         xhr.send();
     }
     const pwCheck = (e) => {
@@ -178,29 +177,44 @@ const Join = () => {
         }
 
         const user = {
-            "userid":userid.value,
-            "userpw":userpw.value,
-            "username":username.value,
-            "usergender":usergender.value+"-"+foreigner.value,
-            "zipcode":zipcode.value,
-            "addr":joinForm.addr.value,
-            "addrdetail":addrdetail.value,
-            "addretc":joinForm.addretc.value,
-            "userhobby":userhobby.value
+            userid:userid.value,
+            userpw:userpw.value,
+            username:username.value,
+            usergender:usergender.value+"-"+foreigner.value,
+            zipcode:zipcode.value,
+            addr:joinForm.addr.value,
+            addrdetail:addrdetail.value,
+            addretc:joinForm.addretc.value,
+            userhobby:userhobby.value
         }
         console.log(user);
 
+        // const xhr = new XMLHttpRequest();
+        // xhr.onreadystatechange = () => {
+        //     if(xhr.readyState == XMLHttpRequest.DONE){
+        //         if(xhr.status == 200){
+        //             alert("회원가입 성공!");
+        //             navigate("/");
+        //         }
+        //         else{
+        //             console.log(xhr.responseText);
+        //         }
+        //     }
+        // }
+
+        // xhr.open("POST","/api/user/join");
+        // xhr.setRequestHeader("Content-Type","application/json; charset=utf-8")
+        // xhr.send(JSON.stringify(user));
+
         axios.post('/api/user/join',user)
-        .then(resp =>{
-            if(resp.data == "O"){
-                alert("회원가입 성공!")
-                navigate("/");
-            }
-            else{
-                alert("회원가입 실패!");
-                navigate("/")
-            }
+        .then((resp)=>{
+            alert("회원가입 성공!");
+            navigate("/");
         })
+        .catch((err)=>{
+            alert("회원가입 실패!");
+        })
+
     }
 
     return (
@@ -293,7 +307,7 @@ const Join = () => {
                             <tr className="hobby_area">
                                 <th>취미</th>
                                 <td>
-                                    <Hobby></Hobby>
+                                    <Hobby name={"취미"}></Hobby>
                                 </td>
                             </tr>
                             <tr>

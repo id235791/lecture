@@ -1,16 +1,15 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.dto.Criteria;
-import com.example.demo.domain.dto.ReplyDTO;
-import com.example.demo.domain.dto.ReplyPageDTO;
+import com.example.demo.domain.Criteria;
+import com.example.demo.domain.ReplyDTO;
+import com.example.demo.domain.ReplyPageDTO;
 
 public interface ReplyService {
-	ReplyDTO regist(ReplyDTO reply);
-	
-	ReplyDTO getDetail(long replynum);
-	ReplyPageDTO getList(Criteria cri, long boardnum);
-	
-	boolean modify(ReplyDTO reply);
-	
-	boolean remove(long replynum);
+	public ReplyDTO regist(ReplyDTO reply);
+
+	public ReplyPageDTO getList(Criteria cri, long boardnum);
+
+	public boolean remove(long replynum);
+
+	public boolean modify(ReplyDTO reply);
 }

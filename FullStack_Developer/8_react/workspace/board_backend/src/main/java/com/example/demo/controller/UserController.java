@@ -6,14 +6,14 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.domain.dto.UserDTO;
+import com.example.demo.domain.UserDTO;
 import com.example.demo.service.UserService;
 
 import jakarta.servlet.http.Cookie;
@@ -26,21 +26,30 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RestController
 @RequestMapping("/api/user/*")
 public class UserController {
+	
 	@Autowired
 	private UserService service;
-
+	
 	@GetMapping("checkId")
 	public ResponseEntity<String> checkId(String userid) {
 		if(service.checkId(userid)) {
+//			return new ResponseEntity<String>("O",HttpStatusCode.valueOf(200));
 			return new ResponseEntity<String>("O",HttpStatus.OK);
 		}
 		else {
-			return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<String>("X",HttpStatus.OK);
 		}
 	}
 	
+	@GetMapping("logout")
+	public ResponseEntity<String> logout(HttpServletRequest req) {
+		req.getSession().invalidate();
+		return new ResponseEntity<String>("O",HttpStatus.OK);
+	}
+	
 	@PostMapping("join")
-	public ResponseEntity<String> join(@RequestBody UserDTO user, HttpServletResponse resp){
+	public ResponseEntity<String> join(@RequestBody UserDTO user, HttpServletResponse resp) {
+		System.out.println(user);
 		if(service.join(user)) {
 			Cookie cookie = new Cookie("joinid", user.getUserid());
 			cookie.setPath("/");
@@ -48,10 +57,23 @@ public class UserController {
 			resp.addCookie(cookie);
 			return new ResponseEntity<String>("O",HttpStatus.OK);
 		}
-		return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+		else {
+			return new ResponseEntity<String>("ERROR : ????",HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
+	
+	@GetMapping("login")
+	public ResponseEntity<String> login(String userid,String userpw,HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		if(service.login(userid, userpw)) {
+			session.setAttribute("loginUser", userid);
+			return new ResponseEntity<String>("O",HttpStatus.OK);
+		}
+		return new ResponseEntity<String>("X",HttpStatus.OK);
+	}
+	
 	@GetMapping("joinCheck")
-	public ResponseEntity<String> joinCheck(HttpServletRequest req){
+	public ResponseEntity<String> joinCheck(HttpServletRequest req) {
 		if(req.getHeader("Cookie") != null) {
 			Cookie[] cookies = req.getCookies();
 			for(Cookie cookie : cookies) {
@@ -63,35 +85,18 @@ public class UserController {
 		return new ResponseEntity<String>("",HttpStatus.OK);
 	}
 	
-	@GetMapping("login")
-	public ResponseEntity<String> login(String userid, String userpw, HttpServletRequest req){
-		HttpSession session = req.getSession();
-		if(service.login(userid, userpw)) {
-			session.setAttribute("loginUser", userid);
-			return new ResponseEntity<String>("O",HttpStatus.OK);
-		}
-		return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
-	}
-	
 	@GetMapping("loginCheck")
 	public ResponseEntity<String> loginCheck(HttpServletRequest req){
 		Object temp = req.getSession().getAttribute("loginUser");
 		if(temp != null) {
 			return new ResponseEntity<String>((String)temp,HttpStatus.OK);
 		}
-		return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
-	}
-	
-	@GetMapping("logout")
-	public ResponseEntity<String> logout(HttpServletRequest req) {
-		req.getSession().invalidate();
-		return new ResponseEntity<String>("O",HttpStatus.OK);
+		return new ResponseEntity<String>("",HttpStatus.OK);
 	}
 	
 	@GetMapping("getDetail")
-	public ResponseEntity<UserDTO> getDetail(HttpServletRequest req){
-		HttpSession session = req.getSession();
-		String loginUser = (String)session.getAttribute("loginUser");
+	public ResponseEntity<UserDTO> getDetail(HttpServletRequest req) {
+		String loginUser = (String)req.getSession().getAttribute("loginUser");
 		UserDTO user = service.getDetail(loginUser);
 		return new ResponseEntity<UserDTO>(user,HttpStatus.OK);
 	}
@@ -116,6 +121,8 @@ public class UserController {
 		}
 		return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
+	
+	
 }
 
 

@@ -105,17 +105,16 @@ const MyPage = () => {
             "addretc":joinForm.addretc.value,
             "userhobby":userhobby.value
         }
-        console.log(user);
 
         axios.put('/api/user/modify',user)
         .then(resp =>{
             if(resp.data == "O"){
                 alert("회원정보 수정 성공!")
-                navigate("/board/list/");
+                navigate("/board/list");
             }
             else{
                 alert("회원정보 수정 실패!");
-                navigate("/board/list/")
+                navigate("/board/list")
             }
         })
     }
@@ -129,7 +128,6 @@ const MyPage = () => {
     }
 
     useEffect(()=>{
-
         axios.get(`/api/user/getDetail`)
         .then(resp => {
             setUser(resp.data);
@@ -140,11 +138,11 @@ const MyPage = () => {
     },[])
     const el = [];
     if(!user){
-        el.push(<>로딩중...</>);
+        el.push(<div key={-1}>로딩중...</div>);
     }
     else{
         el.push(
-            <form action="/user/join" method="post" name="joinForm">
+            <form action="/user/join" method="post" name="joinForm" key={1}>
                 <table>
                     <tbody>
                         <tr>
@@ -227,7 +225,7 @@ const MyPage = () => {
                         <tr className="hobby_area">
                             <th>취미</th>
                             <td>
-                                <Hobby list={user.userhobby.split("\\")}></Hobby>
+                                <Hobby data={user.userhobby.split("\\")}></Hobby>
                             </td>
                         </tr>
                         <tr>

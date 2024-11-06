@@ -1,87 +1,76 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Button from "./Button";
 
-const Hobby = ({list}) => {
-    const [hobbyList,setHobbyList] = useState([]);
-    const [userhobby,setUserhobby] = useState("");
-    const addHobby = (e) => {
-        const joinForm = document.joinForm;
-        let hobby = joinForm.hobby;
-        if(hobby.value == ""){
-            alert("취미를 입력해 주세요.")
-            hobby.focus();
+const Hobby = ({name,data}) => {
+    const [list,setList] = useState([]);
+    const [result,setResult] = useState("")
+    const inputRef = useRef(null);
+    
+    const addData = () => {
+        if(inputRef.current.value == ""){
+            alert(`${name}를(을) 입력해 주세요.`);
+            inputRef.current.focus();
             return;
         }
-        if(hobbyList.indexOf(hobby.value) != -1){
-            alert("중복된 취미입니다.")
-            hobby.focus();
-            hobby.value = "";
+        if(list.indexOf(inputRef.current.value) != -1){
+            alert(`중복된 ${name}입니다.`);
+            inputRef.current.focus();
+            inputRef.current.value = "";
             return;
         }
-        if(!/^[가-힣a-zA-Z\s]+$/.test(hobby.value)){
-            alert("정확한 취미를 입력해 주세요.")
-            hobby.focus();
-            hobby.value = "";
+        if(!/^[가-힣a-zA-Z\s]+$/.test(inputRef.current.value)){
+            alert(`정확한 ${name}를(을) 입력해 주세요.`)
+            inputRef.current.focus();
+            inputRef.current.value = "";
             return;
         }
-        if(hobbyList.length >= 5){
-            alert("취미는 5개 이하로 입력해 주세요.")
-            hobby.focus();
-            hobby.value="";
+        if(list.length >= 5){
+            alert(`${name}는(은) 5개 이하로 입력해 주세요.`)
+            inputRef.current.focus();
+            inputRef.current.value="";
             return;
         }
-        setHobbyList([...hobbyList,hobby.value])
-        hobby.value="";
-        hobby.focus();
+        setList([...list,inputRef.current.value]);
+        inputRef.current.value = "";
+        inputRef.current.focus();
     }
 
-    const hobbyKeyUp = (e) => {
-        if(e.key === "Enter"){
-            addHobby();
-        }
-    }
-
-    const deleteHobby = (hobby)=>{
-        const updated = [];
-        for(const h of hobbyList){
-            if(hobby != h){
-                updated.push(h);
-            }
-        }
-        setHobbyList(updated);
+    const deleteData = (data) => {
+        const updatedList = list.filter((item) => item != data);
+        setList(updatedList);
     }
 
     useEffect(()=>{
-        if(list){
-            setHobbyList(list);
+        setResult(list.join("\\"));
+    },[list])
+
+    useEffect(()=>{
+        if(data){
+            setList(data);
         }
     },[])
-    useEffect(()=>{
-        setUserhobby(hobbyList.join("\\"));
-    },[hobbyList])
 
-    return(
+    return (
         <div>
             <div className="hobby_input">
-                <input type="text" name="hobby" onKeyUp={hobbyKeyUp}/><Button value="추가" onClick={addHobby}></Button>
+                <input type="text"  name="hobby" ref={inputRef}/><Button value="추가" onClick={addData}/>
             </div>
             <div className="hobby_list">
-            {
-                hobbyList.map((h)=>{
-                    return(
-                        <span className="userhobby" name="userhobby" onClick={()=>{deleteHobby(h)}}>
-                            <span>{h}</span>
-                            <a className="xBox" onClick={()=>{
-                                deleteHobby(h);
-                            }}></a>
-                        </span>
-                    )
-                })
-            }
+                {
+                    list.map((data) => {
+                        return (
+                            <span className="userhobby" name="userhobby" onClick={()=>{ deleteData(data) }} key={data}>
+                                <span>{data}</span>
+                                <a className="xBox" onClick={()=>{
+                                    deleteData(data);
+                                }}></a>
+                            </span>
+                        )
+                    })
+                }
             </div>
-            <input type="hidden" value={userhobby} name="userhobby" readOnly/>
+            <input type="hidden" name="userhobby" readOnly value={result}/>
         </div>
     )
-
 }
 export default Hobby;

@@ -77,6 +77,7 @@ src/app/page.tsx
 
 예시 코드
 
+```
 export default function Home() {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -87,7 +88,7 @@ export default function Home() {
     </div>
   );
 }
-
+```
 
 ---
 
